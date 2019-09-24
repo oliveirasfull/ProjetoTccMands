@@ -13,9 +13,11 @@ const routes: Routes = [
         path:'',
         loadChildren:'./pages/usuario/usuario.module#UsuarioPageModule'
       }
+      
     ]
 
-}
+},
+  { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' }
 ];
 
 @NgModule({
