@@ -15,9 +15,10 @@ const routes: Routes = [
       }
       
     ]
+  },
+ { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' }
 
-},
-  { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' }
+ 
 ];
 
 @NgModule({
