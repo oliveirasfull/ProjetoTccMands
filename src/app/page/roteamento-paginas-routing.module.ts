@@ -16,7 +16,8 @@ const routes: Routes = [
       
     ]
   },
- { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' }
+ { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
+  { path: 'profissional', loadChildren: './pages/profissional/profissional.module#ProfissionalPageModule' }
 
  
 ];
