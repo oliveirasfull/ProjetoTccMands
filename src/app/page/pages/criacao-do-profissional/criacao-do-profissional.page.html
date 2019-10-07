@@ -1,0 +1,46 @@
+  <ion-app>
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Completar Conta</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content fullscreen>
+      <form onsubmit="processForm(event)">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked">Entre Com Seu Nome: <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="text" oninput="nomeUsuario(event)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="stacked">Qual Serviço Vai Oferecer: <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="text" oninput="servicoOferecido(event)"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+              <ion-label position="stacked">Qual Serviço Vai Oferecer: <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="photo" oninput="fotoIlustrativa(event)"></ion-input>
+          </ion-item>
+          
+
+          <ion-item>
+            <ion-label position="stacked">Endereço</ion-label>
+            <ion-input placeholder="Endereço aqui:"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Notes</ion-label>
+            <ion-textarea></ion-textarea>
+          </ion-item>
+        </ion-list>
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+        </div>
+      </form>
+    </ion-content>
+    <ion-alert-controller></ion-alert-controller>
+  </ion-app>
+
+  
