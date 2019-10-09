@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 
-import { UsuarioPage } from './usuario.page';
+import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: UsuarioPage
+    component: TabsPage
   }
 ];
 
@@ -19,6 +19,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UsuarioPage]
+  declarations: [TabsPage]
 })
-export class UsuarioPageModule {}
+export class TabsPageModule {}
