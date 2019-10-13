@@ -1,4 +1,3 @@
-import { FeedPageModule } from './../feed/feed.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children :[
       {
@@ -22,20 +21,29 @@ const routes: Routes = [
               import ('../feed/feed.module').then(m=> m.FeedPageModule)
           }
         ]
-      }
-    ]
+      },
+    {
+      path:'usuario',
+      
+      children:[
+        {
+         path:'',
+         loadChildren:()=>
+           import ("../usuario/usuario.module").then(m=> m.UsuarioPageModule)
+        }
+       ]
+      },
+    {
+      path:'',
+      redirectTo:'tabs/usuario',
+      pathMatch:'full'
+    }
+  ]
   },
   {
-    path:'usuario',
-    component:TabsPage,
-    children:[
-      {
-        path:'',
-        loadChildren:()=>
-          import ("../usuario/usuario.module").then(m=> m.UsuarioPageModule)
-      }
-    ]
-
+    path:'',
+    redirectTo:'tabs/usuario',
+    pathMatch:'full'
   }
 ];
 
