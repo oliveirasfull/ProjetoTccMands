@@ -8,6 +8,10 @@ import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('../page/pages/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
     path:'',
    canActivateChild: [AuthGuard], // bloqueia todas as URL
     children:[
