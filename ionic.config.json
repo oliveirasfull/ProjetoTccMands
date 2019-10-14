@@ -1,5 +1,7 @@
 {
   "name": "IonicFirestore",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
