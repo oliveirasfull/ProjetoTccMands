@@ -1,4 +1,43 @@
-<p>
-    Criação do perfil profissional
+<ion-header>
+    <ion-toolbar>
+        <ion-title style="text-align: center" color="primary">Criacao da pagina profissional</ion-title>
+    </ion-toolbar>
+</ion-header>
 
-</p>
+<ion-content>
+
+    <ion-list>
+        <ion-item-sliding>
+            <ion-item>
+                <ion-label position="floating">Primeiro Nome</ion-label>
+                <ion-input type="string" name="primeiroNome" [(ngModel)]="primeiroNome"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Segundo Nome</ion-label>
+                <ion-input type="string" name="segundoNome" [(ngModel)]="segundoNome"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Nome Profissional</ion-label>
+                <ion-input type="string" name="nomeProfissional" [(ngModel)]="nomeProfissional"></ion-input>
+            </ion-item>
+
+
+            <ion-item-options side="end">
+                <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+            </ion-item-options>
+
+            <ion-button (click)="salvar()" routerLink="/usuario">
+                Salvar
+                <ion-icon slot="end" name="star"></ion-icon>
+            </ion-button>
+        </ion-item-sliding>
+
+
+    </ion-list>
+
+
+
+
+
+
+</ion-content>

@@ -9,9 +9,11 @@ export class UsuarioPage implements OnInit {
 
   public titulo :string = 'Mands'
 
-  constructor() { }
+  constructor() { } 
 
-  ngOnInit() {
-  }
-
-}
+  ngOnInit() {       
+  }        
+                         
+}                     
+     
+            
