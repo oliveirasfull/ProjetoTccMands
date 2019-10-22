@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { UsuarioPage } from './usuario.page';
+import { fotoComponent } from './foto/foto.component';
+import { perfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UsuarioPage]
+  declarations: [UsuarioPage, fotoComponent, perfilComponent]
 })
 export class UsuarioPageModule {}

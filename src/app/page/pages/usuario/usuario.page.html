@@ -1,6 +1,6 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>Usuario</ion-title>
+    <ion-toolbar class="titulo" color="primary">
+        <ion-title>{{titulo}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -11,8 +11,14 @@
         <ion-card-header>
 
             <ion-card-subtitle>
-                <ion-icon name="contact" class="icon-user-1">
-                </ion-icon>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <app-usuario-foto></app-usuario-foto>
+                    </div>
+                    <div class="col-sm-6">
+                        <app-usuario-perfil></app-usuario-perfil>
+                    </div>
+                </div>
 
 
 
@@ -30,23 +36,41 @@
     <h1>
         serviços favoritos
     </h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle>Nome profissional 1</ion-card-subtitle>
+                    <ion-card-title>Card Title</ion-card-title>
+                </ion-card-header>
 
+                <ion-card-content>
+                    Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div class="col-sm-6">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle>Nome profissional 2 </ion-card-subtitle>
+                    <ion-card-title>Card Title</ion-card-title>
+                </ion-card-header>
 
+                <ion-card-content>
+                    Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                    <ion-card-subtitle>Classificacao</ion-card-subtitle>
 
-    <ion-card>
-        <img src="/src/assets/perfil.jpg" alt="" />
-        <ion-card-content>
-            <ion-card-title>
-                Marcela
-            </ion-card-title>
-            <p>
-                Detalhamento da descrição do profissional
-            </p>
-        </ion-card-content>
-    </ion-card>
-    <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
+                </ion-card-content>
+            </ion-card>
+        </div>
     </div>
+
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add" routerLink="/usuario/criacao-do-profissional"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 
 
 </ion-content>
