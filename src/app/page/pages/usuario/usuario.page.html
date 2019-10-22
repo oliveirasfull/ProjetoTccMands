@@ -65,12 +65,23 @@
         </div>
     </div>
 
+    <div *ngIf="profissional ; else naoProfissional">
+        <ion-fab vertical="top" horizontal="end" slot="fixed">
+            <ion-fab-button>
+                <ion-icon name="add" routerLink="/usuario/profissional"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </div>
 
-    <ion-fab vertical="top" horizontal="end" slot="fixed">
-        <ion-fab-button>
-            <ion-icon name="add" routerLink="/usuario/criacao-do-profissional"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
+    <ng-template #naoProfissional>
 
+        <div>
+            <ion-fab vertical="top" horizontal="end" slot="fixed">
+                <ion-fab-button>
+                    <ion-icon name="add" routerLink="/usuario/criacao-do-profissional"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+        </div>
+    </ng-template>
 
 </ion-content>

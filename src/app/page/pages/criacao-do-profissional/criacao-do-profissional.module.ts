@@ -18,3 +18,4 @@ const routes: Routes = [
   declarations: [CriacaoDoProfissionalPage]
 })
 export class CriacaoDoProfissionalPageModule {}
+ 
