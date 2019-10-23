@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit  } from '@angular/core';
+
 
 @Component({
   selector: 'app-criacao-do-profissional',
@@ -8,16 +10,30 @@ import { Component, OnInit } from '@angular/core';
 export class CriacaoDoProfissionalPage implements OnInit {
   public primeiroNome : string
   public segundoNome : string
-  public nomeProfissional : string
+  public nomeProfissional: string
+  public manicure : boolean = false
+  public pedicure : boolean = false
+  public atendimentoDomicilio: boolean = false
+  public idade: number
+
+
+
+  public profissionalAtivo: boolean = false
+
+  
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  public salvar():void{
-    console.log("Primeiro nome ",this.primeiroNome)
-   console.log(this.segundoNome)
-   console.log(this.nomeProfissional)
+  public salvar():any{
+    this.profissionalAtivo= true
+    console.log(this.profissionalAtivo)
+    
+  }
+
+  public voltar():void{
+
   }
 }

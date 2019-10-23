@@ -33,6 +33,17 @@ const routes: Routes = [
         }
        ]
       },
+      {
+        path:'profissional',
+          
+        children:[
+          {
+           path:'',
+           loadChildren:()=>
+             import ("../profissional/profissional.module").then(m=> m.ProfissionalPageModule)
+          }
+         ]
+        },
     {
       path:'',
       redirectTo:'usuario',

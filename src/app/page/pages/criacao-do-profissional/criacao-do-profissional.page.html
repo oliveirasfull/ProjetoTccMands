@@ -20,16 +20,48 @@
                 <ion-label position="floating">Nome Profissional</ion-label>
                 <ion-input type="string" name="nomeProfissional" [(ngModel)]="nomeProfissional"></ion-input>
             </ion-item>
+            <ion-item>
+
+                <ion-toggle [(ngModel)]="manicure"> Manicure</ion-toggle>
+                <ion-label>Manicure</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-toggle [(ngModel)]="pedicure"></ion-toggle>
+                <ion-label>pedicure</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-toggle [(ngModel)]="atendimentoDomicilio"></ion-toggle>
+                <ion-label>Atendimento a domicilio</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">idade</ion-label>
+                <ion-input type="number" name="idade" [(ngModel)]="idade"></ion-input>
+            </ion-item>
 
 
             <ion-item-options side="end">
                 <ion-item-option (click)="unread(item)">Unread</ion-item-option>
             </ion-item-options>
 
-            <ion-button (click)="salvar()" routerLink="/usuario">
-                Salvar
-                <ion-icon slot="end" name="star"></ion-icon>
-            </ion-button>
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-button (click)="voltar()" routerLink="/usuario" style="text-align: center">
+                            Voltar
+                            <ion-icon slot="end" name="star"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button (click)="salvar()" routerLink="/usuario/profissional" style="text-align: center">
+                            Salvar
+                            <ion-icon slot="end" name="star"></ion-icon>
+                        </ion-button>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+
         </ion-item-sliding>
 
 
