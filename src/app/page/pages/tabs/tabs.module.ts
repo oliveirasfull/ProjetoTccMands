@@ -18,7 +18,7 @@ const routes: Routes = [
           {
             path:'',
             loadChildren:() =>
-              import ('../feed/feed.module').then(m=> m.FeedPageModule)
+              import ('../usuario/criacao-do-profissional/profissional/feed/feed.module').then(m=> m.FeedPageModule)
           }
         ]
       },
@@ -40,7 +40,7 @@ const routes: Routes = [
           {
            path:'',
            loadChildren:()=>
-             import ("../profissional/profissional.module").then(m=> m.ProfissionalPageModule)
+             import ("../usuario/criacao-do-profissional/profissional/profissional.module").then(m=> m.ProfissionalPageModule)
           }
          ]
         },

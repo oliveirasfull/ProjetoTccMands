@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CriacaoDoProfissionalPage } from './criacao-do-profissional.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgModule } from '@angular/core';
+
+import { Routes, RouterModule } from '@angular/router';
+
+
+
+import { CriacaoDoProfissionalPage } from './criacao-do-profissional.page';
 
 const routes: Routes = [
   {
@@ -18,4 +22,3 @@ const routes: Routes = [
   declarations: [CriacaoDoProfissionalPage]
 })
 export class CriacaoDoProfissionalPageModule {}
- 

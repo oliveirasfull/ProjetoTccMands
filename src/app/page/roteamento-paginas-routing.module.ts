@@ -22,10 +22,11 @@ const routes: Routes = [
       
     ]
   },
- { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
-  { path: 'profissional', loadChildren: './pages/profissional/profissional.module#ProfissionalPageModule' },
-  { path: 'criacao-do-profissional', loadChildren: './pages/criacao-do-profissional/criacao-do-profissional.module#CriacaoDoProfissionalPageModule' },
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }
+ { path: 'feed', loadChildren: './pages/usuario/criacao-do-profissional/profissional/feed/feed.module#FeedPageModule' },
+  { path: 'profissional', loadChildren: './pages/usuario/criacao-do-profissional/profissional/profissional.module#ProfissionalPageModule' },
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  { path: 'criacao-do-profissional', loadChildren: './pages/usuario/criacao-do-profissional/criacao-do-profissional.module#CriacaoDoProfissionalPageModule' }
+
 
 
  
