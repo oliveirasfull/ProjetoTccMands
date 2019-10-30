@@ -55,8 +55,8 @@ get password(): FormControl{
 changeAuthAction(): void{
   this.configs.isSignIn = !this.configs.isSignIn;
   const{ isSignIn} = this.configs;
-  this.configs.action = isSignIn ? 'login' : "sign Up";
-  this.configs.actionChange = isSignIn ? 'Create acoount' : ' Already have an account';
+  this.configs.action = isSignIn ? 'login' : "Cadastrar";
+  this.configs.actionChange = isSignIn ? 'Criar Conta' : ' Alterar e entrar na conta';
   !isSignIn
     ? this.authForm.addControl('name',this.nameControl)
     :this.authForm.removeControl('name');
