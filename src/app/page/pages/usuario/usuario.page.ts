@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsuarioPage implements OnInit {
 
   public titulo :string = 'Mands'
-  public profissional : boolean = false  // responsavel por definir ser o usuario e profisional ou nao nas regras de template
+  public profissional : boolean =  true // responsavel por definir ser o usuario e profisional ou nao nas regras de template
 
   constructor() { } 
 

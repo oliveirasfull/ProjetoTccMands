@@ -75,24 +75,13 @@
         </ion-row>
     </ion-grid>
 
-
-    <div *ngIf="profissional ; else naoProfissional ">
+    <div>
         <ion-fab vertical="top " horizontal="end " slot="fixed ">
             <ion-fab-button>
-                <ion-icon name="add " routerLink="/usuario/profissional"></ion-icon>
+                <ion-icon name="add " routerLink="/usuario/criar-profissional"></ion-icon>
             </ion-fab-button>
         </ion-fab>
     </div>
 
-    <ng-template #naoProfissional>
-
-        <div>
-            <ion-fab vertical="top " horizontal="end " slot="fixed ">
-                <ion-fab-button>
-                    <ion-icon name="add " routerLink="/usuario/criar-profissional"></ion-icon>
-                </ion-fab-button>
-            </ion-fab>
-        </div>
-    </ng-template>
 
 </ion-content>

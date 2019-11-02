@@ -5,11 +5,21 @@
             <ion-label>Buscar</ion-label>
         </ion-tab-button>
 
+        <div *ngIf="profissional ; else naoProfissional ">
+            <ion-tab-button tab="profissional">
+                <ion-icon name="happy"></ion-icon>
+                <ion-label>perfil</ion-label>
+            </ion-tab-button>
 
-        <ion-tab-button tab="usuario">
-            <ion-icon name="happy"></ion-icon>
-            <ion-label>perfil</ion-label>
-        </ion-tab-button>
+        </div>
+        <ng-template #naoProfissional>
+            <ion-tab-button tab="usuario">
+                <ion-icon name="happy"></ion-icon>
+                <ion-label>perfil</ion-label>
+            </ion-tab-button>
+
+        </ng-template>
+
     </ion-tab-bar>
 
 </ion-tabs>
