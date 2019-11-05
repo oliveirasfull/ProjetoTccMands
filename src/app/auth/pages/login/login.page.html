@@ -9,7 +9,7 @@
                 <ion-icon name="person" color="primary" slot="start"> </ion-icon>
                 <ion-input type="text" placeholder="name" formControlName="name"></ion-input>
                 <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">Required</ion-note>
-                <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('minlength')">Min 4 caracteres</ion-note>
+                <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('minlength')">Mínimo 4 Caracteres</ion-note>
 
 
             </ion-item>
@@ -43,26 +43,6 @@
         <ion-icon name="logo-facebook" slot="start"></ion-icon>
         Login com facebook
     </ion-button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,66 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Busca
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>feed</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<!-- Searchbar with cancel button always shown -->
-<h1>Econtre serviços</h1>
-<ion-searchbar showCancelButton="always"></ion-searchbar>
-
 <ion-content>
-  <ion-card class="welcome-card">
+    <ion-searchbar placeholder="Busque"></ion-searchbar>
+    <ion-item *ngFor="let item of [0, 1, 2]">
+        <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+            <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </p>
+             <p>
+                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </p>
+        </ion-label>
+    </ion-item>
 
-    <img src="/assets/manicure.png" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Manicure</ion-card-subtitle>
-      <ion-card-title>Conheça nossos serviços</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Uma equipe de profissionais está esperando por você, com atendimento a domicilio ou não.
-        Mands aqui quem manda e você.</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="welcome-card">
-
-    <img src="/assets/pedicure.png" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Pedicure</ion-card-subtitle>
-      <ion-card-title>Conheça nossos serviços</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Uma equipe de profissionais está esperando por você, com atendimento a domicilio ou não.
-        Mands aqui quem manda e você.</p>
-    </ion-card-content>
-  </ion-card>
+    <ion-label>
+        <p>
+            {{teste}}
+        </p>
+    </ion-label>
 
 
-  <ion-card class="welcome-card">
-
-    <img src="/assets/cabelo.png" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Cabelo</ion-card-subtitle>
-      <ion-card-title>Conheça nossos serviços</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Uma equipe de profissionais está esperando por você, com atendimento a domicilio ou não.
-        Mands aqui quem manda e você.</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="welcome-card">
-
-    <img src="/assets/maquiagem.png" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Maquiagem</ion-card-subtitle>
-      <ion-card-title>Conheça nossos serviços</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Uma equipe de profissionais está esperando por você, com atendimento a domicilio ou não.
-        Mands aqui quem manda e você.</p>
-    </ion-card-content>
-  </ion-card>
 </ion-content>

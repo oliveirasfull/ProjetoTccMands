@@ -22,10 +22,14 @@ const routes: Routes = [
       
     ]
   },
- { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
+ 
+ 
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }, 
+  { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
   { path: 'profissional', loadChildren: './pages/profissional/profissional.module#ProfissionalPageModule' },
-  { path: 'criacao-do-profissional', loadChildren: './pages/criacao-do-profissional/criacao-do-profissional.module#CriacaoDoProfissionalPageModule' },
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }
+  { path: 'criar-profissional', loadChildren: './pages/criar-profissional/criar-profissional.module#CriarProfissionalPageModule' }
+
+
 
 
  

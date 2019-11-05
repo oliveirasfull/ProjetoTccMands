@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedPage implements OnInit {
 
+  public teste : string = "edson"
   constructor() { }
 
   ngOnInit() {

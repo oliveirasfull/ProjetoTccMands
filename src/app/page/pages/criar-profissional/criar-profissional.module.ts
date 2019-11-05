@@ -6,12 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FeedPage } from './feed.page';
+import { CriarProfissionalPage } from './criar-profissional.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FeedPage
+    component: CriarProfissionalPage
   }
 ];
 
@@ -20,6 +20,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FeedPage]
+  declarations: [CriarProfissionalPage]
 })
-export class FeedPageModule {}
+export class CriarProfissionalPageModule {}

@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CriacaoDoProfissionalPage } from './criacao-do-profissional.page';
+import { CriarProfissionalPage } from './criar-profissional.page';
 
-describe('CriacaoDoProfissionalPage', () => {
-  let component: CriacaoDoProfissionalPage;
-  let fixture: ComponentFixture<CriacaoDoProfissionalPage>;
+describe('CriarProfissionalPage', () => {
+  let component: CriarProfissionalPage;
+  let fixture: ComponentFixture<CriarProfissionalPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CriacaoDoProfissionalPage ],
+      declarations: [ CriarProfissionalPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CriacaoDoProfissionalPage);
+    fixture = TestBed.createComponent(CriarProfissionalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

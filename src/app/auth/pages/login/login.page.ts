@@ -70,7 +70,7 @@ changeAuthAction(): void{
        user: this.authForm.value,
        provider
      });
-   this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') ||'/usuario');
+   this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') ||'/usuario/feed');
    } catch(e){
      console.log('Autenticacao ERRO',e);
      await this.overlayService.toast({
