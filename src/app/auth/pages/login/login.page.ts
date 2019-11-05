@@ -7,6 +7,8 @@ import { NavController } from '@ionic/angular';
 import { OverlayService } from './../../../core/services/overlay.service';
 import {  AuthProvider } from './../../../core/services/auth.types';
 import { AuthService } from './../../../core/services/auth.service';
+import { UserService, TypeUser } from 'src/app/service/user.service' 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -26,41 +28,41 @@ export class LoginPage implements OnInit {
 
   constructor(
     private authService: AuthService,
-     private fb: FormBuilder,
-      private overlayService : OverlayService,
-      private navCtrl : NavController,
-      private route : ActivatedRoute
-     
-      ) { }
+    private fb: FormBuilder,
+    private overlayService : OverlayService,
+    private navCtrl : NavController,
+    private route : ActivatedRoute,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.createForm();
   }
-private createForm(): void {
-  this.authForm = this.fb.group({
-    email : ['',[Validators.required, Validators.email]],
-    password:['',[Validators.required,Validators.minLength(5)]]
-  });
-}
-get name(): FormControl{
-  return <FormControl>this.authForm.get('name');
-}
+  private createForm(): void {
+    this.authForm = this.fb.group({
+      email : ['',[Validators.required, Validators.email]],
+      password:['',[Validators.required,Validators.minLength(5)]]
+    });
+  }
+  get name(): FormControl{
+    return <FormControl>this.authForm.get('name');
+  }
 
-get email(): FormControl{
-  return <FormControl>this.authForm.get('email');
-}
-get password(): FormControl{
-  return <FormControl>this.authForm.get('password');
-}
-changeAuthAction(): void{
-  this.configs.isSignIn = !this.configs.isSignIn;
-  const{ isSignIn} = this.configs;
-  this.configs.action = isSignIn ? 'login' : "Inscrever-se";
-  this.configs.actionChange = isSignIn ? 'Criar Conta' : ' Alterar Criação';
-  !isSignIn
-    ? this.authForm.addControl('name',this.nameControl)
-    :this.authForm.removeControl('name');
-}
+  get email(): FormControl{
+    return <FormControl>this.authForm.get('email');
+  }
+  get password(): FormControl{
+    return <FormControl>this.authForm.get('password');
+  }
+  changeAuthAction(): void{
+    this.configs.isSignIn = !this.configs.isSignIn;
+    const{ isSignIn} = this.configs;
+    this.configs.action = isSignIn ? 'login' : "Inscrever-se";
+    this.configs.actionChange = isSignIn ? 'Criar Conta' : ' Alterar Criação';
+    !isSignIn
+      ? this.authForm.addControl('name',this.nameControl)
+      :this.authForm.removeControl('name');
+  }
 
  async onSubmit(provider: AuthProvider): Promise <void>{
    const loading = await this.overlayService.loading(); 
@@ -80,7 +82,6 @@ changeAuthAction(): void{
      loading.dismiss();
    }
   
-}
+  }
 
 }
-;
