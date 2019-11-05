@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
 import { OverlayService } from './../../../core/services/overlay.service';
 import {  AuthProvider } from './../../../core/services/auth.types';
 import { AuthService } from './../../../core/services/auth.service';
-import { UserService, TypeUser } from 'src/app/service/user.service' 
+
 
 @Component({
   selector: 'app-login',
@@ -31,8 +31,7 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private overlayService : OverlayService,
     private navCtrl : NavController,
-    private route : ActivatedRoute,
-    private userService: UserService
+    private route : ActivatedRoute
     ) { }
 
   ngOnInit() {
