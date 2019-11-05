@@ -8,23 +8,9 @@
   </ion-header>
    
   <ion-content padding>
-   
     <ion-item>
-      <ion-label position="stacked">Name</ion-label>
-      <ion-input [(ngModel)]="idea.nome"></ion-input>
-    </ion-item>
-   
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-textarea [(ngModel)]="idea.emal" rows="8"></ion-textarea>
-    </ion-item>
-  </ion-content>
-   
-  <ion-footer *ngIf="!idea.id">
-    <ion-toolbar color="success">
-      <ion-button expand="full" fill="clear" color="light" (click)="addIdea()">
-        <ion-icon name="checkmark" slot="start"></ion-icon>
+      <ion-button (click)="addUser()">
         Add Idea
       </ion-button>
-    </ion-toolbar>
-  </ion-footer>
+    </ion-item>
+  </ion-content>

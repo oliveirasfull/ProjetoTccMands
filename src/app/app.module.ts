@@ -4,6 +4,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -11,7 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CoreModule, 
         ReactiveFormsModule,
         FormsModule,
-        AppRoutingModule],
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule
+      ],
 
   bootstrap: [AppComponent]
 })

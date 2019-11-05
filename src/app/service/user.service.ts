@@ -65,6 +65,7 @@ export class UserService {
 
   updateUserToPro(user: TypeUser, pro: TypePro): Promise<void> {
     return this.userCollection.doc(user.id).update({ 
+      tipo: 'Pro',
       nomePro: pro.nomePro,
       atendimentoDomicilio: pro.atendimentoDomicilio,
       manicure: pro.manicure,
