@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TypeUser, UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class FeedPage implements OnInit {
 
   public teste : string = "edson"
-  constructor() { }
+  user : Observable<any>
+
+  constructor( private userService: UserService) { }
 
   ngOnInit() {
+    this.user = this.userService.getUsers();
   }
 
 }

@@ -20,15 +20,20 @@
             <p>
                 <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
             </p>
-             <p>
+            <p>
                 <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
             </p>
         </ion-label>
     </ion-item>
 
+    <!-- Codigo para fazer a listagem dos itens que existem no vetor 'user[]' -->
     <ion-label>
         <p>
-            {{teste}}
+            <ion-list>
+                <ion-item *ngFor="let user of (user | async)"> <!-- Para ler qualquer vetor da classe 'Observable' tem que usar a função '(variavel | async)', só assim para mostrar as informações -->
+                    {{ user.nome }} - {{ user.email }} - {{ user.tipo }}
+                </ion-item>
+            </ion-list>
         </p>
     </ion-label>
 

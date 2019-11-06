@@ -20,8 +20,8 @@ export const environment = {
   databaseURL: "https://teste-fd016.firebaseio.com",
   projectId: "teste-fd016",
   storageBucket: "teste-fd016.appspot.com",
-  messagingSenderId: "355910603243"
-*/
+  messagingSenderId: "355910603243"*/
+
   }
 };
 
