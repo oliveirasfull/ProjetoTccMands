@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioPage implements OnInit {
 
+  //Variavel que guarda as informações do usuario
   idea: TypeUser = {
-    nome: '',
-    email: '',
-    tipo : ''
+    nome: 'exemplo',
+    email: 'exemplo@gmail',
+    tipo : 'Usuário'
   };
-
+  //Variavel que guarda as informações do profissional
   pro: TypePro = {
     nomePro: 'Fulano',
     atendimentoDomicilio: false,
@@ -27,6 +28,7 @@ export class UsuarioPage implements OnInit {
     idade: 35
   };
 
+  //Variavel que guarda o usuario que vai ser utilizado para fazer o update para o profissional
   vetor: TypeUser;
 
   //public titulo :string = 'Mands'
@@ -34,27 +36,54 @@ export class UsuarioPage implements OnInit {
 
 
   constructor(private userService: UserService, private toastCtrl: ToastController) { 
-      this.userService.getUsers().forEach( vetor =>{
+    /*
+      Está etapa foi usada para pegar um registro dentro do banco e transferir para uma variavel,
+      pois as variavel do tipo 'Observable' não permite mecher dentro dele dentro do typescript, mas deixa 
+      mexer no HTML.
+      Caso dejese adicionar um registro deixa essa parte Comentada, se não encontre na base de dado um registro
+      de interesse e copia a chave e coloca no 'if(vetor[x].id === KEY)' para encotrar o registro e ser utilizado
+      para teste.
+    */  
+    /*
+    this.userService.getUsers().forEach( vetor =>{
         for (let x = 0; x < vetor.length; x++){
           if(vetor[x].id === 'ihaMFeZwyD5FQC61LMe0'){
           this.vetor = { id: vetor[x].id, nome: vetor[x].nome, email: vetor[x].email, tipo: vetor[x].tipo};
           }
         }
       });
+    */
   } 
 
   ngOnInit() {       
   }
   
   addUser() {
+    
+    /* 
+      Função que Torna o Usuário comum para Profissional.
+      Requisito: Pegar um registro existente.
+      Para Utilizar: 
+        1-Primeiro precisa de uma variavel do tipo 'TypeUser' com as informações do usuário que deseja atualizar;
+        2-Segundo precisa de uma variavel do tipo 'TypePro' com as informações.
+     */
+    /*
     this.userService.updateUserToPro(this.vetor, this.pro).then(() => {
       this.showToast('Realizado Update');
     });
-    /*this.userService.addUser(this.idea).then(() => {
+    */
+
+    /*
+     Função que adicionar um usuario.
+     Requisito: Ter uma variavel com as informações.
+     Para Utilizar:
+      1-Primeiro precisa de uma variavel do tipo 'TypeUser' com as informações do usuario.
+    */
+    this.userService.addUser(this.idea).then(() => {
       this.showToast('Idea added');
     }, err => {
       this.showToast('There was a problem adding your idea :(');
-    }).catch((e) => { console.error(e) });*/
+    }).catch((e) => { console.error(e) });
   }
 
   showToast(msg) {
