@@ -9,7 +9,7 @@ import { TypeUser, UserService } from 'src/app/service/user.service';
 })
 export class FeedPage implements OnInit {
 
-  public teste : string = "edson"
+  public pro : string = "Pro"
   user : Observable<any>
 
   constructor( private userService: UserService) { }

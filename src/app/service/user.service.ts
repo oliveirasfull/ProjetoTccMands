@@ -59,11 +59,22 @@ export class UserService {
     );
   }
 
+  getUserByEmail(email: string): Observable<any> {
+    return this.userCollection.doc<any>(email).valueChanges().pipe(
+      take(1),
+      map(user => {
+        console.log(email);
+        user.email == email;
+        return user
+      })
+    );
+  }
+
   addUser(user: TypeUser): Promise<DocumentReference> {
     return this.userCollection.add(user);
   }
 
-  updateUserToPro(user: TypeUser, pro: TypePro): Promise<void> {
+  updateUserToPro(user: any, pro: TypePro): Promise<void> {
     return this.userCollection.doc(user.id).update({ 
       tipo: 'Pro',
       nomePro: pro.nomePro,

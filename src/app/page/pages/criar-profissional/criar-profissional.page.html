@@ -6,25 +6,25 @@
     </ion-header>
     <ion-content>
         <ion-item>
-            <ion-input type="string" placeholder="NomeProfissional"></ion-input>
+            <ion-input type="string" placeholder="NomeProfissional" [(ngModel)]="pro.nomePro"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="number" placeholder="Idade"></ion-input>
+            <ion-input type="number" placeholder="Idade" [(ngModel)]="pro.idade"></ion-input>
         </ion-item>
 
 
 
         <ion-item>
             <ion-label>Atendimento a domicilio</ion-label>
-            <ion-toggle></ion-toggle>
+            <ion-toggle [(ngModel)]="pro.atendimentoDomicilio"></ion-toggle>
         </ion-item>
         <ion-item>
             <ion-label>manicure</ion-label>
-            <ion-toggle></ion-toggle>
+            <ion-toggle [(ngModel)]="pro.manicure"></ion-toggle>
         </ion-item>
         <ion-item>
             <ion-label>Pedicure</ion-label>
-            <ion-toggle></ion-toggle>
+            <ion-toggle [(ngModel)]="pro.pedicure"></ion-toggle>
         </ion-item>
         <ion-grid>
             <ion-row>
@@ -35,7 +35,7 @@
                     </ion-button>
                 </ion-col>
                 <ion-col size="6">
-                    <ion-button routerLink="/usuario/profissional" (click)="addPro()">
+                    <ion-button (click)="addPro()">
                         <ion-icon slot="start" name="star"></ion-icon>
                         Salvar
                     </ion-button>
