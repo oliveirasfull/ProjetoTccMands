@@ -31,7 +31,7 @@ export class CriarProfissionalPage implements OnInit {
       this.userService.getUsers().subscribe(usuario => {
         for (let x = 0; x < usuario.length; x++) {
           if (usuario[x].email == user.email) {
-            this.tipoUser = { nome: usuario[x].nome, email: usuario[x].email, tipo: usuario[x].tipo, id: usuario[x].id };
+            this.tipoUser = { nome: usuario[x].nome, email: usuario[x].email, profissionalAtivo: usuario[x].profissionalAtivo, id: usuario[x].id };
             break;
           }
         }

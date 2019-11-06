@@ -7,7 +7,7 @@ export interface TypeUser {
   id?: string,
   nome: string,
   email: string,
-  tipo: string
+  profissionalAtivo: boolean
 }
 
 export interface TypePro {
@@ -76,7 +76,7 @@ export class UserService {
 
   updateUserToPro(user: any, pro: TypePro): Promise<void> {
     return this.userCollection.doc(user.id).update({ 
-      tipo: 'Pro',
+      tipo: true,
       nomePro: pro.nomePro,
       atendimentoDomicilio: pro.atendimentoDomicilio,
       manicure: pro.manicure,
