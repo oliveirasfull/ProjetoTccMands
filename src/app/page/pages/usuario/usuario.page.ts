@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController } from '@ionic/angular';
@@ -12,10 +13,11 @@ export class UsuarioPage implements OnInit {
 
   //Variavel que guarda as informações do usuario
   idea: TypeUser = {
-    nome: 'exemplo',
+    nome: 'Mayara',
     email: 'exemplo@gmail',
     tipo : 'Usuário'
   };
+  
   //Variavel que guarda as informações do profissional
   pro: TypePro = {
     nomePro: 'Fulano',
@@ -31,29 +33,34 @@ export class UsuarioPage implements OnInit {
   //Variavel que guarda o usuario que vai ser utilizado para fazer o update para o profissional
   vetor: TypeUser;
 
-  //public titulo :string = 'Mands'
   //public profissional : boolean =  true // responsavel por definir ser o usuario e profisional ou nao nas regras de template
-
-
+  
+  
   constructor(private userService: UserService, private toastCtrl: ToastController) { 
+    
+    
     /*
-      Está etapa foi usada para pegar um registro dentro do banco e transferir para uma variavel,
-      pois as variavel do tipo 'Observable' não permite mecher dentro dele dentro do typescript, mas deixa 
-      mexer no HTML.
-      Caso dejese adicionar um registro deixa essa parte Comentada, se não encontre na base de dado um registro
-      de interesse e copia a chave e coloca no 'if(vetor[x].id === KEY)' para encotrar o registro e ser utilizado
-      para teste.
+    Está etapa foi usada para pegar um registro dentro do banco e transferir para uma variavel,
+    pois as variavel do tipo 'Observable' não permite mecher dentro dele dentro do typescript, mas deixa 
+    mexer no HTML.
+    Caso dejese adicionar um registro deixa essa parte Comentada, se não encontre na base de dado um registro
+    de interesse e copia a chave e coloca no 'if(vetor[x].id === KEY)' para encotrar o registro e ser utilizado
+    para teste.
     */  
-    /*
-    this.userService.getUsers().forEach( vetor =>{
-        for (let x = 0; x < vetor.length; x++){
-          if(vetor[x].id === 'ihaMFeZwyD5FQC61LMe0'){
-          this.vetor = { id: vetor[x].id, nome: vetor[x].nome, email: vetor[x].email, tipo: vetor[x].tipo};
-          }
+   /*
+   this.userService.getUsers().forEach( vetor =>{
+     for (let x = 0; x < vetor.length; x++){
+       if(vetor[x].id === 'ihaMFeZwyD5FQC61LMe0'){
+         this.vetor = { id: vetor[x].id, nome: vetor[x].nome, email: vetor[x].email, tipo: vetor[x].tipo};
         }
-      });
+      }
+    });
     */
+   
+   
   } 
+  public nomeUser: string = this.idea.nome
+  public titulo :string = 'Mands'
 
   ngOnInit() {       
   }
@@ -93,6 +100,6 @@ export class UsuarioPage implements OnInit {
     }).then(toast => toast.present());
   }
                          
-}                     
+}                
      
             

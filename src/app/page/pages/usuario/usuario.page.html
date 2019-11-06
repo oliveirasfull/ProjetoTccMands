@@ -1,16 +1,87 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Idea Details</ion-title>
+    <ion-toolbar class="titulo" color="primary">
+        <ion-title>{{titulo}}</ion-title>
     </ion-toolbar>
-  </ion-header>
-   
-  <ion-content padding>
-    <ion-item>
-      <ion-button (click)="addUser()">
-        Add Idea
-      </ion-button>
-    </ion-item>
-  </ion-content>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+
+        <ion-card-header>
+
+            <ion-card-subtitle>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <app-usuario-foto></app-usuario-foto>
+                    </div>
+                    <div class="col-sm-6">
+                        <app-usuario-perfil></app-usuario-perfil>
+                    </div>
+                </div>
+
+
+
+            </ion-card-subtitle>
+
+            <ion-card-title>{{nomeUser}}</ion-card-title>
+        </ion-card-header>
+
+
+        <ion-card-content>
+            Descrição do usuario
+        </ion-card-content>
+    </ion-card>
+
+    <h1>
+        serviços favoritos
+    </h1>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="6">
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>
+
+                        </ion-card-subtitle>
+                        <ion-card-title>Card Title</ion-card-title>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        <p *ngFor="let item of [1,2,3]">
+                            <ion-skeleton-text width="100%"></ion-skeleton-text>
+                            <ion-skeleton-text width="100%"></ion-skeleton-text>
+                            <ion-skeleton-text width="90%"></ion-skeleton-text>
+                            <p>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+            <ion-col size="6">
+
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>Nome profissional 2 </ion-card-subtitle>
+                        <ion-card-title>Card Title</ion-card-title>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                        <ion-card-subtitle>Classificacao</ion-card-subtitle>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div>
+        <ion-fab vertical="top " horizontal="end " slot="fixed ">
+            <ion-fab-button>
+                <ion-icon name="add " routerLink="/usuario/criar-profissional"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </div>
+
+
+</ion-content>
