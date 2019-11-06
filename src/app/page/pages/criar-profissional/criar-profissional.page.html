@@ -11,18 +11,39 @@
         <ion-item>
             <ion-input type="number" placeholder="Idade"></ion-input>
         </ion-item>
+
+
+
         <ion-item>
-            <ion-input placeholder="Nome"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input placeholder="Nome"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input placeholder="Nome"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Sausage</ion-label>
+            <ion-label>Atendimento a domicilio</ion-label>
             <ion-toggle></ion-toggle>
         </ion-item>
+        <ion-item>
+            <ion-label>manicure</ion-label>
+            <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Pedicure</ion-label>
+            <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button routerLink="/usuario">
+                        <ion-icon slot="start" name="star"></ion-icon>
+                        Voltar
+                    </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button routerLink="/usuario/profissional" (click)="addPro()">
+                        <ion-icon slot="start" name="star"></ion-icon>
+                        Salvar
+                    </ion-button>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+
+
     </ion-content>
 </ion-app>

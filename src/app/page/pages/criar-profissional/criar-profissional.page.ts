@@ -11,5 +11,12 @@ export class CriarProfissionalPage implements OnInit {
 
   ngOnInit() {
   }
+  /*
+  addPro() {
+  this.userService.updateUserToPro(this.vetor, this.pro).then(() => {
+    this.showToast('Realizado Update');
+  });
+}
+*/
 
 }
