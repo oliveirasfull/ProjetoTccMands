@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import { AuthOptions,AuthProvider,User } from './auth.types';
+import { UserService, TypeUser } from 'src/app/service/user.service';
 
 
 
@@ -15,7 +16,7 @@ export class AuthService {
 
   authState$: Observable<firebase.User>;
 
-  constructor(private afAuth: AngularFireAuth) { 
+  constructor(private afAuth: AngularFireAuth, private userService: UserService) { 
     this.authState$ = this.afAuth.authState;
    //this.logout() //redireciona pra pagina de login se nao tiver altenticado
     
@@ -44,6 +45,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email,password);
   }
   private signUpWinthEmail({email,password,name}:User): Promise<auth.UserCredential>{
+    
+    let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false};
+    
+    this.userService.addUser(typeUser);
 
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password).then(credentials => credentials
       .user.updateProfile({displayName:name, photoURL:null})
