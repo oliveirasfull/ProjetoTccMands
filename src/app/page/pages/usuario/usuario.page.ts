@@ -15,7 +15,8 @@ export class UsuarioPage implements OnInit {
   idea: TypeUser = {
     nome: 'Mayara',
     email: 'exemplo@gmail',
-    tipo : 'Usuário'
+    tipo: 'Usuário'
+    
   };
   
   //Variavel que guarda as informações do profissional
