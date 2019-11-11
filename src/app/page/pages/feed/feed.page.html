@@ -6,32 +6,44 @@
 
 <ion-content>
     <ion-searchbar placeholder="Busque"></ion-searchbar>
-    <ion-item *ngFor="let item of [0, 1, 2]">
-        <ion-avatar slot="start">
-            <ion-skeleton-text animated></ion-skeleton-text>
-        </ion-avatar>
-        <ion-label>
-            <h3>
-                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-            </h3>
-            <p>
-                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-            </p>
-            <p>
-                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-            </p>
-            <p>
-                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-            </p>
-        </ion-label>
-    </ion-item>
+
 
     <!-- Codigo para fazer a listagem dos itens que existem no vetor 'user[]' -->
     <ion-label>
         <p>
-            <ion-list *ngFor="let user of (user | async)"> <!-- Para ler qualquer vetor da classe 'Observable' tem que usar a função '(variavel | async)', só assim para mostrar as informações -->
-                <ion-item *ngIf="user.tipo == pro"> <!-- Criei uma variavel com a string 'Pro' para fazer a comparação -->
-                    {{ user.nome }} - {{ user.email }} - {{ user.tipo }} - {{ user.nomePro }} - {{ user.idade }} - {{ user.id }}
+            <ion-list *ngFor="let user of (user | async)">
+                <!-- Para ler qualquer vetor da classe 'Observable' tem que usar a função '(variavel | async)', só assim para mostrar as informações -->
+                <ion-item *ngIf="user.tipo == profissionalAtivo">
+                    <!-- Criei uma variavel com a string 'Pro' para fazer a comparação -->
+                    <ion-label>
+                        <h3 style="color :red">
+                            {{ user.nomePro }} - {{ user.idade }}
+                        </h3>
+
+                        {{ user.nome }}
+
+                        <ion-grid fixed>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-avatar slot="start">
+                                        <ion-skeleton-text animated></ion-skeleton-text>
+
+                                    </ion-avatar>
+                                </ion-col>
+                                <ion-col>{{user.classificacao}}</ion-col>
+                            </ion-row>
+                        </ion-grid>
+
+
+
+
+
+                    </ion-label>
+
+
+
+
+
                 </ion-item>
             </ion-list>
         </p>

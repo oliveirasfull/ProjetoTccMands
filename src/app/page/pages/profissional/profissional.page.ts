@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profissional.page.scss'],
 })
 export class ProfissionalPage implements OnInit {
+public coracaoCheio : string ="../../../../assets/icon/estrelaCheia.png"
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  exibeAvaliacao(){
+    this.coracaoCheio 
+
   }
 
 }

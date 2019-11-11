@@ -1,31 +1,49 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profissional</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>profissional</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
     <ion-app>
-       
+
+
         <ion-content fullscreen>
-          <ion-card>
-       
-            <img src="./pages/usuario/foto/umafoto.png" />
-            <ion-card-header>
-              <ion-card-subtitle>Lucas</ion-card-subtitle>
-              <ion-card-title>Conheça meus serviços</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-            </ion-card-content>
-          </ion-card>
+            <ion-grid>
+                <ion-row align-items-start>
+                    <ion-col>
+                        <ion-avatar>
+                            <img src="../../../../assets/perfil.jpg" alt="">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col>
+                        <img src="exibeAvaliacao()">
+
+                    </ion-col>
+                    <ion-col align-self-end>
+
+                        <ion-button (click)="onClick()" routerLink="/usuario/agendamento">
+                            agendar
+                        </ion-button>
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <ion-card>
+
+                <img src="./pages/usuario/foto/umafoto.png" />
+                <ion-card-header>
+                    <ion-card-subtitle>Lucas</ion-card-subtitle>
+                    <ion-card-title>Conheça meus serviços</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+                </ion-card-content>
+            </ion-card>
         </ion-content>
-      </ion-app>
-    
+    </ion-app>
+
 
 </ion-content>
-
-
- 
-
