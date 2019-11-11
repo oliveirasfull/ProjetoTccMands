@@ -15,7 +15,7 @@ export class UsuarioPage implements OnInit {
   idea: TypeUser = {
     nome: 'Mayara',
     email: 'exemplo@gmail',
-    tipo: 'Usuário'
+    profissionalAtivo: false
     
   };
   

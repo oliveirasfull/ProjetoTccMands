@@ -32,6 +32,7 @@ export class CriarProfissionalPage implements OnInit {
         for (let x = 0; x < usuario.length; x++) {
           if (usuario[x].email == user.email) {
             this.tipoUser = { nome: usuario[x].nome, email: usuario[x].email, profissionalAtivo: usuario[x].profissionalAtivo, id: usuario[x].id };
+            console.log(this.tipoUser);
             break;
           }
         }
@@ -48,6 +49,8 @@ export class CriarProfissionalPage implements OnInit {
 
 
   addPro() {
+    console.log(this.pro);
+    console.log(this.tipoUser.id);
     this.userService.updateUserToPro(this.tipoUser, this.pro).then(() => {
       this.showToast('Realizado Update');
     }).catch(e => { console.log(e) });
