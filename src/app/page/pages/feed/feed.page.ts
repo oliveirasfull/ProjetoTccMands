@@ -27,7 +27,7 @@ export class FeedPage implements OnInit {
         special: JSON.stringify(item)
       }
     };
-    this.router.navigate(['usuario'], navigateExtras);
+    this.router.navigate(['./usuario/profissional'], navigateExtras);
   }
 
 }

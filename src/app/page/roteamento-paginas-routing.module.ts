@@ -22,12 +22,11 @@ const routes: Routes = [
       
     ]
   },
- 
- 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }, 
   { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
   { path: 'profissional', loadChildren: './pages/profissional/profissional.module#ProfissionalPageModule' },
-  { path: 'criar-profissional', loadChildren: './pages/criar-profissional/criar-profissional.module#CriarProfissionalPageModule' },  { path: 'agendamento', loadChildren: './pages/profissional/agendamento/agendamento.module#AgendamentoPageModule' }
+  { path: 'criar-profissional', loadChildren: './pages/criar-profissional/criar-profissional.module#CriarProfissionalPageModule' },
+  { path: 'agendamento', loadChildren: './pages/profissional/agendamento/agendamento.module#AgendamentoPageModule' }
 
 
 
