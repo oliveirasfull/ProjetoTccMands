@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import { AuthOptions,AuthProvider,User } from './auth.types';
-import { UserService, TypeUser } from 'src/app/service/user/user.service';
+import { UserService, TypeUser } from 'src/app/service/user.service';
 
 
 
