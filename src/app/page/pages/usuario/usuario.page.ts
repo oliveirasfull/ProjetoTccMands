@@ -12,37 +12,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class UsuarioPage implements OnInit {
 
-  //Variavel que guarda as informações do usuario
-  idea: TypeUser = {
-    nome: 'Mayara',
-    email: 'exemplo@gmail',
-    profissionalAtivo: false
-    
-  };
-  
-  //Variavel que guarda as informações do profissional
-  pro: TypePro = {
-    nomePro: 'Fulano',
-    atendimentoDomicilio: false,
-    manicure: false,
-    precoManicure: 100,
-    pedicure: false,
-    precoPedicure: 200,
-    classificacao: 8.5,
-    idade: 35
-  };
-
-  //Variavel que guarda o usuario que vai ser utilizado para fazer o update para o profissional
   vetor: any;
   data: any;
 
-  //public profissional : boolean =  true // responsavel por definir ser o usuario e profisional ou nao nas regras de template
   
   
   constructor(private userService: UserService, private toastCtrl: ToastController, private afAuth: AngularFireAuth) { 
 
   } 
-  public nomeUser: string = this.idea.nome
   public titulo :string = 'Mands'
 
   ngOnInit() {    
@@ -57,41 +34,6 @@ export class UsuarioPage implements OnInit {
         }
       });
     }); 
-  }
-  
-  addUser() {
-    
-    /* 
-      Função que Torna o Usuário comum para Profissional.
-      Requisito: Pegar um registro existente.
-      Para Utilizar: 
-        1-Primeiro precisa de uma variavel do tipo 'TypeUser' com as informações do usuário que deseja atualizar;
-        2-Segundo precisa de uma variavel do tipo 'TypePro' com as informações.
-     */
-    /*
-    this.userService.updateUserToPro(this.vetor, this.pro).then(() => {
-      this.showToast('Realizado Update');
-    });
-    */
-
-    /*
-     Função que adicionar um usuario.
-     Requisito: Ter uma variavel com as informações.
-     Para Utilizar:
-      1-Primeiro precisa de uma variavel do tipo 'TypeUser' com as informações do usuario.
-    */
-    this.userService.addUser(this.idea).then(() => {
-      this.showToast('Idea added');
-    }, err => {
-      this.showToast('There was a problem adding your idea :(');
-    }).catch((e) => { console.error(e) });
-  }
-
-  showToast(msg) {
-    this.toastCtrl.create({
-      message: msg,
-      duration: 2000
-    }).then(toast => toast.present());
   }
                          
 }                

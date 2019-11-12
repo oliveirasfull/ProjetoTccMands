@@ -10,6 +10,8 @@ import { UserService } from 'src/app/service/user.service';
 export class TabsPage implements OnInit {
 
   public profissional : boolean // responsavel por definir ser o usuario e profisional ou nao nas regras de template
+  public user : any;
+
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
 
@@ -19,11 +21,16 @@ export class TabsPage implements OnInit {
         for (let x = 0; x < usuario.length; x++) {
           if (usuario[x].email == user.email) {
             this.profissional = usuario[x].profissionalAtivo;
+            this.user = usuario;
             break;
           }
         }
       });
     });
+  }
+
+  getUser(){
+    return this.user;
   }
 
 }
