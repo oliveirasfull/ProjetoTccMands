@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-agendamento',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendamentoPage implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  agendamento: any;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  createForm(){
+    this.form = this.formBuilder.group({
+      data: [this.agendamento.data],
+      hora: [this.agendamento.hora]
+    });
   }
 
 }
