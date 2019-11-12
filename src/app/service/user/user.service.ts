@@ -12,6 +12,7 @@ export interface TypeUser {
 
 export interface TypePro {
   nomePro: string,
+  descricaoServico: string,
   atendimentoDomicilio: boolean,
   manicure: boolean,
   precoManicure: number,
