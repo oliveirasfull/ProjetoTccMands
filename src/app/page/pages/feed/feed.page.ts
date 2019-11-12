@@ -16,6 +16,7 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getUsers();
+    
   }
 
 }
