@@ -14,6 +14,7 @@ export class CriarProfissionalPage implements OnInit {
   tipoUser: TypeUser;
   pro: TypePro = {
     nomePro: '',
+    descricaoServico: '',
     atendimentoDomicilio: false,
     manicure: false,
     precoManicure: 0,
