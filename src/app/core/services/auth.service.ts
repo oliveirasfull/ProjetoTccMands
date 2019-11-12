@@ -48,7 +48,7 @@ export class AuthService {
     
     let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false};
     
-    this.userService.addUser(typeUser);
+    this.userService.addUser(typeUser).catch(e =>{console.log(e)});
 
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password).then(credentials => credentials
       .user.updateProfile({displayName:name, photoURL:null})
