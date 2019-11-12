@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -39,12 +38,7 @@ export class UsuarioPage implements OnInit {
   //public profissional : boolean =  true // responsavel por definir ser o usuario e profisional ou nao nas regras de template
   
   
-  constructor(private userService: UserService, private toastCtrl: ToastController, private router: Router, private route: ActivatedRoute) { 
-    this.route.queryParams.subscribe(params =>{
-      if(params && params.special ){
-        this.data = JSON.parse(params.special);
-      }
-    });
+  constructor(private userService: UserService, private toastCtrl: ToastController) { 
   } 
   public nomeUser: string = this.idea.nome
   public titulo :string = 'Mands'

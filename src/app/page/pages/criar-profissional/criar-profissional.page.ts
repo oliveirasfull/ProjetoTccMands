@@ -57,7 +57,9 @@ export class CriarProfissionalPage implements OnInit {
     }
     this.userService.updateUserToPro(this.tipoUser, this.pro).then(() => {
       this.showToast('Realizado Update');
+
     }).catch(e => { console.log(e) });
+    
   }
 
 

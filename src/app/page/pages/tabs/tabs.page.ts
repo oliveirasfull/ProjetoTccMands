@@ -9,7 +9,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class TabsPage implements OnInit {
 
-  public profissional : boolean = false;// responsavel por definir ser o usuario e profisional ou nao nas regras de template
+  public profissional : boolean // responsavel por definir ser o usuario e profisional ou nao nas regras de template
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
 
