@@ -7,12 +7,19 @@
 <ion-content>
     <ion-item>
         <ion-label>DDDD MMM</ion-label>
-        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" formControlName="data"></ion-datetime>
+        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" [(ngModel)]="date"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <ion-label>hh:mm A (15 min steps)</ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" formControlName="hora"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="hora"></ion-datetime>
     </ion-item>
+
+    <ion-col size="6">
+        <ion-button (click)="onSubmit()">
+            <ion-icon slot="start" name="star"></ion-icon>
+            Salvar
+        </ion-button>
+    </ion-col>
 
 </ion-content>

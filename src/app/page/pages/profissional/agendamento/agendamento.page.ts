@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-agendamento',
@@ -8,19 +10,42 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AgendamentoPage implements OnInit {
 
-  form: FormGroup;
-  agendamento: any;
+  dados: any;
+  data: Date = new Date();
+  date: any;
+  hora: number;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController) { 
+    this.route.queryParams.subscribe(params =>{
+      if (params && params.special){
+        this.dados = JSON.parse(params.special);
+        console.log(this.dados);
+      }
+    });
+
+  }
 
   ngOnInit() {
   }
 
-  createForm(){
-    this.form = this.formBuilder.group({
-      data: [this.agendamento.data],
-      hora: [this.agendamento.hora]
-    });
+  onSubmit(){
+    let tipoAgendamento: Agendamento = {
+      data : this.data.setTime(this.date),
+      hora : this.data.setTime(this.hora),
+      idProfissional : this.dados.idProdissional,
+      idUsuario : this.dados.idUser
+    };
+
+    this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
+      this.showToast('Realizado Update');
+    }).catch(e => {console.log(e)});
+  }
+
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present());
   }
 
 }

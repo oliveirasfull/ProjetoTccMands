@@ -14,11 +14,9 @@ export class ProfissionalPage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage) {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
-        console.log("Entrou");
         this.data = JSON.parse(params.special);
       } else {
         if (this.data == null) {
-          console.log("Entrou 2");
           this.data = this.tabs.getUser();
           console.log(this.data);
         }
@@ -35,9 +33,10 @@ export class ProfissionalPage implements OnInit {
   }
 
   irParaAgendamento() {
+    let user = {idProdissional: this.data.id, idUser: this.tabs.user.id}
     let navigateExtras: NavigationExtras = {
       queryParams: {
-        special: JSON.stringify(this.data)
+        special: JSON.stringify(user)
       }
     };
     this.router.navigate(['./usuario/agendamento'], navigateExtras);
