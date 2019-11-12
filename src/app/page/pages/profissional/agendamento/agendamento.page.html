@@ -7,28 +7,12 @@
 <ion-content>
     <ion-item>
         <ion-label>DDDD MMM</ion-label>
-        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>HH:mm</ion-label>
-        <ion-datetime displayFormat="HH:mm"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>h:mm a</ion-label>
-        <ion-datetime displayFormat="h:mm a"></ion-datetime>
+        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" formControlName="data"></ion-datetime>
     </ion-item>
 
     <ion-item>
         <ion-label>hh:mm A (15 min steps)</ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-label>Specific days/months/years</ion-label>
-        <ion-datetime monthValues="6,7,8" yearValues="2014,2015" dayValues="01,02,03,04,05,06,08,09,10, 11, 12, 13, 14" displayFormat="DD/MMM/YYYY"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" formControlName="hora"></ion-datetime>
     </ion-item>
 
 </ion-content>

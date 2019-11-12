@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
+import { UserService, TypeUser, TypePro } from 'src/app/service/user/user.service';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TypeUser, UserService } from 'src/app/service/user.service';
+import { TypeUser, UserService } from 'src/app/service/user/user.service';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 
