@@ -11,9 +11,8 @@ import { ToastController } from '@ionic/angular';
 export class AgendamentoPage implements OnInit {
 
   dados: any;
-  data: Date = new Date();
-  date: any;
-  hora: number;
+  date: string;
+  hora: string;
 
   constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController) { 
     this.route.queryParams.subscribe(params =>{
@@ -30,8 +29,8 @@ export class AgendamentoPage implements OnInit {
 
   onSubmit(){
     let tipoAgendamento: Agendamento = {
-      data : this.data.setTime(this.date),
-      hora : this.data.setTime(this.hora),
+      data : this.date,
+      hora : this.hora,
       idProfissional : this.dados.idProdissional,
       idUsuario : this.dados.idUser
     };
