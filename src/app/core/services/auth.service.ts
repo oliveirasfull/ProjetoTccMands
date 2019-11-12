@@ -53,6 +53,7 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password).then(credentials => credentials
       .user.updateProfile({displayName:name, photoURL:null})
       .then(()=> credentials));
+    
   }
   private signInWithPopup(provider : AuthProvider): Promise <auth.UserCredential> {
     let signInProvider = null;

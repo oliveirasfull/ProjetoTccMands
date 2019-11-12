@@ -24,6 +24,7 @@ export class CriarProfissionalPage implements OnInit {
   };
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService, private toastCtrl: ToastController) {
+    
   }
 
   ngOnInit() {
@@ -49,8 +50,11 @@ export class CriarProfissionalPage implements OnInit {
 
 
   addPro() {
-    console.log(this.pro);
-    console.log(this.tipoUser.id);
+    if(this.tipoUser){
+      console.log(this.tipoUser);
+    } else{
+      console.log("Vazio");
+    }
     this.userService.updateUserToPro(this.tipoUser, this.pro).then(() => {
       this.showToast('Realizado Update');
     }).catch(e => { console.log(e) });
