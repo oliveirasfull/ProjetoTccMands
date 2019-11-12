@@ -23,4 +23,8 @@ export class AgendamentoPage implements OnInit {
     });
   }
 
+  onSubmit(){
+    
+  }
+
 }
