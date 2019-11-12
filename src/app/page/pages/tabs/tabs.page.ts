@@ -21,7 +21,7 @@ export class TabsPage implements OnInit {
         for (let x = 0; x < usuario.length; x++) {
           if (usuario[x].email == user.email) {
             this.profissional = usuario[x].profissionalAtivo;
-            this.user = usuario;
+            this.user = usuario[x];
             break;
           }
         }

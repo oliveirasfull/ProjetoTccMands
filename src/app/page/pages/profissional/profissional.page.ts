@@ -8,17 +8,20 @@ import { TabsPage } from '../tabs/tabs.page'
   styleUrls: ['./profissional.page.scss'],
 })
 export class ProfissionalPage implements OnInit {
-  public coracaoCheio : string ="../../../../assets/icon/estrelaCheia.png"
+  public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
-  tabs: TabsPage;
 
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage) {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
+        console.log("Entrou");
         this.data = JSON.parse(params.special);
-      }
-      if (this.data.length == 0 || this.data == null){
-        this.data = this.tabs.getUser();
+      } else {
+        if (this.data == null) {
+          console.log("Entrou 2");
+          this.data = this.tabs.getUser();
+          console.log(this.data);
+        }
       }
     });
   }
@@ -26,12 +29,12 @@ export class ProfissionalPage implements OnInit {
   ngOnInit() {
   }
 
-  exibeAvaliacao(){
-    this.coracaoCheio 
+  exibeAvaliacao() {
+    this.coracaoCheio
 
   }
 
-  irParaAgendamento(){
+  irParaAgendamento() {
     let navigateExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(this.data)
