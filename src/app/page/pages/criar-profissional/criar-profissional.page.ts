@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController } from '@ionic/angular';
+import { TabsPage } from '../tabs/tabs.page'
 
 @Component({
   selector: 'app-criar-profissional',
@@ -24,7 +25,7 @@ export class CriarProfissionalPage implements OnInit {
     idade: 0
   };
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService, private toastCtrl: ToastController) {
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, private toastCtrl: ToastController, private tabs: TabsPage) {
     
   }
 
@@ -51,11 +52,10 @@ export class CriarProfissionalPage implements OnInit {
 
 
   addPro() {
-    if(this.tipoUser){
-      console.log(this.tipoUser);
-    } else{
-      console.log("Vazio");
-    }
+    let user = this.tabs.getUser()
+    
+    this.tipoUser = {nome: user.nome, email: user.email, profissionalAtivo: user.profissionalAtivo};
+
     this.userService.updateUserToPro(this.tipoUser, this.pro).then(() => {
       this.showToast('Realizado Update');
 
