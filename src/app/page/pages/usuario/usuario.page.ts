@@ -4,6 +4,8 @@ import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { TabsPage } from '../tabs/tabs.page'
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -17,23 +19,24 @@ export class UsuarioPage implements OnInit {
 
   
   
-  constructor(private userService: UserService, private toastCtrl: ToastController, private afAuth: AngularFireAuth) { 
+  constructor(private userService: UserService, private toastCtrl: ToastController, 
+    private afAuth: AngularFireAuth, private tabs: TabsPage, private route: ActivatedRoute, 
+    private router: Router) { 
 
   } 
-  public titulo :string = 'Mands'
+  public titulo :string = 'Mands';
 
   ngOnInit() {    
-    this.afAuth.authState.subscribe(user => {
-      this.userService.getUsers().subscribe(usuario => {
-        for (let x = 0; x < usuario.length; x++) {
-          if (usuario[x].email == user.email) {
-            this.vetor = { nome: usuario[x].nome, email: usuario[x].email, profissionalAtivo: usuario[x].profissionalAtivo, id: usuario[x].id };
-            console.log(this.vetor);
-            break;
-          }
-        }
-      });
-    }); 
+    this.vetor = this.tabs.getUser()
+  }
+
+  irParaCriaProfissional(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.vetor)
+      }
+    };
+    this.router.navigate(['./usuario/criar-profissional'], navigateExtras);
   }
                          
 }                

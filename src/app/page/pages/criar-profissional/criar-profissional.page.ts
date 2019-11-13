@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController } from '@ionic/angular';
-import { TabsPage } from '../tabs/tabs.page'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-criar-profissional',
@@ -12,7 +12,7 @@ import { TabsPage } from '../tabs/tabs.page'
 })
 export class CriarProfissionalPage implements OnInit {
 
-  tipoUser: TypeUser;
+  tipoUser: any;
   pro: TypePro = {
     nomePro: '',
     descricaoServico: '',
@@ -25,22 +25,18 @@ export class CriarProfissionalPage implements OnInit {
     idade: 0
   };
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService, private toastCtrl: ToastController, private tabs: TabsPage) {
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, 
+    private toastCtrl: ToastController, private route: ActivatedRoute) {
+      this.route.queryParams.subscribe(params =>{
+        if (params && params.special){
+          this.tipoUser = JSON.parse(params.special);
+          console.log(this.tipoUser);
+        }
+      });
     
   }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe(user => {
-      this.userService.getUsers().subscribe(usuario => {
-        for (let x = 0; x < usuario.length; x++) {
-          if (usuario[x].email == user.email) {
-            this.tipoUser = { nome: usuario[x].nome, email: usuario[x].email, profissionalAtivo: usuario[x].profissionalAtivo, id: usuario[x].id };
-            console.log(this.tipoUser);
-            break;
-          }
-        }
-      });
-    });
   }
 
   showToast(msg) {
@@ -52,9 +48,6 @@ export class CriarProfissionalPage implements OnInit {
 
 
   addPro() {
-    let user = this.tabs.getUser()
-    
-    this.tipoUser = {nome: user.nome, email: user.email, profissionalAtivo: user.profissionalAtivo};
 
     this.userService.updateUserToPro(this.tipoUser, this.pro).then(() => {
       this.showToast('Realizado Update');
