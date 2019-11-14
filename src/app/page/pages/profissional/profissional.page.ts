@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { TabsPage } from '../tabs/tabs.page'
+import { Agendamento } from 'src/app/service/agendamento/agendamento.service';
 
 @Component({
   selector: 'app-profissional',
@@ -10,6 +11,7 @@ import { TabsPage } from '../tabs/tabs.page'
 export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
+  agendamento: Agendamento[];
 
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage) {
     this.route.queryParams.subscribe(params => {
@@ -21,7 +23,10 @@ export class ProfissionalPage implements OnInit {
           console.log(this.data);
         }
       }
+      this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
     });
+
+    
   }
 
   ngOnInit() {
