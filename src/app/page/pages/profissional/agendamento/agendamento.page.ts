@@ -14,6 +14,9 @@ export class AgendamentoPage implements OnInit {
   date: string;
   hora: string;
   descricao : string;
+  atendimentoDomicilio: boolean;
+  pedicure: boolean;
+  manicure: boolean;
 
   constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController) { 
     this.route.queryParams.subscribe(params =>{
@@ -34,7 +37,10 @@ export class AgendamentoPage implements OnInit {
       hora : this.hora,
       descricao : this.descricao,
       idProfissional : this.dados.idProdissional,
-      idUsuario : this.dados.idUser
+      idUsuario : this.dados.idUser,
+      atendimentoDomicilio: this.atendimentoDomicilio,
+      pedicure: this.pedicure,
+      manicure: this.manicure
     };
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
