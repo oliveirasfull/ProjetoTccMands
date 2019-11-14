@@ -13,6 +13,7 @@ export interface Agendamento{
   atendimentoDomicilio: boolean;
   manicure: boolean;
   pedicure: boolean;
+  confirmacao: boolean
 }
 
 @Injectable({
