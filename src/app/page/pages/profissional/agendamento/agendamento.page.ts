@@ -41,7 +41,8 @@ export class AgendamentoPage implements OnInit {
       atendimentoDomicilio: this.atendimentoDomicilio,
       pedicure: this.pedicure,
       manicure: this.manicure,
-      confirmacao: true
+      confirmacao: false,
+      pendente: true
     };
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {

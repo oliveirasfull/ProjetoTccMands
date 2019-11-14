@@ -13,7 +13,8 @@ export interface Agendamento{
   atendimentoDomicilio: boolean;
   manicure: boolean;
   pedicure: boolean;
-  confirmacao: boolean
+  confirmacao: boolean;
+  pendente: boolean;
 }
 
 @Injectable({
@@ -58,6 +59,13 @@ export class AgendamentoService {
 
   cancelarAgendamento(id: string): Promise<void>{
     return this.agendamentoCollection.doc(id).delete();
-  } 
+  }
+  
+  confirmarAgendamento(agendamento: Agendamento): Promise<void>{
+    return this.agendamentoCollection.doc(agendamento.id).update({
+      confirmacao : agendamento.confirmacao,
+      pendente : agendamento.pendente
+    });
+  }
 }
 
