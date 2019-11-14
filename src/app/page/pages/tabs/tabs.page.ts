@@ -44,7 +44,7 @@ export class TabsPage implements OnInit {
     let agendamentoUser : Agendamento[];
 
     this.agendamento.forEach(element => {
-      if(element.id == id && element.confirmacao == false){
+      if(element.idUsuario == id && element.confirmacao == false){
         agendamentoUser.push(element);
       }
     });
@@ -57,7 +57,7 @@ export class TabsPage implements OnInit {
     let agendamentoUser : Agendamento[];
 
     this.agendamento.forEach(element => {
-      if(element.id == id && element.confirmacao){
+      if(element.idProfissional == id && element.confirmacao == true){
         agendamentoUser.push(element);
       }
     });
