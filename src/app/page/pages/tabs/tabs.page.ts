@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/service/user.service';
+import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
 
 @Component({
   selector: 'app-tabs',
@@ -11,9 +12,10 @@ export class TabsPage implements OnInit {
 
   public profissional : boolean // responsavel por definir ser o usuario e profisional ou nao nas regras de template
   public user : any;
+  public agendamento: Agendamento[];
 
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, private agendamentoService: AgendamentoService) { }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
@@ -27,10 +29,27 @@ export class TabsPage implements OnInit {
         }
       });
     });
+
+    this.agendamentoService.getAgendamento().subscribe(agen => {
+      this.agendamento = agen;
+    });
   }
 
   getUser(){
     return this.user;
+  }
+
+  getAgendamentoByKey(id: string): Agendamento[]{
+    
+    let agendamentoUser : Agendamento[];
+
+    this.agendamento.forEach(element => {
+      if(element.id == id){
+        agendamentoUser.push(element);
+      }
+    });
+
+    return agendamentoUser;
   }
 
 }
