@@ -51,7 +51,7 @@ export class TabsPage implements OnInit {
 
     return agendamentoUser;
   }
-
+ 
   getAgendamentoByKeyPro(id: string): Agendamento[]{
     
     let agendamentoUser : Agendamento[];
