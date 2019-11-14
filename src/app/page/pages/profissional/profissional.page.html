@@ -9,7 +9,7 @@
     <ion-app>
 
 
-        <ion-content fullscreen>
+        <ion-card-content fullscreen>
             <ion-grid>
                 <ion-row align-items-start>
                     <ion-col>
@@ -39,10 +39,14 @@
                     <ion-card-title>Conheça meus serviços</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+                    {{data.descricaoServico}}
                 </ion-card-content>
+                <ion-item>
+                    <ion-label>Go</ion-label>
+                    <ion-radio checked="true" value="go"></ion-radio>
+                </ion-item>
             </ion-card>
-        </ion-content>
+        </ion-card-content>
     </ion-app>
 
 

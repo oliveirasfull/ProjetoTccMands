@@ -7,6 +7,7 @@ export interface Agendamento{
   id?:string;
   data: string;
   hora: string;
+  descricao: string;
   idProfissional: string;
   idUsuario: string;
 }

@@ -13,6 +13,7 @@ export class AgendamentoPage implements OnInit {
   dados: any;
   date: string;
   hora: string;
+  descricao : string;
 
   constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController) { 
     this.route.queryParams.subscribe(params =>{
@@ -31,12 +32,13 @@ export class AgendamentoPage implements OnInit {
     let tipoAgendamento: Agendamento = {
       data : this.date,
       hora : this.hora,
+      descricao : this.descricao,
       idProfissional : this.dados.idProdissional,
       idUsuario : this.dados.idUser
     };
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
-      this.showToast('Realizado Update');
+      this.showToast('Agendamento realizado');
     }).catch(e => {console.log(e)});
   }
 

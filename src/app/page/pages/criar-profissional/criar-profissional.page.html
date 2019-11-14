@@ -9,8 +9,8 @@
             <ion-input type="string" placeholder="NomeProfissional" [(ngModel)]="pro.nomePro"></ion-input>
         </ion-item>
         <ion-item>
-                <ion-input type="string" placeholder="Descrição Dos Servoços" [(ngModel)]="pro.descricaoServico"></ion-input>
-            </ion-item>
+            <ion-input type="string" placeholder="Descrição Dos Serviços" [(ngModel)]="pro.descricaoServico"></ion-input>
+        </ion-item>
         <ion-item>
             <ion-input type="number" placeholder="Idade" [(ngModel)]="pro.idade"></ion-input>
         </ion-item>
@@ -38,7 +38,7 @@
                     </ion-button>
                 </ion-col>
                 <ion-col size="6">
-                    <ion-button (click)="addPro()">
+                    <ion-button (click)="addPro()" routerLink="/usuario/profissional">
                         <ion-icon slot="start" name="star"></ion-icon>
                         Salvar
                     </ion-button>
