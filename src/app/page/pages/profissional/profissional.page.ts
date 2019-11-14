@@ -11,26 +11,27 @@ import { Agendamento } from 'src/app/service/agendamento/agendamento.service';
 export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
-  agendamento: Agendamento[];
+  agendamento: Agendamento[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage) {
+  }
+
+  ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.data = JSON.parse(params.special);
+        console.log(this.data);
       } else {
         if (this.data == null) {
           this.data = this.tabs.getUser();
           console.log(this.data);
+          this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
+          console.log(this.agendamento);
         }
       }
-      this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
     });
-
-    
   }
 
-  ngOnInit() {
-  }
 
   exibeAvaliacao() {
     this.coracaoCheio
@@ -45,6 +46,15 @@ export class ProfissionalPage implements OnInit {
       }
     };
     this.router.navigate(['./usuario/agendamento'], navigateExtras);
+  }
+
+  doRefresh(event){
+    console.log('Começou');
+
+    setTimeout(() =>{
+      console.log('Operação a caminho');
+      event.target.complete()
+    });
   }
 
 }

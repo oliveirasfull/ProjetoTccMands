@@ -59,14 +59,14 @@
 
                 <ion-label>Pedicure</ion-label>
                 <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+            </ion-chip>           
 
-
-
-
+            <ion-item *ngFor="let agen of agendamento">
+                <ion-label>{{ agen.data }}</ion-label>
+            </ion-item>
 
         </ion-card-content>
     </ion-app>
 
-
 </ion-content>
+

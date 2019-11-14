@@ -54,10 +54,11 @@ export class TabsPage implements OnInit {
  
   getAgendamentoByKeyPro(id: string): Agendamento[]{
     
-    let agendamentoUser : Agendamento[];
+    let agendamentoUser : Agendamento[] = [];
 
     this.agendamento.forEach(element => {
       if(element.idProfissional == id && element.confirmacao == true){
+        console.log(element);
         agendamentoUser.push(element);
       }
     });
