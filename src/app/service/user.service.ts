@@ -74,8 +74,7 @@ export class UserService {
       pedicure: pro.pedicure,
       precoPedicure: pro.precoPedicure,
       classificacao: pro.classificacao,
-      idade: pro.idade,
-      descricaoServico: pro.descricaoServico
+      idade: pro.idade
     });
   }
 

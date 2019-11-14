@@ -1,21 +1,23 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>agendamento</ion-title>
+    <ion-toolbar color="primary" aling="center" >
+        <ion-title>Agendar-Serviços</ion-title>
     </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
     <ion-item>
-        <ion-label>DDDD MMM</ion-label>
+        <ion-label>Mês/Dia</ion-label>
         <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" [(ngModel)]="date"></ion-datetime>
     </ion-item>
 
     <ion-item>
-        <ion-label>hh:mm A (15 min steps)</ion-label>
+        <ion-label>Hora/Minutos A (15 min steps)</ion-label>
         <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="hora"></ion-datetime>
     </ion-item>
     <ion-item>
-        <ion-input type="text" placeholder="Descricao do serviço " [(ngModel)]="descricao"></ion-input>
+        <ion-input type="text" placeholder="Descreva O Que Deseja" [(ngModel)]="descricao"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Manicure</ion-label>
@@ -31,16 +33,17 @@
     </ion-item>
     <ion-grid fixed>
         <ion-row>
+            
+            <ion-col size="6" >
+                <ion-button  routerLink="/usuario/feed" color="danger">
+                    <ion-icon slot="start" name="star" ></ion-icon>
+                    Voltar
+                </ion-button>
+            </ion-col>
             <ion-col size="6">
                 <ion-button (click)="onSubmit()" routerLink="/usuario/profissional">
                     <ion-icon slot="start" name="star"></ion-icon>
                     Salvar
-                </ion-button>
-            </ion-col>
-            <ion-col size="6">
-                <ion-button routerLink="/usuario/feed">
-                    <ion-icon slot="start" name="star"></ion-icon>
-                    voltar
                 </ion-button>
             </ion-col>
         </ion-row>
