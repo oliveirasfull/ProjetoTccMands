@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
+import { FCM } from '@ionic-native/fcm';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
