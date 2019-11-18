@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { TabsPage } from '../tabs/tabs.page'
-import { Agendamento } from 'src/app/service/agendamento/agendamento.service';
+import { Agendamento, AgendamentoService } from 'src/app/service/agendamento/agendamento.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profissional',
@@ -13,7 +14,8 @@ export class ProfissionalPage implements OnInit {
   data: any;
   agendamento: Agendamento[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage) {
+  constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
+    private agendamentoService: AgendamentoService, private alertController: AlertController) {
   }
 
   ngOnInit() {
@@ -55,6 +57,45 @@ export class ProfissionalPage implements OnInit {
       console.log('Operação a caminho');
       event.target.complete()
     });
+  }
+
+  async confirmarAgendamento(agen: Agendamento){
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            agen.pendente = false;
+            this.concelarAgendamento(agen);
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            agen.confirmacao = true;
+            agen.pendente = false;
+            this.aprovarAgendamento(agen);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  concelarAgendamento(agen: Agendamento){
+    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
+      console.log(e);
+    });
+  }
+
+  aprovarAgendamento(agen: Agendamento){
+    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
+      console.log(e);
+    });;
   }
 
 }

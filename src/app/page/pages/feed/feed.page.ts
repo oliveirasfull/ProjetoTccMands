@@ -5,6 +5,8 @@ import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
+import { TabsPage } from '../tabs/tabs.page';
+import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
 
 @Component({
   selector: 'app-feed',
@@ -17,35 +19,12 @@ export class FeedPage implements OnInit {
   user : Observable<any>
 
   constructor( private userService: UserService, private navCtrl: NavController, private router: Router, 
-    private afAuth: AngularFireAuth, private alertController: AlertController) { }
+    private afAuth: AngularFireAuth, private alertController: AlertController, private tabs: TabsPage,
+    private agendamentoService: AgendamentoService) {}
 
-  async confirmarAgendamento(){
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
+  
   ngOnInit() {
     this.user = this.userService.getUsers();
-    
   }
 
   paginaProfissional(item: any){

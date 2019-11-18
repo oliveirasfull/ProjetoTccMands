@@ -12,10 +12,11 @@ export class TabsPage implements OnInit {
 
   public profissional : boolean // responsavel por definir ser o usuario e profisional ou nao nas regras de template
   public user : any;
-  public agendamento: Agendamento[];
+  public agendamento: any;
 
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService, private agendamentoService: AgendamentoService) { }
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, 
+    private agendamentoService: AgendamentoService) { }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
@@ -35,13 +36,13 @@ export class TabsPage implements OnInit {
     });
   }
 
-  getUser(){
+  getUser(){ 
     return this.user;
   }
 
   getAgendamentoByKeyUser(id: string): Agendamento[]{
     
-    let agendamentoUser : Agendamento[];
+    let agendamentoUser : Agendamento[] = [];
 
     this.agendamento.forEach(element => {
       if(element.idUsuario == id && element.pendente == false){
@@ -58,7 +59,6 @@ export class TabsPage implements OnInit {
 
     this.agendamento.forEach(element => {
       if(element.idProfissional == id && element.pendente == true){
-        console.log(element);
         agendamentoUser.push(element);
       }
     });

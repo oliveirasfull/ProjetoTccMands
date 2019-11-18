@@ -73,6 +73,9 @@
 
             <ion-item *ngFor="let agen of agendamento">
                 <ion-label>{{ agen.data }}</ion-label>
+                <ion-button (click)="confirmarAgendamento(agen)">
+                    teste
+                </ion-button>
             </ion-item>
 
         </ion-card-content>
