@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
