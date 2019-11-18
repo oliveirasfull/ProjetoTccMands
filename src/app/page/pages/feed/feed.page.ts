@@ -4,11 +4,7 @@ import { TypeUser, UserService } from 'src/app/service/user.service';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-<<<<<<< HEAD
-import { FCM } from '@ionic-native/fcm';
 import { AlertController } from '@ionic/angular';
-=======
->>>>>>> parent of 088a29e... Teste
 
 @Component({
   selector: 'app-feed',
@@ -20,9 +16,8 @@ export class FeedPage implements OnInit {
   public pro : string = "Pro"
   user : Observable<any>
 
-<<<<<<< HEAD
   constructor( private userService: UserService, private navCtrl: NavController, private router: Router, 
-    private afAuth: AngularFireAuth, private fcm: FCM, private alertController: AlertController) { }
+    private afAuth: AngularFireAuth, private alertController: AlertController) { }
 
   async confirmarAgendamento(){
     const alert = await this.alertController.create({
@@ -47,9 +42,6 @@ export class FeedPage implements OnInit {
 
     await alert.present();
   }
-=======
-  constructor( private userService: UserService, private navCtrl: NavController, private router: Router, private afAuth: AngularFireAuth) { }
->>>>>>> parent of 088a29e... Teste
 
   ngOnInit() {
     this.user = this.userService.getUsers();

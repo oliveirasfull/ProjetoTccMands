@@ -8,12 +8,6 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
-<<<<<<< HEAD
-import { FCM } from '@ionic-native/fcm';
-import { Push } from '@ionic-native/push';
-
-=======
->>>>>>> parent of 088a29e... Teste
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
