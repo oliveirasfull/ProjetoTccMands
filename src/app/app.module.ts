@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
+import { Push } from '@ionic-native/push/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,9 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule
       ],
+  providers:[
+    Push
+  ],
 
   bootstrap: [AppComponent]
 })
