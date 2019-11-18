@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FCM } from '@ionic-native/fcm';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-feed',
@@ -17,7 +18,31 @@ export class FeedPage implements OnInit {
   user : Observable<any>
 
   constructor( private userService: UserService, private navCtrl: NavController, private router: Router, 
-    private afAuth: AngularFireAuth, private fcm: FCM) { }
+    private afAuth: AngularFireAuth, private fcm: FCM, private alertController: AlertController) { }
+
+  async confirmarAgendamento(){
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
   ngOnInit() {
     this.user = this.userService.getUsers();
