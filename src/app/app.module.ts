@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 import { Push } from '@ionic-native/push/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { Push } from '@ionic-native/push/ngx';
         AngularFirestoreModule
       ],
   providers:[
-    Push
+    Push,
+    Camera,
+    Geolocation
   ],
 
   bootstrap: [AppComponent]

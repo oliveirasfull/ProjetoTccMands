@@ -7,6 +7,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { TabsPage } from '../tabs/tabs.page'
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-usuario',
@@ -17,13 +19,13 @@ export class UsuarioPage implements OnInit {
 
   vetor: any;
   data: any;
-
+  photo : string = '';
   
   
   constructor(private userService: UserService, private toastCtrl: ToastController, 
     private afAuth: AngularFireAuth, private tabs: TabsPage, private route: ActivatedRoute, 
     private router: Router, private agendamentoService: AgendamentoService, 
-    private alertController: AlertController) { 
+    private alertController: AlertController, private camera: Camera, private geolocation: Geolocation ) { 
 
   } 
   public titulo :string = 'Mands';
@@ -41,7 +43,39 @@ export class UsuarioPage implements OnInit {
     this.router.navigate(['./usuario/criar-profissional'], navigateExtras);
   }
 
-                           
+  tirarFoto(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.photo = base64Image;
+     }, (err) => {
+      // Handle error
+     });
+  }
+
+  gps(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+     
+     let watch = this.geolocation.watchPosition();
+     watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+     });
+  }                   
 }                
      
             

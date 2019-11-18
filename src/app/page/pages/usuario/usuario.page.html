@@ -13,7 +13,9 @@
             <ion-card-subtitle>
                 <div class="row">
                     <div class="col-sm-6">
-                        <app-usuario-foto></app-usuario-foto>
+                        <ion-avatar>
+                            <img [src]="photo" />
+                        </ion-avatar>
                     </div>
                     <div class="col-sm-6">
                         <app-usuario-perfil></app-usuario-perfil>
@@ -23,6 +25,14 @@
 
 
             </ion-card-subtitle>
+
+            <ion-button (click)="tirarFoto()">
+                foto
+            </ion-button>
+
+            <ion-button (click)="gps()">
+                gps
+            </ion-button>
 
             <ion-card-title>{{vetor.nome}}</ion-card-title>
         </ion-card-header>
