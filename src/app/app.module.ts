@@ -28,6 +28,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     Push,
     Camera,
     Geolocation
+    
   ],
 
   bootstrap: [AppComponent]

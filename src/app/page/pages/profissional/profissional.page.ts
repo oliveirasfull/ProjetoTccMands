@@ -62,7 +62,7 @@ export class ProfissionalPage implements OnInit {
   async confirmarAgendamento(agen: Agendamento){
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      message: 'Confirme o  <strong>Agendamento</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
