@@ -20,7 +20,7 @@ interface AgendaLivre{
 export class AgendaLivreService {
 
   private agendaLivre: Observable<AgendaLivre[]>;
-  private agendaLivreCollection: AngularFirestoreCollection<AgendaLivre>;
+  private agendaLivreCollection: AngularFirestoreCollection<AgendaLivre>; 
 
   constructor(private afs: AngularFirestore) { 
     this.agendaLivreCollection = this.afs.collection<AgendaLivre>('AgendaLivre');
