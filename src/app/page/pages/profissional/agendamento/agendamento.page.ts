@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
 import { ToastController } from '@ionic/angular';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-agendamento',
@@ -18,7 +19,9 @@ export class AgendamentoPage implements OnInit {
   pedicure: boolean = false;
   manicure: boolean = false;
 
-  constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController) { 
+  constructor(private route: ActivatedRoute, 
+    private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
+    private userService: UserService) { 
     this.route.queryParams.subscribe(params =>{
       if (params && params.special){
         this.dados = JSON.parse(params.special);
@@ -42,7 +45,8 @@ export class AgendamentoPage implements OnInit {
       pedicure: this.pedicure,
       manicure: this.manicure,
       confirmacao: false,
-      pendente: true
+      pendente: true,
+      nomeUsuario: this.dados.nomeUser
     };
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {

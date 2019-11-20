@@ -41,7 +41,7 @@ export class ProfissionalPage implements OnInit {
   }
 
   irParaAgendamento() {
-    let user = {idProdissional: this.data.id, idUser: this.tabs.user.id}
+    let user = {idProdissional: this.data.id, idUser: this.tabs.user.id, nomeUser: this.tabs.user.nome}
     let navigateExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(user)

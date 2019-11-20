@@ -72,7 +72,7 @@
             </ion-chip>
 
             <ion-item *ngFor="let agen of agendamento">
-                <ion-label>{{ agen.data }}</ion-label>
+                <ion-label>{{ agen.nomeUsuario }}</ion-label>
                 <ion-button (click)="confirmarAgendamento(agen)">
                     teste
                 </ion-button>
@@ -80,8 +80,7 @@
 
         </ion-card-content>
         <ion-card>
-            <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-            <img src="../../../../assets/cabelo.png" alt="">
+            
 
         </ion-card>
     </ion-app>

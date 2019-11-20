@@ -10,6 +10,7 @@ export interface Agendamento{
   descricao: string;
   idProfissional: string;
   idUsuario: string;
+  nomeUsuario: string;
   atendimentoDomicilio: boolean;
   manicure: boolean;
   pedicure: boolean;
