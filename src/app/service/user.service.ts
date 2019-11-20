@@ -19,6 +19,8 @@ export interface TypePro {
   pedicure: boolean,
   precoPedicure: number,
   classificacao: number,
+  cabelo: boolean,
+  maquiagem: boolean,
   idade: number
 }
 

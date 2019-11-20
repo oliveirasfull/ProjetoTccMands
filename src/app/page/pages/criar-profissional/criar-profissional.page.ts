@@ -20,6 +20,8 @@ export class CriarProfissionalPage implements OnInit {
     manicure: false,
     precoManicure: 0,
     pedicure: false,
+    cabelo: false,
+    maquiagem: false,
     precoPedicure: 0,
     classificacao: 0,
     idade: 0

@@ -1,3 +1,5 @@
+<body  background-color = "blue">
+
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title>Profissional</ion-title>
@@ -72,7 +74,8 @@
             </ion-chip>
 
             <ion-item *ngFor="let agen of agendamento">
-                <ion-label>{{ agen.nomeUsuario }}</ion-label>
+                <ion-label>{{ agen.data }}</ion-label>
+               <!-- <ion-label>{{ usuario.id }}</ion-label> -->
                 <ion-button (click)="confirmarAgendamento(agen)">
                     teste
                 </ion-button>
