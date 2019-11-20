@@ -72,16 +72,27 @@
                 <ion-label>Pedicure</ion-label>
                 <ion-icon name="checkmark"></ion-icon>
             </ion-chip>
+            <ion-chip>
 
-            <ion-item *ngFor="let agen of agendamento">
-<<<<<<< HEAD
-                <ion-label>{{ agen.data }}</ion-label>
+                <ion-label>Cabelo</ion-label>
+                <ion-icon name="checkmark"></ion-icon>
+            </ion-chip>
+            <ion-chip>
+
+                <ion-label>Maquiagem</ion-label>
+                <ion-icon name="checkmark"></ion-icon>
+            </ion-chip>
+           
+
+            <ion-item  *ngFor="let agen of agendamento">
+               <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
+                <ion-label>Nome:      {{ agen.nomeUsuario}}             </ion-label> <br>
+                <ion-label>Descrição: {{agen.descricao}}                </ion-label>
+                <ion-label>Hora/Hora: {{ agen.hora}}                    </ion-label>
+                <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}    </ion-label>
                <!-- <ion-label>{{ usuario.id }}</ion-label> -->
-=======
-                <ion-label>{{ agen.nomeUsuario }}</ion-label>
->>>>>>> 3e29c8682c95d49be1aeac389dc2594af0a1cf63
                 <ion-button (click)="confirmarAgendamento(agen)">
-                    teste
+                    Confirma?
                 </ion-button>
             </ion-item>
 
