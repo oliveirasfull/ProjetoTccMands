@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { NgCalendarModule } from 'ionic2-calendar';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgCalendarModule
   ],
   declarations: [ProfissionalPage]
 })

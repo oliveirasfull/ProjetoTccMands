@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { TabsPage } from '../tabs/tabs.page'
 import { Agendamento, AgendamentoService } from 'src/app/service/agendamento/agendamento.service';
 import { AlertController } from '@ionic/angular';
+import { CalendarComponent } from 'ionic2-calendar/calendar'
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-profissional',
@@ -13,9 +15,26 @@ export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
   agendamento: Agendamento[] = [];
+  event = {
+    title: '',
+    desc:'',
+    startTime: '',
+    endTime: '',
+    allDay: false
+  };
+  minDate = new Date().toISOString();
+  eventSource = [];
+  calendar = {
+    mode: 'week',
+    currentDate: new Date()
+  };
+  viewTitle = '';
+  
+  @ViewChild(CalendarComponent, {static: false}) myCal: CalendarComponent;
 
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
-    private agendamentoService: AgendamentoService, private alertController: AlertController) {
+    private agendamentoService: AgendamentoService, private alertController: AlertController,
+    @Inject(LOCALE_ID) private locale: string) {
   }
 
   ngOnInit() {
@@ -32,6 +51,8 @@ export class ProfissionalPage implements OnInit {
         }
       }
     });
+
+    this.resetEvent();
   }
 
 
@@ -97,5 +118,83 @@ export class ProfissionalPage implements OnInit {
       console.log(e);
     });;
   }
+
+  // ------------------------- CAlendar ---------------------------
+
+  resetEvent(){
+    this.event = {
+      title: '',
+      desc:'',
+      startTime: new Date().toISOString(),
+      endTime: new Date().toISOString(),
+      allDay: false
+    };
+  }
+
+  addEvent(){
+    let eventCopy = {
+      title: this.event.title,
+      startTime: new Date(this.event.startTime),
+      endTime: new Date(this.event.endTime),
+      allDay: this.event.allDay,
+      desc: this.event.desc
+    }
+
+    if(eventCopy.allDay){
+      let start = eventCopy.startTime;
+
+      eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()))
+      eventCopy.endTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate() + 1))
+    }
+
+    this.eventSource.push(eventCopy);
+    this.myCal.loadEvents();
+    this.resetEvent();
+  }
+
+  changeMode(mode){
+    this.calendar.mode = mode;
+  }
+
+  back(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+
+  next(){
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+
+  today(){
+    this.calendar.currentDate = new Date();
+  }
+
+  async onEventSelected(event){
+    let start = formatDate(event.startTime, 'medium', this.locale);
+    let end = formatDate(event.endTime, 'medium', this.locale);
+  }
+
+  onViewTitleChanged(title){
+    this.viewTitle = title;
+  }
+
+  onTimeSelected(ev){
+    let selected = new Date(ev.selectedTime);
+    this.event.startTime = selected.toISOString();
+    selected.setHours(selected.getHours() +1);
+    this.event.endTime = (selected.toISOString());
+  }
+
+  onCurrentDateChanged(){
+
+  }
+
+  reloadSource(){
+
+  }
+
+
+  
 
 }
