@@ -74,8 +74,12 @@
             </ion-chip>
 
             <ion-item *ngFor="let agen of agendamento">
+<<<<<<< HEAD
                 <ion-label>{{ agen.data }}</ion-label>
                <!-- <ion-label>{{ usuario.id }}</ion-label> -->
+=======
+                <ion-label>{{ agen.nomeUsuario }}</ion-label>
+>>>>>>> 3e29c8682c95d49be1aeac389dc2594af0a1cf63
                 <ion-button (click)="confirmarAgendamento(agen)">
                     teste
                 </ion-button>
@@ -83,8 +87,7 @@
 
         </ion-card-content>
         <ion-card>
-            <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-            <img src="../../../../assets/cabelo.png" alt="">
+            
 
         </ion-card>
     </ion-app>
