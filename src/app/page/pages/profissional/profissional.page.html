@@ -1,113 +1,108 @@
-<body  background-color = "blue">
+<body background-color="blue">
 
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>Profissional</ion-title>
-    </ion-toolbar>
-</ion-header>
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Profissional</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-<ion-content>
+    <ion-content>
 
-    <ion-app>
+        <ion-app>
 
 
-        <ion-card-content fullscreen>
-            <ion-grid>
-                <ion-row align-items-start>
-                    <ion-col>
-                        <ion-avatar>
-                            <img src="../../../../assets/perfil.jpg" alt="">
-                        </ion-avatar>
-                    </ion-col>
-                    <ion-col>
-                        <img src="exibeAvaliacao()">
+            <ion-card-content fullscreen>
+                <ion-grid>
+                    <ion-row align-items-start>
+                        <ion-col>
+                            <ion-avatar>
+                                <img src="../../../../assets/perfil.jpg" alt="">
+                            </ion-avatar>
+                        </ion-col>
+                        <ion-col>
+                            <img src="exibeAvaliacao()">
 
-                    </ion-col>
-
-                    <ion-row>
-                        <ion-col size="6">
-                            <ion-button routerLink="/usuario/feed" color="danger">
-                                <ion-icon slot="start" name="star"></ion-icon>
-                                Voltar
-                            </ion-button>
                         </ion-col>
 
-                        <ion-col size="6">
+                        <ion-row>
+                            <ion-col size="6">
+                                <ion-button routerLink="/usuario/feed" color="danger">
+                                    <ion-icon slot="start" name="star"></ion-icon>
+                                    Voltar
+                                </ion-button>
+                            </ion-col>
 
-                            <ion-button (click)="irParaAgendamento()">
-                                Agendar
-                            </ion-button>
+                            <ion-col size="6">
 
-                        </ion-col>
+                                <ion-button (click)="irParaAgendamento()">
+                                    Agendar
+                                </ion-button>
+
+                            </ion-col>
+                        </ion-row>
                     </ion-row>
-                </ion-row>
-            </ion-grid>
+                </ion-grid>
 
-            <ion-card>
+                <ion-card>
 
-                <img src="./pages/usuario/foto/umafoto.png" />
-                <ion-card-header>
-                    <ion-card-subtitle>{{ data.nome }}</ion-card-subtitle>
-                    <ion-card-title>Conheça meus serviços</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    {{data.descricaoServico}}
-                </ion-card-content>
+                    <img src="./pages/usuario/foto/umafoto.png" />
+                    <ion-card-header>
+                        <ion-card-subtitle>{{ data.nome }}</ion-card-subtitle>
+                        <ion-card-title>Conheça meus serviços</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        {{data.descricaoServico}}
+                    </ion-card-content>
 
-            </ion-card>
-
-
-            <ion-chip>
-
-                <ion-label>Atendimento Domicilio</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
-            <ion-chip>
-
-                <ion-label>manicure</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
-            <ion-chip>
-
-                <ion-label>Pedicure</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
-            <ion-chip>
-
-<<<<<<< HEAD
-                <ion-label>Cabelo</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
-            <ion-chip>
-
-                <ion-label>Maquiagem</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
-           
-
-            <ion-item  *ngFor="let agen of agendamento">
-               <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
-                <ion-label>Nome:      {{ agen.nomeUsuario}}             </ion-label> <br>
-                <ion-label>Descrição: {{agen.descricao}}                </ion-label>
-                <ion-label>Hora/Hora: {{ agen.hora}}                    </ion-label>
-                <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}    </ion-label>
-=======
-            <ion-item *ngFor="let agen of agendamento">
-                <ion-label>{{ agen.data }}</ion-label>
->>>>>>> 59590a1848ca6e1b575c0e78f4f0d6966c59d45e
-               <!-- <ion-label>{{ usuario.id }}</ion-label> -->
-                <ion-button (click)="confirmarAgendamento(agen)">
-                    Confirma?
-                </ion-button>
-            </ion-item>
-
-        </ion-card-content>
-    </ion-app>
+                </ion-card>
 
 
-</ion-content>
+                <ion-chip>
 
-<!--<calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+                    <ion-label>Atendimento Domicilio</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
+                <ion-chip>
+
+                    <ion-label>manicure</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
+                <ion-chip>
+
+                    <ion-label>Pedicure</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
+                <ion-chip>
+
+                    <ion-label>Cabelo</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
+                <ion-chip>
+
+                    <ion-label>Maquiagem</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
+
+
+                <ion-item *ngFor="let agen of agendamento">
+                    <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
+                    <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
+                    <ion-label>Descrição: {{agen.descricao}} </ion-label>
+                    <ion-label>Hora/Hora: {{ agen.hora}} </ion-label>
+                    <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+                    <!-- <ion-label>{{ usuario.id }}</ion-label> -->
+                    <ion-button (click)="confirmarAgendamento(agen)">
+                        Confirma?
+                    </ion-button>
+                </ion-item>
+
+            </ion-card-content>
+        </ion-app>
+
+
+    </ion-content>
+
+    <!--<calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
         (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
         (onTimeSelected)="onTimeSelected($event)" startHour="6" endHour="20" startingDayWeek="1">
     </calendar>-->
