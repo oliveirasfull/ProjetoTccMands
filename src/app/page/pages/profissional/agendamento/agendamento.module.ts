@@ -1,6 +1,6 @@
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
-
+import { NgCalendarModule } from 'ionic2-calendar';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -18,7 +18,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgCalendarModule
   ],
   declarations: [AgendamentoPage]
 })

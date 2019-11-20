@@ -74,6 +74,7 @@
             </ion-chip>
             <ion-chip>
 
+<<<<<<< HEAD
                 <ion-label>Cabelo</ion-label>
                 <ion-icon name="checkmark"></ion-icon>
             </ion-chip>
@@ -90,6 +91,10 @@
                 <ion-label>Descrição: {{agen.descricao}}                </ion-label>
                 <ion-label>Hora/Hora: {{ agen.hora}}                    </ion-label>
                 <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}    </ion-label>
+=======
+            <ion-item *ngFor="let agen of agendamento">
+                <ion-label>{{ agen.data }}</ion-label>
+>>>>>>> 59590a1848ca6e1b575c0e78f4f0d6966c59d45e
                <!-- <ion-label>{{ usuario.id }}</ion-label> -->
                 <ion-button (click)="confirmarAgendamento(agen)">
                     Confirma?
@@ -97,12 +102,12 @@
             </ion-item>
 
         </ion-card-content>
-        <ion-card>
-            
-
-        </ion-card>
     </ion-app>
+
 
 </ion-content>
 
-</body>
+<!--<calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+        (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
+        (onTimeSelected)="onTimeSelected($event)" startHour="6" endHour="20" startingDayWeek="1">
+    </calendar>-->
