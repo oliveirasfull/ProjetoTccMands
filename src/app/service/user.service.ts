@@ -71,6 +71,7 @@ export class UserService {
       profissionalAtivo: true,
       nomePro: pro.nomePro,
       atendimentoDomicilio: pro.atendimentoDomicilio,
+      descricaoServico:pro.descricaoServico,
       manicure: pro.manicure,
       precoManicure: pro.precoManicure,
       pedicure: pro.pedicure,

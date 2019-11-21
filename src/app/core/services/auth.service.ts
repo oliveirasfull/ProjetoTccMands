@@ -46,7 +46,7 @@ export class AuthService {
   }
   private signUpWinthEmail({email,password,name}:User): Promise<auth.UserCredential>{
     
-    let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false};
+    let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false}; // coloca campos aki 
     
     this.userService.addUser(typeUser).catch(e =>{console.log(e)});
 
