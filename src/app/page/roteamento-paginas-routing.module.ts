@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
   { path: 'profissional', loadChildren: './pages/profissional/profissional.module#ProfissionalPageModule' },
   { path: 'criar-profissional', loadChildren: './pages/criar-profissional/criar-profissional.module#CriarProfissionalPageModule' },
-  { path: 'agendamento', loadChildren: './pages/profissional/agendamento/agendamento.module#AgendamentoPageModule' }
+  { path: 'agendamento', loadChildren: './pages/profissional/agendamento/agendamento.module#AgendamentoPageModule' },  { path: 'calendario', loadChildren: './pages/calendario/calendario.module#CalendarioPageModule' },
+  { path: 'notificacoes', loadChildren: './pages/notificacoes/notificacoes.module#NotificacoesPageModule' }
+
 
 
 

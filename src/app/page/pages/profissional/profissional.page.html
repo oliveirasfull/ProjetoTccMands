@@ -2,7 +2,22 @@
 
     <ion-header>
         <ion-toolbar color="primary">
-            <ion-title>Profissional</ion-title>
+            <ion-title>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col align-self-start>
+                            <ion-icon name="cog"></ion-icon>
+                        </ion-col>
+                        <ion-col align-self-center>
+                            Profissional
+                        </ion-col>
+                        <ion-col align-self-end>
+                            <ion-icon name="notifications-outline" routerLink="usuario/notificacoes"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+            </ion-title>
         </ion-toolbar>
     </ion-header>
 
@@ -48,7 +63,7 @@
                     <img src="./pages/usuario/foto/umafoto.png" />
                     <ion-card-header>
                         <ion-card-subtitle>{{ data.nome }}</ion-card-subtitle>
-                        <ion-card-title>Conheça meus serviços</ion-card-title>
+                        <ion-card-title> </ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
                         {{data.descricaoServico}}
@@ -101,8 +116,7 @@
 
 
     </ion-content>
-
-    <!--<calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-        (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
-        (onTimeSelected)="onTimeSelected($event)" startHour="6" endHour="20" startingDayWeek="1">
+    <!--
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="6"
+        endHour="20" startingDayWeek="1">
     </calendar>-->
