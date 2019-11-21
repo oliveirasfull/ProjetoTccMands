@@ -56,8 +56,7 @@ export class AgendamentoPage implements OnInit {
 
   onSubmit(){
     let tipoAgendamento: Agendamento = {
-      data : this.date.split('')[0],
-      hora : this.hora,
+      dataHora : this.event.startTime,
       descricao : this.descricao,
       idProfissional : this.dados.idProdissional,
       idUsuario : this.dados.idUser,
