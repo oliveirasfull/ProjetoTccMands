@@ -4,8 +4,12 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
+  firebase:{  
+=======
 
   firebase:{
+>>>>>>> 1063807be8fec7aaab78265858174cb3d2e351d3
   apiKey: "AIzaSyAKXYRbfvlvjwDOgFarP9rmSlkUOItohIA",
   authDomain: "mands-cad72.firebaseapp.com",
   databaseURL: "https://mands-cad72.firebaseio.com",
@@ -13,6 +17,11 @@ export const environment = {
   storageBucket: "",
   messagingSenderId: "117311032703",
   appId: "1:117311032703:web:268dee1b28ef7933755e4a"
+<<<<<<< HEAD
+  // Base de Dados do Lucas*/ 
+  
+ /*
+=======
 
   // Base de Dados do Lucas*/ 
   
@@ -22,6 +31,7 @@ export const environment = {
   /*
  
 
+>>>>>>> 1063807be8fec7aaab78265858174cb3d2e351d3
   apiKey: "AIzaSyBGOViakSXjy7ZA6Y0_58XY6YYnQDLlvP4",
   authDomain: "teste-fd016.firebaseapp.com",
   databaseURL: "https://teste-fd016.firebaseio.com",
