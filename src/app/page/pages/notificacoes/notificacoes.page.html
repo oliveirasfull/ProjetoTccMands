@@ -1,9 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>notificacoes</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>notificacoes</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-card *ngFor="let agen of agendamento">
+        <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
+        <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
+        <ion-label>Descrição: {{agen.descricao}} </ion-label>
+        <ion-label>Hora/Hora: {{ agen.hora}} </ion-label>
+        <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+        <!-- <ion-label>{{ usuario.id }}</ion-label> -->
+        <ion-button (click)="confirmarAgendamento(agen)">
+            Confirma?
+        </ion-button>
+    </ion-card>
 </ion-content>

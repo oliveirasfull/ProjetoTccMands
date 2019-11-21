@@ -78,44 +78,6 @@ export class ProfissionalPage implements OnInit {
     });
   }
 
-  async confirmarAgendamento(agen: Agendamento){
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Confirme o  <strong>Agendamento</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            agen.pendente = false;
-            this.concelarAgendamento(agen);
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            agen.confirmacao = true;
-            agen.pendente = false;
-            this.aprovarAgendamento(agen);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
-  concelarAgendamento(agen: Agendamento){
-    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
-      console.log(e);
-    });
-  }
-
-  aprovarAgendamento(agen: Agendamento){
-    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
-      console.log(e);
-    });;
-  }
 
   // ------------------------- CAlendar ---------------------------
 
