@@ -30,6 +30,7 @@
     "@ionic/angular": "^4.7.1",
     "bootstrap": "^4.3.1",
     "cordova-android": "^8.1.0",
+    "cordova-plugin-calendar": "^5.1.5",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-facebook4": "^6.2.0",
     "cordova-plugin-firebase": "^2.0.5",
@@ -103,7 +104,8 @@
       "cordova-plugin-facebook4": {
         "APP_ID": "502099863683872",
         "APP_NAME": "Mands"
-      }
+      },
+      "cordova-plugin-calendar": {}
     },
     "platforms": [
       "android"
