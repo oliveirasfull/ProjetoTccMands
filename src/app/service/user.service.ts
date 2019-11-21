@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { FirebaseApp } from '@angular/fire';
+import { resolve } from 'url';
+import { reject } from 'q';
 
 export interface TypeUser {
   id?: string,
@@ -32,7 +35,7 @@ export class UserService {
   private user: Observable<any[]>;
   private userCollection: AngularFirestoreCollection<any>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private fb: FirebaseApp) {
     
     this.userCollection = this.afs.collection<any>('User');
 
@@ -64,6 +67,16 @@ export class UserService {
 
   addUser(user: TypeUser): Promise<DocumentReference> {
     return this.userCollection.add(user);
+  }
+
+  saverImage(user: any, fileToUpload: any){
+    return new Promise((resolve, reject) => {
+      let storageRef = this.fb.storage().ref();
+      let basePath = '/cliente/';
+      user.fullPath = basePath + '/' + user.nome + '/' + '.jpg';
+      let uploadTask = storageRef.child(user.fullPath).putString(fileToUpload, 'base64');
+      user.url = uploadTask.snapshot.downloadURL;
+    });
   }
 
   updateUserToPro(user: any, pro: TypePro): Promise<void> {
