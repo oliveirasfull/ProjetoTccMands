@@ -15,23 +15,7 @@ export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
   agendamento: Agendamento[] = [];
-  event = {
-    title: '',
-    desc:'',
-    startTime: '',
-    endTime: '',
-    allDay: false
-  };
-  minDate = new Date().toISOString();
-  eventSource = [];
-  calendar = {
-    mode: 'week',
-    currentDate: new Date()
-  };
-  viewTitle = '';
   
-  @ViewChild(CalendarComponent, {static: false}) myCal: CalendarComponent;
-
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
     @Inject(LOCALE_ID) private locale: string) {
@@ -117,8 +101,25 @@ export class ProfissionalPage implements OnInit {
     });;
   }
 
-  // ------------------------- CAlendar ---------------------------
+  irParaConfiguracao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/agendamento'], navigateExtras);
+  }
 
+  irParaNotificacao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/notificacoes'], navigateExtras);
+  }
+
+  
   
 
 

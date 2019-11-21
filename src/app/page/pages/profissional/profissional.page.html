@@ -12,7 +12,7 @@
                             Profissional
                         </ion-col>
                         <ion-col align-self-end>
-                            <ion-icon name="notifications-outline" routerLink="usuario/notificacoes"></ion-icon>
+                            <ion-icon name="notifications-outline" (click)="irParaNotificacao()"></ion-icon>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
@@ -62,11 +62,11 @@
 
                     <img src="./pages/usuario/foto/umafoto.png" />
                     <ion-card-header>
-                        <ion-card-subtitle>{{ data.nome }}</ion-card-subtitle>
+                        <ion-card-subtitle> {{data.descricao}}</ion-card-subtitle>
                         <ion-card-title> </ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
-                        {{data.descricaoServico}}
+
                     </ion-card-content>
 
                 </ion-card>
@@ -86,7 +86,7 @@
                     <ion-label>Pedicure</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                
+
                 <ion-chip *ngIf="data.cabelo">
                     <ion-label>Cabelo</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
@@ -98,21 +98,10 @@
                 </ion-chip>
 
 
-                <ion-item *ngFor="let agen of agendamento">
-                    <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
-                    <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
-                    <ion-label>Descrição: {{agen.descricao}} </ion-label>
-                    <ion-label>Hora/Hora: {{ agen.hora}} </ion-label>
-                    <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
-                    <!-- <ion-label>{{ usuario.id }}</ion-label> -->
-                    <ion-button (click)="confirmarAgendamento(agen)">
-                        Confirma?
-                    </ion-button>
-                </ion-item>
+
 
             </ion-card-content>
         </ion-app>
 
 
     </ion-content>
-    

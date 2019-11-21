@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar color="primary" aling="center" >
+    <ion-toolbar color="primary" aling="center">
         <ion-title>Agendar-Serviços</ion-title>
     </ion-toolbar>
 </ion-header>
@@ -8,16 +8,13 @@
 
 <ion-content>
     <ion-item>
-        <ion-label>Mês/Dia</ion-label>
-        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" [(ngModel)]="date"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Hora/Minutos A (15 min steps)</ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="hora"></ion-datetime>
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime display-format="DD.MM.2019 HH:mm" minuteValues="0,30" [(ngModel)]="startTime"></ion-datetime>
+        </ion-item>
     </ion-item>
     <ion-item>
-        <ion-input type="text" placeholder="Descreva O Que Deseja" [(ngModel)]="descricao"></ion-input>
+        <ion-input type="text" placeholder="Descrição do seu serviço" [(ngModel)]="descricao"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Manicure</ion-label>
@@ -39,12 +36,30 @@
         <ion-label>Atendimento Domicilio</ion-label>
         <ion-checkbox color="dark" checked="true" [(ngModel)]="atendimentoDomicilio"></ion-checkbox>
     </ion-item>
+
+
+
+
+
+
+
+
+
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="6"
+        endHour="22" startingDayWeek="1">
+    </calendar>
+
+
+
+
+
+
     <ion-grid fixed>
         <ion-row>
-            
-            <ion-col size="6" >
-                <ion-button  routerLink="/usuario/feed" color="danger">
-                    <ion-icon slot="start" name="star" ></ion-icon>
+
+            <ion-col size="6">
+                <ion-button routerLink="/usuario/feed" color="danger">
+                    <ion-icon slot="start" name="star"></ion-icon>
                     Voltar
                 </ion-button>
             </ion-col>
@@ -57,8 +72,5 @@
         </ion-row>
     </ion-grid>
 
-    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="6"
-        endHour="20" startingDayWeek="1">
-    </calendar>
 
 </ion-content>

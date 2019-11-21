@@ -31,7 +31,7 @@ export class AgendamentoPage implements OnInit {
   minDate = new Date().toISOString();
   eventSource = [];
   calendar = {
-    mode: 'week',
+    mode: 'day',
     currentDate: new Date()
   };
   viewTitle = '';
@@ -51,6 +51,7 @@ export class AgendamentoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.resetEvent();
   }
 
   onSubmit(){
