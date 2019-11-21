@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { TabsPage } from '../tabs/tabs.page'
 import { Agendamento, AgendamentoService } from 'src/app/service/agendamento/agendamento.service';
 import { AlertController } from '@ionic/angular';
-import { CalendarComponent } from 'ionic2-calendar/calendar'
+import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
 
 @Component({

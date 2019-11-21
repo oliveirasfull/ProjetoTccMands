@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase:{
+  firebase:{  
   apiKey: "AIzaSyAKXYRbfvlvjwDOgFarP9rmSlkUOItohIA",
   authDomain: "mands-cad72.firebaseapp.com",
   databaseURL: "https://mands-cad72.firebaseio.com",
@@ -12,16 +12,16 @@ export const environment = {
   storageBucket: "",
   messagingSenderId: "117311032703",
   appId: "1:117311032703:web:268dee1b28ef7933755e4a"
-  // Base de Dados do Lucas*/
-  /*
- 
+  // Base de Dados do Lucas*/ 
+  
+ /*
   apiKey: "AIzaSyBGOViakSXjy7ZA6Y0_58XY6YYnQDLlvP4",
   authDomain: "teste-fd016.firebaseapp.com",
   databaseURL: "https://teste-fd016.firebaseio.com",
   projectId: "teste-fd016",
   storageBucket: "teste-fd016.appspot.com",
   messagingSenderId: "355910603243"
-//*/
+    */
   }
 };
 
