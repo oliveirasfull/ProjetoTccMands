@@ -6,14 +6,14 @@
 
 <ion-content>
 
-    
+
     <ion-searchbar placeholder="Busque"></ion-searchbar>
     <!-- Codigo para fazer a listagem dos itens que existem no vetor 'user[]' -->
     <ion-label>
         <p>
             <ion-list *ngFor="let user of (user | async)">
                 <!-- Para ler qualquer vetor da classe 'Observable' tem que usar a função '(variavel | async)', só assim para mostrar as informações -->
-                <ionr   -item *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
+                <ion-item *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
                     <!-- Criei uma variavel com a string 'Pro' para fazer a comparação -->
                     <ion-label>
 
@@ -39,7 +39,7 @@
 
 
 
-<!--    <ion-card>
+    <!--    <ion-card>
 
         <ion-item>
           <ion-avatar item-start>
