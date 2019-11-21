@@ -62,11 +62,11 @@
 
                     <img src="./pages/usuario/foto/umafoto.png" />
                     <ion-card-header>
-                        <ion-card-subtitle>{{ data.nome }}</ion-card-subtitle>
+                        <ion-card-subtitle> {{data.descricao}}</ion-card-subtitle>
                         <ion-card-title> </ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
-                        {{data.descricaoServico}}
+
                     </ion-card-content>
 
                 </ion-card>
@@ -86,7 +86,7 @@
                     <ion-label>Pedicure</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                
+
                 <ion-chip *ngIf="data.cabelo">
                     <ion-label>Cabelo</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
@@ -115,4 +115,3 @@
 
 
     </ion-content>
-    
