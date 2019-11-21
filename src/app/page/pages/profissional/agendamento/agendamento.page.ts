@@ -51,6 +51,7 @@ export class AgendamentoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.resetEvent();
   }
 
   onSubmit(){
