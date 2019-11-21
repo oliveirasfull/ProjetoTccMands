@@ -72,28 +72,27 @@
                 </ion-card>
 
 
-                <ion-chip>
-
+                <ion-chip *ngIf="data.atendimentoDomicilio">
                     <ion-label>Atendimento Domicilio</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                <ion-chip>
 
+                <ion-chip *ngIf="data.manicure">
                     <ion-label>manicure</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                <ion-chip>
 
+                <ion-chip *ngIf="data.pedicure">
                     <ion-label>Pedicure</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                <ion-chip>
-
+                
+                <ion-chip *ngIf="data.cabelo">
                     <ion-label>Cabelo</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-                <ion-chip>
 
+                <ion-chip *ngIf="data.maquiagem">
                     <ion-label>Maquiagem</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
