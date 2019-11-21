@@ -15,23 +15,7 @@ export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
   agendamento: Agendamento[] = [];
-  event = {
-    title: '',
-    desc:'',
-    startTime: '',
-    endTime: '',
-    allDay: false
-  };
-  minDate = new Date().toISOString();
-  eventSource = [];
-  calendar = {
-    mode: 'week',
-    currentDate: new Date()
-  };
-  viewTitle = '';
   
-  @ViewChild(CalendarComponent, {static: false}) myCal: CalendarComponent;
-
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
     @Inject(LOCALE_ID) private locale: string) {
@@ -78,9 +62,64 @@ export class ProfissionalPage implements OnInit {
     });
   }
 
+  async confirmarAgendamento(agen: Agendamento){
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Confirme o  <strong>Agendamento</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            agen.pendente = false;
+            this.concelarAgendamento(agen);
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            agen.confirmacao = true;
+            agen.pendente = false;
+            this.aprovarAgendamento(agen);
+          }
+        }
+      ]
+    });
 
-  // ------------------------- CAlendar ---------------------------
+    await alert.present();
+  }
 
+  concelarAgendamento(agen: Agendamento){
+    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
+      console.log(e);
+    });
+  }
+
+  aprovarAgendamento(agen: Agendamento){
+    this.agendamentoService.confirmarAgendamento(agen).catch(e => {
+      console.log(e);
+    });;
+  }
+
+  irParaConfiguracao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/agendamento'], navigateExtras);
+  }
+
+  irParaNotificacao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/notificacoes'], navigateExtras);
+  }
+
+  
   
 
 

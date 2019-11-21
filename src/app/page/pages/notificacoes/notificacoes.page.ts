@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { Agendamento, AgendamentoService } from 'src/app/service/agendamento/agendamento.service';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TabsPage } from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-notificacoes',
@@ -13,7 +12,7 @@ export class NotificacoesPage implements OnInit {
   agendamento: Agendamento[] = [];
   
   
-  constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
+  constructor(private route: ActivatedRoute, private router: Router,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
     @Inject(LOCALE_ID) private locale: string) { }
 
