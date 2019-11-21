@@ -8,13 +8,10 @@
 
 <ion-content>
     <ion-item>
-        <ion-label>Mês/Dia</ion-label>
-        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2019" max="2019" value="2008-09-02" [(ngModel)]="date"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Hora/Minutos A (15 min steps)</ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="hora"></ion-datetime>
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime display-format="DD.MM.2019 HH:mm" minuteValues="0,30" [(ngModel)]="startTime"></ion-datetime>
+        </ion-item>
     </ion-item>
     <ion-item>
         <ion-input type="text" placeholder="Descreva O Que Deseja" [(ngModel)]="descricao"></ion-input>
