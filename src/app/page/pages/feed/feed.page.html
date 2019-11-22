@@ -3,11 +3,8 @@
         <ion-title>Feed</ion-title>
     </ion-toolbar>
 </ion-header>
-
-<ion-content >
-
-<!--
-    <ion-searchbar placeholder="Busque"></ion-searchbar>
+<ion-content class="tela-fundo">
+<!--   <ion-searchbar placeholder="Busque"></ion-searchbar>
      Codigo para fazer a listagem dos itens que existem no vetor 'user[]' 
     <ion-label>
         <p>
@@ -37,8 +34,6 @@
         </p>
     </ion-label>
 -->
-
-
     <ion-card *ngFor="let user of (user | async)">
         <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
             <ion-grid fixed>
@@ -64,8 +59,5 @@
             </ion-card-content>
         </ion-card>
     </ion-card>
-
-
-
 
 </ion-content>
