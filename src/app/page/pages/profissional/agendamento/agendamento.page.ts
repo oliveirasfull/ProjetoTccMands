@@ -36,7 +36,8 @@ export class AgendamentoPage implements OnInit {
 
   calendar = {
     mode: 'month',
-    currentDate: new Date()
+    currentDate: new Date(),
+    locale: this.locale
   };
   viewTitle = '';
 
