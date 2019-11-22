@@ -5,7 +5,8 @@ import { map, take } from 'rxjs/operators';
 
 export interface Agendamento{
   id?:string;
-  dataHora: Date,
+  data:string;
+  hora:string;
   descricao: string;
   idProfissional: string;
   idUsuario: string;

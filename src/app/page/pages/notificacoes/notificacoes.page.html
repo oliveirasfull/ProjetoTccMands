@@ -6,14 +6,21 @@
 
 <ion-content>
     <ion-card *ngFor="let agen of agendamento">
+        <ion-item *ngIfElse="agen.corfirmacao">
+            <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
+            <ion-label>Descrição: {{agen.descricao}} </ion-label>
+            <ion-label>Hora/Hora: {{ agen.dataHora}} </ion-label>
+            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+            <!-- <ion-label>{{ usuario.id }}</ion-label> -->
+            <ion-button (click)="confirmarAgendamento(agen)">
+                Confirma?
+            </ion-button>
+        </ion-item>
         <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
-        <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
-        <ion-label>Descrição: {{agen.descricao}} </ion-label>
-        <ion-label>Hora/Hora: {{ agen.hora}} </ion-label>
-        <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
-        <!-- <ion-label>{{ usuario.id }}</ion-label> -->
-        <ion-button (click)="confirmarAgendamento(agen)">
-            Confirma?
-        </ion-button>
+
     </ion-card>
+
+    <ion-text color="primary">
+
+    </ion-text>
 </ion-content>
