@@ -52,11 +52,13 @@ export class AgendamentoPage implements OnInit {
 
   ngOnInit() {
     this.resetEvent();
+    console.log(this.event.startTime)
   }
 
   onSubmit(){
     let tipoAgendamento: Agendamento = {
-      dataHora : this.event.startTime,
+      data: this.event.startTime,
+      hora:this.hora,
       descricao : this.descricao,
       idProfissional : this.dados.idProdissional,
       idUsuario : this.dados.idUser,
@@ -79,7 +81,11 @@ export class AgendamentoPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
+  formatacaoDeData(){
+    console.log( "valor da data",this.event.startTime.split('T')[0])
+    console.log("valor da hora ", this.hora)
 
+  }
   // --------------- Calendar -------------
   resetEvent(){
     this.event = {
