@@ -15,7 +15,6 @@ export class AgendamentoPage implements OnInit {
 
   dados: any;
   date: Date;
-  hora: string;
   descricao: string;
   atendimentoDomicilio: boolean = false;
   pedicure: boolean = false;
@@ -79,8 +78,7 @@ export class AgendamentoPage implements OnInit {
 
   onSubmit() {
     let tipoAgendamento: Agendamento = {
-      data: this.event.startTime,
-      hora:this.hora,
+      dataHora: this.date,
       descricao : this.descricao,
       idProfissional : this.dados.idProdissional,
       idUsuario : this.dados.idUser,
@@ -104,8 +102,8 @@ export class AgendamentoPage implements OnInit {
     }).then(toast => toast.present());
   }
   formatacaoDeData(){
-    console.log( "valor da data",this.event.startTime.split('T')[0])
-    console.log("valor da hora ", this.hora)
+    console.log( "valor da data",this.event.startTime)
+
 
   }
   // --------------- Calendar -------------
