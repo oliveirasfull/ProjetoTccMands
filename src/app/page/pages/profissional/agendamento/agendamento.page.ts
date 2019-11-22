@@ -20,6 +20,8 @@ export class AgendamentoPage implements OnInit {
   pedicure: boolean = false;
   manicure: boolean = false;
   vetorAgendamento: any[];
+  cont = 0;
+  contbo = false;
 
   minDate = new Date().toISOString();
 
@@ -31,10 +33,12 @@ export class AgendamentoPage implements OnInit {
     allDay: false
   };
 
+  tipoDeCalendar = 'month';
+
   eventSource = [];
 
   calendar = {
-    mode: 'month',
+    mode: this.tipoDeCalendar,
     currentDate: new Date(),
     locale: this.locale
   };
@@ -165,11 +169,20 @@ export class AgendamentoPage implements OnInit {
     this.viewTitle = title;
   }
 
-  onTimeSelected(ev) {
-    let selected = new Date(ev.selectedTime);
-    this.event.startTime = selected.toISOString();
-    selected.setHours(selected.getHours() + 1);
-    this.event.endTime = (selected.toISOString());
+  onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
+    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0));
+    this.cont++;
+    
+    if(this.cont != 1 && this.calendar.mode == 'month'){
+      this.calendar.mode = 'day';
+      this.cont = 0;
+      this.contbo = true
+    }
+
+    if(this.contbo && this.calendar.mode == 'day'){
+      console.log("tets");
+    }
+   
   }
 
   onCurrentDateChanged() {
