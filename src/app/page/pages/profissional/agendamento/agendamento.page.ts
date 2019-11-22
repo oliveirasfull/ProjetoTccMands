@@ -14,37 +14,58 @@ import { formatDate } from '@angular/common';
 export class AgendamentoPage implements OnInit {
 
   dados: any;
-  date: string;
+  date: Date;
   hora: string;
-  descricao : string;
+  descricao: string;
   atendimentoDomicilio: boolean = false;
   pedicure: boolean = false;
   manicure: boolean = false;
+  vetorAgendamento: any[];
+
+  minDate = new Date().toISOString();
 
   event = {
     title: '',
-    desc:'',
-    startTime: '',
-    endTime: '',
+    desc: '',
+    startTime: new Date().toISOString(),
+    endTime: new Date().toISOString(),
     allDay: false
   };
-  minDate = new Date().toISOString();
+
   eventSource = [];
+
   calendar = {
-    mode: 'day',
+    mode: 'month',
     currentDate: new Date()
   };
   viewTitle = '';
-  
-  @ViewChild(CalendarComponent, {static: false}) myCal: CalendarComponent;
 
-  constructor(private route: ActivatedRoute, 
+  @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
+
+  constructor(private route: ActivatedRoute,
     private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
-    private userService: UserService, @Inject(LOCALE_ID) private locale: string) { 
-    this.route.queryParams.subscribe(params =>{
-      if (params && params.special){
+    private userService: UserService, @Inject(LOCALE_ID) private locale: string) {
+    this.route.queryParams.subscribe(params => {
+      if (params && params.special) {
         this.dados = JSON.parse(params.special);
         console.log(this.dados);
+        this.agendamentoService.getAgendamento().subscribe(agen => {
+          agen.forEach(element => {
+            if (element.idProfissional == this.dados.idProfissional) {
+      
+              let eventCopy = {
+                title: element.descricao,
+                desc: element.descricao,
+                startTime: new Date(element.dataHora),
+                endTime: new Date(Date.UTC(element.dataHora.getFullYear(), element.dataHora.getMonth(),
+                  element.dataHora.getDate(), element.dataHora.getHours() + 1)),
+                AllDay: false
+              }
+
+              this.eventSource.push(eventCopy);
+            }
+          });
+        });
       }
     });
 
@@ -55,7 +76,7 @@ export class AgendamentoPage implements OnInit {
     console.log(this.event.startTime)
   }
 
-  onSubmit(){
+  onSubmit() {
     let tipoAgendamento: Agendamento = {
       data: this.event.startTime,
       hora:this.hora,
@@ -72,7 +93,7 @@ export class AgendamentoPage implements OnInit {
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
       this.showToast('Agendamento realizado');
-    }).catch(e => {console.log(e)});
+    }).catch(e => { console.log(e) });
   }
 
   showToast(msg) {
@@ -87,17 +108,17 @@ export class AgendamentoPage implements OnInit {
 
   }
   // --------------- Calendar -------------
-  resetEvent(){
+  resetEvent() {
     this.event = {
       title: '',
-      desc:'',
+      desc: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
       allDay: false
     };
   }
 
-  addEvent(){
+  addEvent() {
     let eventCopy = {
       title: this.event.title,
       startTime: new Date(this.event.startTime),
@@ -106,7 +127,7 @@ export class AgendamentoPage implements OnInit {
       desc: this.event.desc
     }
 
-    if(eventCopy.allDay){
+    if (eventCopy.allDay) {
       let start = eventCopy.startTime;
 
       eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()))
@@ -118,45 +139,45 @@ export class AgendamentoPage implements OnInit {
     this.resetEvent();
   }
 
-  changeMode(mode){
+  changeMode(mode) {
     this.calendar.mode = mode;
   }
 
-  back(){
+  back() {
     var swiper = document.querySelector('.swiper-container')['swiper'];
     swiper.slidePrev();
   }
 
-  next(){
+  next() {
     var swiper = document.querySelector('.swiper-container')['swiper'];
     swiper.slideNext();
   }
 
-  today(){
+  today() {
     this.calendar.currentDate = new Date();
   }
 
-  async onEventSelected(event){
+  async onEventSelected(event) {
     let start = formatDate(event.startTime, 'medium', this.locale);
     let end = formatDate(event.endTime, 'medium', this.locale);
   }
 
-  onViewTitleChanged(title){
+  onViewTitleChanged(title) {
     this.viewTitle = title;
   }
 
-  onTimeSelected(ev){
+  onTimeSelected(ev) {
     let selected = new Date(ev.selectedTime);
     this.event.startTime = selected.toISOString();
-    selected.setHours(selected.getHours() +1);
+    selected.setHours(selected.getHours() + 1);
     this.event.endTime = (selected.toISOString());
   }
 
-  onCurrentDateChanged(){
+  onCurrentDateChanged() {
 
   }
 
-  reloadSource(){
+  reloadSource() {
 
   }
 
