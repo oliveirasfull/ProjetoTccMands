@@ -39,24 +39,23 @@
 
 
 
-<<<<<<< HEAD
     <ion-card *ngFor="let user of (user | async)">
         <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
             <ion-grid fixed>
                 <ion-row>
                     <ion-col size="6">
-                        
+
                         <ion-avatar item-start>
                             <img src="../../../../assets/avatarteste.png">
                         </ion-avatar>
                     </ion-col>
                     <ion-col size="6">
-                            <h2>{{user.nomePro}}</h2>
+                        <h2>{{user.nomePro}}</h2>
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            
-          
+
+
             <p>{{user.descricaoServico}}</p>
             <img src="../../../../assets/manicure.png">
 
@@ -66,9 +65,6 @@
         </ion-card>
     </ion-card>
 
-=======
-    <!--    <ion-card>
->>>>>>> 1063807be8fec7aaab78265858174cb3d2e351d3
 
 
 
