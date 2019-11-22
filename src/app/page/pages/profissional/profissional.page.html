@@ -34,9 +34,13 @@
                                 <img src="../../../../assets/perfil.jpg" alt="">
                             </ion-avatar>
                         </ion-col>
-                        <ion-col>
+                     <!--   <ion-col
                             <img src="exibeAvaliacao()">
 
+                        </ion-col> -->
+
+                        <ion-col>
+                            <h2>{{data.nomePro}}</h2>
                         </ion-col>
 
                         <ion-row>
@@ -52,17 +56,17 @@
                                 <ion-button (click)="irParaAgendamento()">
                                     Agendar
                                 </ion-button>
-
                             </ion-col>
+
                         </ion-row>
                     </ion-row>
                 </ion-grid>
 
                 <ion-card>
 
-                    <img src="./pages/usuario/foto/umafoto.png" />
+                    <img src="../../../../assets/manicure.png" />
                     <ion-card-header>
-                        <ion-card-subtitle> {{data.descricao}}</ion-card-subtitle>
+                        <ion-card-subtitle> {{data.descricaoServico}}</ion-card-subtitle>
                         <ion-card-title> </ion-card-title>
                     </ion-card-header>
                     <ion-card-content>
@@ -70,6 +74,10 @@
                     </ion-card-content>
 
                 </ion-card>
+
+                <ion-toolbar color="primary">
+                    <ion-title>Serviços oferecidos</ion-title>
+                </ion-toolbar>
 
 
                 <ion-chip *ngIf="data.atendimentoDomicilio">
@@ -96,9 +104,6 @@
                     <ion-label>Maquiagem</ion-label>
                     <ion-icon name="checkmark"></ion-icon>
                 </ion-chip>
-
-
-
 
             </ion-card-content>
         </ion-app>
