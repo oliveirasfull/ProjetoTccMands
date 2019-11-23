@@ -1,16 +1,30 @@
 <ion-header>
     <ion-toolbar class="titulo" color="primary">
-        <ion-title>{{titulo}}</ion-title>
+        <ion-title>
+            <ion-grid>
+                <ion-row>
+                    <ion-col align-self-start>
+                        <ion-icon name="cog"></ion-icon>
+                    </ion-col>
+                    <ion-col align-self-center>
+                        {{titulo}}
+                    </ion-col>
+                    <ion-col align-self-end>
+                        <ion-icon name="notifications-outline" (click)="irParaNotificacao()"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-card  background-color="blue">
+    <ion-card background-color="blue">
 
         <ion-card-header>
 
-          <!--  <ion-card-subtitle>
+            <!--  <ion-card-subtitle>
                 <div class="row">
                     <div class="col-sm-6">
                         <ion-avatar>
@@ -46,34 +60,29 @@
                 gps
             </ion-button>
 
-        <!--   <ion-card-content>
-            <img src="../../../../assets/banner-oficial.png" />
-           </ion-card-content> -->
+            <ion-card-content>
+                <img src="../../../../assets/banner.png" />
+            </ion-card-content>
 
-         
-       <!--    <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> --> 
+            <!--    <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> -->
         </ion-card-header>
 
 
-       <!--<ion-card-content>
+        <!--<ion-card-content>
             Descrição do usuario
-        </ion-card-content>  --> 
-        <img src="../../../../assets/banner-oficial.png" />
-
+        </ion-card-content>  -->
     </ion-card>
 
-    <ion-card *ngIf="erro">
-        {{ erro }}        
-    </ion-card>
+
+
 
     <div>
         <ion-fab vertical="top " horizontal="end " slot="fixed ">
             <ion-fab-button>
-                <ion-icon name="add " (click)="irParaCriaProfissional()"></ion-icon>
+                <ion-icon name="add-circle-outline" (click)="irParaCriaProfissional()"></ion-icon>
             </ion-fab-button>
         </ion-fab>
     </div>
 
 
 </ion-content>
-

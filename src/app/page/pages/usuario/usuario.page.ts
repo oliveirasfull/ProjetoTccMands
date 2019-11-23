@@ -56,9 +56,9 @@ export class UsuarioPage implements OnInit {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.photo = base64Image;
       this.userService.uploadImage(this.photo, this.vetor).then(() =>{
-        this.showToast("Enviado");
+        
       }).catch(e =>{
-        this.showToast(e);
+     
         this.erro = e;
       });
      });
@@ -78,14 +78,15 @@ export class UsuarioPage implements OnInit {
       // data.coords.latitude
       // data.coords.longitude
      });
-  }     
-  
-  showToast(msg) {
-    this.toastCtrl.create({
-      message: msg,
-      duration: 10000
-    }).then(toast => toast.present());
-  }
+  } 
+  irParaNotificacao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/notificacoes'], navigateExtras);
+  }                  
 }                
      
             
