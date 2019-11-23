@@ -24,7 +24,14 @@ export interface TypePro {
   classificacao: number,
   cabelo: boolean,
   maquiagem: boolean,
-  idade: number
+  idade: number,
+  precoMaquiagem : number,
+  precoCabelo :number,
+  horarioManhaPro : [],
+  horarioTardePro : [],
+  horarioNoitePro : [],
+  diaDaSemanaPro : [],
+
 }
 
 @Injectable({
@@ -86,13 +93,19 @@ export class UserService {
       atendimentoDomicilio: pro.atendimentoDomicilio,
       descricaoServico:pro.descricaoServico,
       manicure: pro.manicure,
-      precoManicure: pro.precoManicure,
       pedicure: pro.pedicure,
-      precoPedicure: pro.precoPedicure,
       classificacao: pro.classificacao,
       idade: pro.idade,
       cabelo: pro.cabelo,
-      maquiagem: pro.maquiagem
+      maquiagem: pro.maquiagem, 
+      precoManicure: pro.precoManicure,
+      precoPedicure: pro.precoPedicure,
+      precoMaquiagem : pro.precoMaquiagem,
+      precoCabelo : pro.precoCabelo,
+      horarioManhaPro : pro.horarioManhaPro,
+      horarioTardePro : pro.horarioTardePro,
+      horarioNoitePro : pro.horarioTardePro,
+      diaDaSemanaPro : pro.diaDaSemanaPro
     });
   }
 

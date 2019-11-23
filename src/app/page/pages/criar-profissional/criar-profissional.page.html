@@ -1,6 +1,6 @@
 <ion-app>
     <ion-header translucent>
-        <ion-toolbar color="primary">
+        <ion-toolbar color="primary" style="text-align: center">
             <ion-title>Completar Conta</ion-title>
         </ion-toolbar>
     </ion-header>
@@ -12,11 +12,15 @@
             <ion-input type="string" placeholder="Descrição Dos Serviços" [(ngModel)]="pro.descricaoServico"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="number" placeholder="Idade" [(ngModel)]="pro.idade"></ion-input>
+            <ion-input type="number" placeholder="Sua idade" [(ngModel)]="pro.idade"></ion-input>
         </ion-item>
 
 
-
+        <ion-item color="primary">
+            <ion-label style="text-align: center">
+                Defina seus serviços
+            </ion-label>
+        </ion-item>
         <ion-item>
             <ion-label>Atendimento a domicilio</ion-label>
             <ion-toggle [(ngModel)]="pro.atendimentoDomicilio"></ion-toggle>
@@ -39,13 +43,32 @@
         </ion-item>
         <ion-item color="primary">
             <ion-label style="text-align: center">
+                Defina seus preços
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Valor da Manicure" [(ngModel)]="pro.precoManicure"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Valor da Pedicure" [(ngModel)]="pro.precoPedicure"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Valor do cabelo" [(ngModel)]="pro.precoCabelo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Valor da Maquiagem" [(ngModel)]="pro.precoMaquiagem"></ion-input>
+        </ion-item>
+
+
+        <ion-item color="primary">
+            <ion-label style="text-align: center">
                 Monte Seus Horarios de atendimento
             </ion-label>
         </ion-item>
         <ion-list>
             <ion-item>
                 <ion-label>Dias</ion-label>
-                <ion-select [(ngModel)]="diasDaSemana" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.diaDaSemanaPro" multiple="true" cancelText="cancelar" okText="Okay!">
                     <ion-select-option *ngFor="let dia of dias">{{dia.dia}}</ion-select-option>
                 </ion-select>
             </ion-item>
@@ -54,28 +77,26 @@
 
             <ion-item>
                 <ion-label>Manha</ion-label>
-                <ion-select [(ngModel)]="horarioManha" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioManhaPro" multiple="true" cancelText="cancelar" okText="Okay!">
                     <ion-select-option *ngFor="let hora of manha">{{hora.hora}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Tarde</ion-label>
-                <ion-select [(ngModel)]="horarioTarde" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioTardePro" multiple="true" cancelText="cancelar" okText="Okay!">
                     <ion-select-option *ngFor="let hora of tarde">{{hora.hora}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Noite</ion-label>
-                <ion-select [(ngModel)]="horarioNoite" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioNoitePro" multiple="true" cancelText="cancelar" okText="Okay!">
                     <ion-select-option *ngFor="let hora of noite">{{hora.hora}}</ion-select-option>
                 </ion-select>
             </ion-item>
 
 
         </ion-list>
-        <ion-button (click)="horas()">
-            salvar array de horas
-        </ion-button>
+
 
 
 
@@ -89,14 +110,14 @@
                         Voltar
                     </ion-button>
                 </ion-col>
-                <!--
+
                 <ion-col size="6">
                     <ion-button (click)="addPro()" routerLink="/usuario/profissional">
                         <ion-icon slot="start" name="star"></ion-icon>
                         Salvar
                     </ion-button>
                 </ion-col>
--->
+
             </ion-row>
         </ion-grid>
 
