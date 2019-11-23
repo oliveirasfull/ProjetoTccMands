@@ -1,7 +1,44 @@
-/*.body{
-    background-color:rgb(12, 49, 218);
-}*/
-
-.tela{
-    background: #0000CD !important;
+page-feed{
+  
 }
+.card-background-feed {
+
+  h2 {
+    position: relative;
+    text-align:inherit;
+    background: blue;
+  }
+
+  .h2 {
+    text-align: center;
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+  }
+  .button-card{
+    text-align: center;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+} 
+
+
+.h2 {
+    text-align: center;
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+  }

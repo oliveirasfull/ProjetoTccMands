@@ -21,13 +21,19 @@ export class CriarProfissionalPage implements OnInit {
     descricaoServico: '',
     atendimentoDomicilio: false,
     manicure: false,
-    precoManicure: 0,
+    precoManicure: null,
     pedicure: false,
     cabelo: false,
     maquiagem: false,
-    precoPedicure: 0,
+    precoPedicure: null,
     classificacao: 0,
-    idade: 0
+    idade: null,
+    precoCabelo : null,
+    precoMaquiagem: null,
+    horarioManhaPro : [],
+    horarioTardePro : [],
+    horarioNoitePro : [],
+    diaDaSemanaPro : [],
   };
   manha: any[] = [
     {
@@ -153,13 +159,7 @@ export class CriarProfissionalPage implements OnInit {
     }).catch(e => { console.log(e) });
     
   }
-  horas(){
-    console.log(this.horarioManha)
-    console.log(this.horarioTarde)
-    console.log(this.horarioNoite)
-    console.log(this.diasDaSemana)
-    
-  }
+  
   
 
 

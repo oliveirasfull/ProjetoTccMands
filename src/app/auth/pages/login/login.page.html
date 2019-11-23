@@ -1,7 +1,10 @@
-<ion-content padding>
-    <h1 text-center>
+<ion-content padding >
+   <!-- <h1 text-center>
         <h1 color="primary"> Mands </h1>
-    </h1>
+    </h1> -->
+
+    <img src="../../../../assets/banner-oficial.png" />
+
 
     <form [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
         <ng-container *ngIf="!configs.isSignIn">
@@ -43,7 +46,8 @@
         <ion-icon name="logo-facebook" slot="start"></ion-icon>
         Login com facebook
     </ion-button>
+    
 
-
+  
 
 </ion-content>
