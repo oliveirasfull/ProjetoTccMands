@@ -9,7 +9,7 @@ export const environment = {
   authDomain: "mands-cad72.firebaseapp.com",
   databaseURL: "https://mands-cad72.firebaseio.com",
   projectId: "mands-cad72",
-  storageBucket: "",
+  storageBucket: "mands-cad72.appspot.com",
   messagingSenderId: "117311032703",
   appId: "1:117311032703:web:268dee1b28ef7933755e4a"
   // Base de Dados do Lucas*/ 
