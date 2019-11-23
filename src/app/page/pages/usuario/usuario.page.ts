@@ -20,6 +20,7 @@ export class UsuarioPage implements OnInit {
   vetor: any;
   data: any;
   photo : string = '';
+  erro: any;
   
   
   constructor(private userService: UserService, private toastCtrl: ToastController, 
@@ -52,12 +53,14 @@ export class UsuarioPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.photo = base64Image;
-     }, (err) => {
-      // Handle error
+      this.userService.uploadImage(this.photo, this.vetor).then(() =>{
+        this.showToast("Enviado");
+      }).catch(e =>{
+        this.showToast(e);
+        this.erro = e;
+      });
      });
   }
 
@@ -75,7 +78,14 @@ export class UsuarioPage implements OnInit {
       // data.coords.latitude
       // data.coords.longitude
      });
-  }                   
+  }     
+  
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 10000
+    }).then(toast => toast.present());
+  }
 }                
      
             

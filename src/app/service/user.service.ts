@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { ToastController } from '@ionic/angular';
 import { FirebaseApp } from '@angular/fire';
-import { resolve } from 'url';
-import { reject } from 'q';
 
 export interface TypeUser {
   id?: string,
@@ -35,20 +35,20 @@ export class UserService {
   private user: Observable<any[]>;
   private userCollection: AngularFirestoreCollection<any>;
 
-  constructor(private afs: AngularFirestore, private fb: FirebaseApp) {
-    
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage, private fb: FirebaseApp) {
+
     this.userCollection = this.afs.collection<any>('User');
 
     this.user = this.userCollection.snapshotChanges().pipe(
       map(action => {
-        return action.map( a => {
+        return action.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
           return { id, ...data }
         })
       })
     );
-    
+
   }
 
   getUsers(): Observable<any[]> {
@@ -69,22 +69,25 @@ export class UserService {
     return this.userCollection.add(user);
   }
 
-  saverImage(user: any, fileToUpload: any){
-    return new Promise((resolve, reject) => {
-      let storageRef = this.fb.storage().ref();
-      let basePath = '/cliente/';
-      user.fullPath = basePath + '/' + user.nome + '/' + '.jpg';
-      let uploadTask = storageRef.child(user.fullPath).putString(fileToUpload, 'base64');
-      user.url = uploadTask.snapshot.downloadURL;
+  uploadImage(fileToUpload: any, user: any): Promise<void>{
+    let storageRef = this.fb.storage().ref();
+    let basePath = '/user/'
+    let fullPath = basePath + '/' + user.nome + '.jpg';
+    let uploadTask = storageRef.child(fullPath).putString(fileToUpload, 'base64');
+    let url = uploadTask.snapshot.downloadURL;
+
+    return this.userCollection.doc(user.id).update({
+      fullPath: fullPath,
+      url: url
     });
   }
 
   updateUserToPro(user: any, pro: TypePro): Promise<void> {
-    return this.userCollection.doc(user.id).update({ 
+    return this.userCollection.doc(user.id).update({
       profissionalAtivo: true,
       nomePro: pro.nomePro,
       atendimentoDomicilio: pro.atendimentoDomicilio,
-      descricaoServico:pro.descricaoServico,
+      descricaoServico: pro.descricaoServico,
       manicure: pro.manicure,
       precoManicure: pro.precoManicure,
       pedicure: pro.pedicure,

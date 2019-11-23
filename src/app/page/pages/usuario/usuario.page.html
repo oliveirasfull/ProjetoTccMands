@@ -51,8 +51,9 @@
         </ion-card-content>  --> 
     </ion-card>
 
-
-  
+    <ion-card *ngIf="erro">
+        {{ erro }}        
+    </ion-card>
 
     <div>
         <ion-fab vertical="top " horizontal="end " slot="fixed ">

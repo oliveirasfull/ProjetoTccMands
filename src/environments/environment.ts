@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase:{  
+  firebase:{
   apiKey: "AIzaSyAKXYRbfvlvjwDOgFarP9rmSlkUOItohIA",
   authDomain: "mands-cad72.firebaseapp.com",
   databaseURL: "https://mands-cad72.firebaseio.com",
@@ -20,8 +20,9 @@ export const environment = {
   databaseURL: "https://teste-fd016.firebaseio.com",
   projectId: "teste-fd016",
   storageBucket: "teste-fd016.appspot.com",
-  messagingSenderId: "355910603243"
-    */
+  messagingSenderId: "355910603243",
+  appId: "1:355910603243:web:4e0c54c2f6d294c0"
+  */
   }
 };
 
