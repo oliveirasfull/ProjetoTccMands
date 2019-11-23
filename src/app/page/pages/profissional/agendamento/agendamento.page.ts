@@ -52,11 +52,15 @@ export class AgendamentoPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.dados = JSON.parse(params.special);
+
         console.log(this.dados);
+
+        this.preencherCalendar();
+
         this.agendamentoService.getAgendamento().subscribe(agen => {
           agen.forEach(element => {
             if (element.idProfissional == this.dados.idProfissional) {
-      
+
               let eventCopy = {
                 title: element.descricao,
                 desc: element.descricao,
@@ -68,24 +72,119 @@ export class AgendamentoPage implements OnInit {
 
               this.eventSource.push(eventCopy);
             }
+
           });
+
         });
+
       }
     });
 
   }
 
   ngOnInit() {
-    this.resetEvent();
     console.log(this.event.startTime)
+  }
+
+  preencherCalendar() {
+    let falso = 4 ;
+    
+
+    for (let index = 6; index <= 12; index++) {
+      
+      if (6 == index) {
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+      
+      if (7 == index) {
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+      if(8 == index){
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+      if(9 == falso){
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+      if(10 == index){
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+      if(11 == falso){
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+      if(12 == index){
+        let eventCopy = {
+          title: 'Ocupado',
+          desc: 'Ocupado',
+          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
+          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
+          AllDay: false
+        }
+        console.log(eventCopy);
+        this.eventSource.push(eventCopy);
+      }
+
+    }
   }
 
   onSubmit() {
     let tipoAgendamento: Agendamento = {
       dataHora: this.date,
-      descricao : this.descricao,
-      idProfissional : this.dados.idProdissional,
-      idUsuario : this.dados.idUser,
+      descricao: this.descricao,
+      idProfissional: this.dados.idProdissional,
+      idUsuario: this.dados.idUser,
       atendimentoDomicilio: this.atendimentoDomicilio,
       pedicure: this.pedicure,
       manicure: this.manicure,
@@ -105,8 +204,8 @@ export class AgendamentoPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
-  formatacaoDeData(){
-    console.log( "valor da data",this.event.startTime)
+  formatacaoDeData() {
+    console.log("valor da data", this.event.startTime)
 
 
   }
@@ -146,16 +245,6 @@ export class AgendamentoPage implements OnInit {
     this.calendar.mode = mode;
   }
 
-  back() {
-    var swiper = document.querySelector('.swiper-container')['swiper'];
-    swiper.slidePrev();
-  }
-
-  next() {
-    var swiper = document.querySelector('.swiper-container')['swiper'];
-    swiper.slideNext();
-  }
-
   today() {
     this.calendar.currentDate = new Date();
   }
@@ -167,22 +256,28 @@ export class AgendamentoPage implements OnInit {
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
+    
+    if (this.calendar.mode == 'day'){
+      let teste = new Date(title);
+      console.log('Mês: ' + teste.getUTCMonth());
+    }
   }
 
   onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
     console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0));
     this.cont++;
-    
-    if(this.cont != 1 && this.calendar.mode == 'month'){
+
+    if (this.cont != 1 && this.calendar.mode == 'month') {
+      console.log(this.cont);
       this.calendar.mode = 'day';
       this.cont = 0;
       this.contbo = true
     }
 
-    if(this.contbo && this.calendar.mode == 'day'){
-      console.log("tets");
+    if (this.contbo && this.calendar.mode == 'day' && this.cont != 0) {
+
     }
-   
+
   }
 
   onCurrentDateChanged() {
