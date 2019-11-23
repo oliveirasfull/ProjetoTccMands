@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { Push } from '@ionic-native/push/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
@@ -22,7 +23,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
         FormsModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        AngularFireStorageModule
       ],
   providers:[
     Push,
