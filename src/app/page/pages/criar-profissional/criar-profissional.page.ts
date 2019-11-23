@@ -11,7 +11,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./criar-profissional.page.scss'],
 })
 export class CriarProfissionalPage implements OnInit {
-
+  horarioManha : any [];
+  horarioTarde : any [];
+  horarioNoite: any [];
+  diasDaSemana: any [];
   tipoUser: any;
   pro: TypePro = {
     nomePro: '',
@@ -26,6 +29,99 @@ export class CriarProfissionalPage implements OnInit {
     classificacao: 0,
     idade: 0
   };
+  manha: any[] = [
+    {
+      hora: '6:00AM'
+    },
+    {
+      
+      hora: '7:00AM'
+     
+    },
+    {
+      
+      hora: '8:00AM'
+     
+    },
+    {
+      
+      hora: '9:00AM'
+     
+    },
+    {
+      
+      hora: '10:00AM'
+     
+    },
+    {
+      
+      hora: '11:00AM'
+     
+    },
+    {
+      
+      hora: '12:00AM'
+     
+    }
+  ];
+  tarde: any[] = [
+    {
+      hora: '13:00AM'
+    },
+    {
+      hora: '14:00AM'
+    },
+    {
+      hora: '15:00AM'
+    },
+    {
+      hora: '16:00AM'
+    },
+    {
+      hora: '17:00AM'
+    },
+    {
+      hora: '18:00AM'
+    },
+  ];
+  noite: any[] = [
+    {
+      hora: '19:00AM'
+    },
+    {
+      hora: '20:00AM'
+    },
+    {
+      hora: '21:00AM'
+    },
+    {
+      hora: '22:00AM'
+    },
+  ];
+  dias: any[] = [
+    {
+      dia: 'Segunda-Feira'
+    },
+    {
+      dia: 'Terça-Feira'
+    },
+    {
+      dia: 'Quarta-Feira'
+    },
+    {
+      dia: 'Quinta-Feira'
+    },
+    {
+      dia: 'Sexta-feira'
+    },
+    {
+      dia: 'Sabado'
+    },
+    {
+      dia: 'Domingo'
+    },
+  ];
+
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService, 
     private toastCtrl: ToastController, private route: ActivatedRoute) {
@@ -57,6 +153,14 @@ export class CriarProfissionalPage implements OnInit {
     }).catch(e => { console.log(e) });
     
   }
+  horas(){
+    console.log(this.horarioManha)
+    console.log(this.horarioTarde)
+    console.log(this.horarioNoite)
+    console.log(this.diasDaSemana)
+    
+  }
+  
 
 
 }
