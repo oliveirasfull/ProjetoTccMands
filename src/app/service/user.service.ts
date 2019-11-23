@@ -27,10 +27,10 @@ export interface TypePro {
   idade: number,
   precoMaquiagem : number,
   precoCabelo :number,
-  horarioManhaPro : [],
-  horarioTardePro : [],
-  horarioNoitePro : [],
-  diaDaSemanaPro : [],
+  horarioManhaPro : number[],
+  horarioTardePro : number[],
+  horarioNoitePro : number[],
+  diaDaSemanaPro : number[],
 
 }
 
