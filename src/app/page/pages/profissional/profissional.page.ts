@@ -38,8 +38,8 @@ export class ProfissionalPage implements OnInit {
   }
 
 
-  exibeAvaliacao() {
-    this.coracaoCheio
+  avaliacao() {
+    console.log("avaliação exibida")
 
   }
 
