@@ -1,9 +1,9 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar color="primary" style="text-align: center">
         <ion-title>Feed</ion-title>
     </ion-toolbar>
 </ion-header>
-   <ion-searchbar placeholder="Busque"></ion-searchbar>
+<ion-searchbar placeholder="Busque"></ion-searchbar>
 <!--     Codigo para fazer a listagem dos itens que existem no vetor 'user[]' 
     <ion-label>
         <p>
@@ -35,7 +35,7 @@
 -->
 <ion-content>
     <ion-card *ngFor="let user of (user | async)">
-        <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
+        <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)" style="background-image: linear-gradient(white, rgba(56,128,255)">
             <ion-grid fixed>
                 <ion-row>
                     <ion-col size="6">
@@ -52,12 +52,11 @@
 
 
             <p>{{user.descricaoServico}}</p>
-            <img src="../../../../assets/manicure.png">
 
-            <ion-card-content>
-                <p>Entre no perfil para obter mais informações.</p>
-            </ion-card-content>
+            <p>Entre no perfil para obter mais informações.</p>
+
         </ion-card>
     </ion-card>
+
 
 </ion-content>
