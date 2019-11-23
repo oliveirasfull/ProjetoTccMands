@@ -56,9 +56,9 @@ export class UsuarioPage implements OnInit {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.photo = base64Image;
       this.userService.uploadImage(this.photo, this.vetor).then(() =>{
-        this.showToast("Enviado");
+        
       }).catch(e =>{
-        this.showToast(e);
+     
         this.erro = e;
       });
      });
