@@ -75,7 +75,15 @@ export class UsuarioPage implements OnInit {
       // data.coords.latitude
       // data.coords.longitude
      });
-  }                   
+  } 
+  irParaNotificacao(){
+    let navigateExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.data)
+      }
+    };
+    this.router.navigate(['./usuario/notificacoes'], navigateExtras);
+  }                  
 }                
      
             
