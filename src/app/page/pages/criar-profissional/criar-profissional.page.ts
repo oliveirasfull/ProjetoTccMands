@@ -37,95 +37,104 @@ export class CriarProfissionalPage implements OnInit {
   };
   manha: any[] = [
     {
-      hora: '6:00AM'
+      
+      hora: 6
     },
     {
       
-      hora: '7:00AM'
+      hora: 7
      
     },
     {
       
-      hora: '8:00AM'
+      hora: 8
      
     },
     {
       
-      hora: '9:00AM'
+      hora: 9
      
     },
     {
       
-      hora: '10:00AM'
+      hora: 10
      
     },
     {
       
-      hora: '11:00AM'
+      hora: 11
      
     },
     {
       
-      hora: '12:00AM'
+      hora: 12
      
     }
   ];
   tarde: any[] = [
     {
-      hora: '13:00AM'
+      hora: 13
     },
     {
-      hora: '14:00AM'
+      hora: 14
     },
     {
-      hora: '15:00AM'
+      hora: 15
     },
     {
-      hora: '16:00AM'
+      hora: 16
     },
     {
-      hora: '17:00AM'
+      hora: 17
     },
     {
-      hora: '18:00AM'
+      hora: 18
     },
   ];
   noite: any[] = [
     {
-      hora: '19:00AM'
+      hora: 19
     },
     {
-      hora: '20:00AM'
+      hora: 20
     },
     {
-      hora: '21:00AM'
+      hora: 21
     },
     {
-      hora: '22:00AM'
+      hora: 22
     },
   ];
   dias: any[] = [
     {
+      
+      dia : 'Domingo'
+    },
+    {
+      
       dia: 'Segunda-Feira'
     },
     {
+     
       dia: 'Terça-Feira'
     },
     {
+      
       dia: 'Quarta-Feira'
     },
     {
+      
       dia: 'Quinta-Feira'
     },
     {
+      
       dia: 'Sexta-feira'
     },
     {
+      
       dia: 'Sabado'
     },
-    {
-      dia: 'Domingo'
-    },
+    
   ];
 
 
@@ -158,6 +167,9 @@ export class CriarProfissionalPage implements OnInit {
 
     }).catch(e => { console.log(e) });
     
+  }
+  hora(){
+    console.log(this.pro.diaDaSemanaPro)
   }
   
   
