@@ -15,6 +15,7 @@ export class ProfissionalPage implements OnInit {
   public coracaoCheio: string = "../../../../assets/icon/estrelaCheia.png"
   data: any;
   agendamento: Agendamento[] = [];
+  userLocal: boolean = false;
   
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
@@ -32,6 +33,7 @@ export class ProfissionalPage implements OnInit {
           console.log(this.data);
           this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
           console.log(this.agendamento);
+          this.userLocal = true;
         }
       }
     });

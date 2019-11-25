@@ -9,15 +9,34 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./notificacoes.page.scss'],
 })
 export class NotificacoesPage implements OnInit {
+
   agendamento: Agendamento[] = [];
+  data: any;
   
   
   constructor(private route: ActivatedRoute, private router: Router,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
-    @Inject(LOCALE_ID) private locale: string) { }
+    @Inject(LOCALE_ID) private locale: string) {}
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.data = JSON.parse(params.special);
+        console.log(this.data);
+      } 
+    });
+
+    this.agendamentoService.getAgendamento().subscribe(agen =>{
+      agen.forEach(element => {
+        if(element.idProfissional == this.data.id && element.pendente == true){
+          this.agendamento.push(element);
+        }
+      });
+    });
   }
+
+
   async confirmarAgendamento(agen: Agendamento){
     const alert = await this.alertController.create({
       header: 'Confirm!',
