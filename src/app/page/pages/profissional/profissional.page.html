@@ -1,6 +1,4 @@
-<body background-color="blue">
-
-    <ion-header>
+<ion-header>
         <ion-toolbar color="primary">
             <ion-title>
                 <ion-grid>
@@ -19,12 +17,10 @@
 
             </ion-title>
         </ion-toolbar>
-    </ion-header>
+</ion-header>
 
-    <ion-content>
-
-
-
+<ion-content>
+    <ion-card style="background-image: linear-gradient(rgb(215, 214, 230), rgb(224, 224, 235)" >
         <ion-card-content fullscreen>
             <ion-grid>
                 <ion-row align-items-start>
@@ -37,17 +33,17 @@
                             <img src="exibeAvaliacao()">
 
                         </ion-col> -->
-
+     
                     <ion-col>
-                        <h2>{{data.nomePro}}</h2>
+                        <h2 class="descricao">{{data.nomePro}}</h2>
                     </ion-col>
 
                     <ion-row>
-                        <ion-col size="6">
+                       <!-- <ion-col size="6">
                             <ion-button (click)="avaliacao()">
                                 <ion-icon name="star"></ion-icon>
                             </ion-button>
-                        </ion-col>
+                        </ion-col> -->
 
                         <ion-col size="6">
 
@@ -60,20 +56,13 @@
                 </ion-row>
             </ion-grid>
 
-            <ion-card>
-
-
-                <ion-card-header>
-                    <ion-card-subtitle> {{data.descricaoServico}}</ion-card-subtitle>
-                    <ion-card-title> </ion-card-title>
+            <ion-card> <!--Descrição do usuario, buscado na base de dados-->
+                <ion-card-header >                   
+                    <h2 class="descricao">  {{data.descricaoServico}} </h2>
                 </ion-card-header>
-                <ion-card-content>
-
-                </ion-card-content>
-
             </ion-card>
 
-            <ion-toolbar color="tertiary">
+            <ion-toolbar color="primary">
                 <ion-title style="text-align: center; ">Serviços oferecidos</ion-title>
             </ion-toolbar>
 
@@ -105,9 +94,11 @@
 
         </ion-card-content>
 
+    </ion-card>
 
-        <ion-toolbar color="primary">
+   
+    <!--   <ion-toolbar color="primary">
             <ion-title>Serviços Prestados</ion-title>
-        </ion-toolbar>
-
+        </ion-toolbar> --> 
     </ion-content>
+
