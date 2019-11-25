@@ -2,37 +2,13 @@
         <ion-toolbar color="primary" style="text-align: center">
             <ion-title>Feed</ion-title>
         </ion-toolbar>
-    </ion-header>
+</ion-header>
+
     <ion-searchbar placeholder="Busque"></ion-searchbar>
-    <!--     Codigo para fazer a listagem dos itens que existem no vetor 'user[]' 
-        <ion-label>
-            <p>
-                <ion-list *ngFor="let user of (user | async)">
-                     Para ler qualquer vetor da classe 'Observable' tem que usar a função '(variavel | async)', só assim para mostrar as informações 
-                    <ion-item *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)">
-                        Criei uma variavel com a string 'Pro' para fazer a comparação 
-                        <ion-label>
-                            <ion-list>
-                                <img src="../../../../assets/icon/estrelaVazia.png">
-                                <img src="../../../../assets/icon/estrelaVazia.png">
-                                <img src="../../../../assets/icon/estrelaVazia.png">
-                                <img src="../../../../assets/icon/estrelaVazia.png">
-                                <img src="../../../../assets/icon/estrelaVazia.png">
-                                <ion-avatar item-start>
-                                    <img src="../../../../assets/perfil.jpg">
-                                </ion-avatar>
-                                <h2 style="color: brown;">{{user.nomePro}}</h2>
-                                <p>{{user.descricaoServico}}</p>
-                            </ion-list>
-                        </ion-label>
-                    </ion-item>
-                </ion-list>
-            </p>
-        </ion-label>
-    -->
+   
     <ion-content>
-        <ion-card *ngFor="let user of (user | async)">
-            <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)" style="background-image: linear-gradient(white, rgba(56,128,255)">
+        <ion-card *ngFor="let user of (user | async)" style="background-image: linear-gradient(rgb(38, 17, 231), rgb(18, 14, 231)">
+            <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)" style="background-image: linear-gradient(rgb(224, 223, 230), rgb(224, 223, 223)">
                 <ion-grid fixed>
                     <ion-row>
                         <ion-col size="6">
@@ -42,15 +18,15 @@
                             </ion-avatar>
                         </ion-col>
                         <ion-col size="6"> 
-                            <h2 color="blue">{{user.nomePro}}</h2>
+                            <h4 class="descricao" >{{user.nomePro}}</h4>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
     
     
-                <p>{{user.descricaoServico}}</p>
+                <h6 class="descricao">{{user.descricaoServico}}</h6>
     
-                <p>Entre no perfil para obter mais informações.</p>
+                <h6 class="descricao"> Entre no perfil para obter mais informações.</h6>
     
             </ion-card>
         </ion-card>
