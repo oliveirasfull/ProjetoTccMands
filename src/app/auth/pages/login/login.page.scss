@@ -1,0 +1,25 @@
+/*.oceano{
+    position: relative;
+   // top: -10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    background: #7777ef;
+
+      
+} */
+
+.waves{
+    position: relative;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 105px; 
+    background-image: url('../../../../assets/waves.png');
+    background-size: contain;
+    transition: all 0.5s;
+
+
+}

@@ -1,12 +1,11 @@
-<ion-content padding >
+  <ion-content padding >
+      
    <!-- <h1 text-center>
         <h1 color="primary"> Mands </h1>
     </h1> -->
-
     <img src="../../../../assets/banner-oficial.png" />
-
-
-    <form [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
+    
+    <form class="" [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
         <ng-container *ngIf="!configs.isSignIn">
             <ion-item>
                 <ion-icon name="person" color="primary" slot="start"> </ion-icon>
@@ -37,17 +36,14 @@
 
             </ion-item>
         </ion-list>
-        <ion-button expand="block" type="submit" [disabled]="authForm.invalid">{{configs.action }}</ion-button>
+        <ion-button  expand="block" type="submit" [disabled]="authForm.invalid">{{configs.action }}</ion-button>
     </form>
+   
 
-
-    <ion-button expand="block" fill="clear" (click)="changeAuthAction()">{{configs.actionChange}}</ion-button>
-    <ion-button expand="block" (click)="onSubmit(authProviders.Facebook)">
+    <ion-button  expand="block" fill="clear" (click)="changeAuthAction()">{{configs.actionChange}}</ion-button>
+    <ion-button  expand="block" (click)="onSubmit(authProviders.Facebook)" >
         <ion-icon name="logo-facebook" slot="start"></ion-icon>
         Login com facebook
     </ion-button>
-    
-
-  
-
+ 
 </ion-content>
