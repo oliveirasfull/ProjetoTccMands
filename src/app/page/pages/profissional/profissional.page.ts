@@ -16,7 +16,7 @@ export class ProfissionalPage implements OnInit {
   data: any;
   agendamento: Agendamento[] = [];
   userLocal: boolean = false;
-  
+
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
     @Inject(LOCALE_ID) private locale: string) {
@@ -46,7 +46,7 @@ export class ProfissionalPage implements OnInit {
   }
 
   irParaAgendamento() {
-    let user = {idProdissional: this.data.id, idUser: this.tabs.user.id, nomeUser: this.tabs.user.nome}
+    let user = {pro: this.data, user: this.tabs.getUser()};
     let navigateExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(user)
@@ -55,16 +55,16 @@ export class ProfissionalPage implements OnInit {
     this.router.navigate(['./usuario/agendamento'], navigateExtras);
   }
 
-  doRefresh(event){
+  doRefresh(event) {
     console.log('Começou');
 
-    setTimeout(() =>{
+    setTimeout(() => {
       console.log('Operação a caminho');
       event.target.complete()
     });
   }
 
-  async confirmarAgendamento(agen: Agendamento){
+  async confirmarAgendamento(agen: Agendamento) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: 'Confirme o  <strong>Agendamento</strong>!!!',
@@ -91,19 +91,19 @@ export class ProfissionalPage implements OnInit {
     await alert.present();
   }
 
-  concelarAgendamento(agen: Agendamento){
+  concelarAgendamento(agen: Agendamento) {
     this.agendamentoService.confirmarAgendamento(agen).catch(e => {
       console.log(e);
     });
   }
 
-  aprovarAgendamento(agen: Agendamento){
+  aprovarAgendamento(agen: Agendamento) {
     this.agendamentoService.confirmarAgendamento(agen).catch(e => {
       console.log(e);
     });;
   }
 
-  irParaConfiguracao(){
+  irParaConfiguracao() {
     let navigateExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(this.data)
@@ -112,7 +112,7 @@ export class ProfissionalPage implements OnInit {
     this.router.navigate(['./usuario/agendamento'], navigateExtras);
   }
 
-  irParaNotificacao(){
+  irParaNotificacao() {
     let navigateExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(this.data)
@@ -121,10 +121,10 @@ export class ProfissionalPage implements OnInit {
     this.router.navigate(['./usuario/notificacoes'], navigateExtras);
   }
 
-  
-  
 
 
-  
+
+
+
 
 }
