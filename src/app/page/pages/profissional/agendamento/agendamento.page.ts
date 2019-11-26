@@ -24,6 +24,7 @@ export class AgendamentoPage implements OnInit {
   contbo = false;
   DiaDaSemana: string[] = [' Domingo', ' Segunda-Feira', ' Terça-Feira', ' Quarta-Feira', ' Quinta-Feira', ' Sexta-feira', ' Sabado'];
   vetorDiaDaSemana: number[] = [];
+  double = false;
 
   minDate = new Date().toISOString();
 
@@ -211,8 +212,6 @@ export class AgendamentoPage implements OnInit {
       allDay: false
     };
 
-    console.log('Teste = ' + eventCopy);
-
     this.eventSource.push(eventCopy);
   }
 
@@ -305,11 +304,19 @@ export class AgendamentoPage implements OnInit {
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
+    /*let texto = this.viewTitle.split(' ');
+    let day = texto[1].split(',');
 
     if (this.calendar.mode == 'day') {
-      let teste = new Date(title);
-      this.preencherCalendar(teste);
-    }
+      if (texto[0] == "dezembro"){
+        let teste = new Date(Date.UTC(parseInt(texto[2]), 11, parseInt(day[0])));
+        this.preencherCalendar(teste);
+      }else{
+        let teste = new Date(title);
+        this.preencherCalendar(teste);
+      }
+      
+    }*/
   }
 
   onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
