@@ -13,15 +13,18 @@ import { formatDate } from '@angular/common';
 })
 export class AgendamentoPage implements OnInit {
 
-  dados: any;
+  dados: any = '';
   date: Date;
-  descricao: string;
+  descricao: string = '';
   atendimentoDomicilio: boolean = false;
   pedicure: boolean = false;
   manicure: boolean = false;
-  vetorAgendamento: any[];
+  vetorAgendamento: any[] = [];
   cont = 0;
   contbo = false;
+  DiaDaSemana: string[] = [' Domingo', ' Segunda-Feira', ' Terça-Feira', ' Quarta-Feira', ' Quinta-Feira', ' Sexta-feira', ' Sabado'];
+  vetorDiaDaSemana: number[] = [];
+  double = false;
 
   minDate = new Date().toISOString();
 
@@ -52,10 +55,9 @@ export class AgendamentoPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.dados = JSON.parse(params.special);
-
+        this.preencherVetorDiaSemana();
+        console.log(this.vetorDiaDaSemana);
         console.log(this.dados);
-
-        this.preencherCalendar();
 
         this.agendamentoService.getAgendamento().subscribe(agen => {
           agen.forEach(element => {
@@ -86,97 +88,143 @@ export class AgendamentoPage implements OnInit {
     console.log(this.event.startTime)
   }
 
-  preencherCalendar() {
-    let falso = 4 ;
-    
+  preencherVetorDiaSemana() {
+    for (let x = 0; x < this.DiaDaSemana.length; x++) {
+      for (let i = 0; i < this.dados.pro.diaDaSemanaPro.length; i++) {
 
-    for (let index = 6; index <= 12; index++) {
-      
-      if (6 == index) {
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
+        if (this.DiaDaSemana[x] == this.dados.pro.diaDaSemanaPro[i]) {
+          this.vetorDiaDaSemana.push(x);
         }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
-      
-      if (7 == index) {
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
 
-      if(8 == index){
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
-
-      if(9 == falso){
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
-
-      if(10 == index){
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
-
-      if(11 == falso){
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
-      }
-
-      if(12 == index){
-        let eventCopy = {
-          title: 'Ocupado',
-          desc: 'Ocupado',
-          startTime: new Date(Date.UTC(2019, 10, 24, index + 5)),
-          endTime: new Date(Date.UTC(2019, 10, 24, index + 6)),
-          AllDay: false
-        }
-        console.log(eventCopy);
-        this.eventSource.push(eventCopy);
       }
 
     }
+  }
+
+  preencherCalendar(startTime: Date) {
+
+    this.eventSource = [];
+
+    let diaOcupado = true;
+
+    for (let x = 0; x < this.vetorDiaDaSemana.length; x++) {
+      console.log('Mes = ' + startTime.getMonth())
+      if (startTime.getDay() == this.vetorDiaDaSemana[x]) {
+        diaOcupado = false;
+      }
+    }
+
+    if (diaOcupado) {
+      this.inserirDiaOcupado(startTime);
+    }
+
+    // ----------------------MANHA--------------------------
+    if (this.dados.pro.horarioManhaPro.length != 0 && this.dados.pro.horarioManhaPro != undefined && diaOcupado == false) {
+
+      for (let x = 6; x <= 12; x++) {
+
+        let eventoOcupado = true;
+
+        for (let i = 0; i < this.dados.pro.horarioManhaPro.length; i++) {
+
+          let texto = this.dados.pro.horarioManhaPro[i].split(':');
+          let horario = parseInt(texto[0]);
+
+
+          if (x == horario) {
+            eventoOcupado = false;
+          }
+
+        }
+
+        if (eventoOcupado) {
+          this.inserirEventoOcupado(x, startTime);
+        }
+
+      }
+    }
+
+    //----------------------------TARDE----------------------
+
+    if (this.dados.pro.horarioTardePro.length != 0 && this.dados.pro.horarioManhaPro != undefined && diaOcupado == false) {
+
+      for (let x = 13; x <= 18; x++) {
+
+        let eventoOcupado = true;
+
+        for (let i = 0; i < this.dados.pro.horarioTardePro.length; i++) {
+
+          let texto = this.dados.pro.horarioTardePro[i].split(':');
+          let horario = parseInt(texto[0]);
+
+          if (x == horario) {
+            eventoOcupado = false;
+          }
+
+        }
+
+        if (eventoOcupado) {
+          this.inserirEventoOcupado(x, startTime);
+        }
+
+      }
+    }
+
+    //--------------------NOITE----------------------
+
+    if (this.dados.pro.horarioNoitePro.length != 0 && this.dados.pro.horarioManhaPro != undefined && diaOcupado == false) {
+
+      for (let x = 19; x <= 22; x++) {
+
+        let eventoOcupado = true;
+
+        for (let i = 0; i < this.dados.pro.horarioNoitePro.length; i++) {
+
+          let texto = this.dados.pro.horarioNoitePro[i].split(':');
+          let horario = parseInt(texto[0]);
+
+
+          if (x == horario) {
+            eventoOcupado = false;
+          }
+
+        }
+
+        if (eventoOcupado) {
+          this.inserirEventoOcupado(x, startTime);
+        }
+
+      }
+    }
+
+  }
+
+  inserirEventoOcupado(horario: number, time: Date) {
+
+    let eventCopy: any = '';
+
+
+    eventCopy = {
+      title: 'INDISPONIVEL',
+      desc: 'OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario + 6)),
+      allDay: false
+    };
+
+    this.eventSource.push(eventCopy);
+  }
+
+  inserirDiaOcupado(time: Date) {
+    let eventCopy = {
+      title: 'Dia INDISPONIVEL',
+      desc: 'Dia OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 0 - 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 23 + 5)),
+      allDay: false
+    };
+
+    this.eventSource.push(eventCopy);
   }
 
   onSubmit() {
@@ -256,15 +304,24 @@ export class AgendamentoPage implements OnInit {
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
-    
-    if (this.calendar.mode == 'day'){
-      let teste = new Date(title);
-      console.log('Mês: ' + teste.getUTCMonth());
-    }
+    /*let texto = this.viewTitle.split(' ');
+    let day = texto[1].split(',');
+
+    if (this.calendar.mode == 'day') {
+      if (texto[0] == "dezembro"){
+        let teste = new Date(Date.UTC(parseInt(texto[2]), 11, parseInt(day[0])));
+        this.preencherCalendar(teste);
+      }else{
+        let teste = new Date(title);
+        this.preencherCalendar(teste);
+      }
+      
+    }*/
   }
 
   onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
     console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0));
+
     this.cont++;
 
     if (this.cont != 1 && this.calendar.mode == 'month') {
@@ -272,6 +329,7 @@ export class AgendamentoPage implements OnInit {
       this.calendar.mode = 'day';
       this.cont = 0;
       this.contbo = true
+      this.preencherCalendar(ev.selectedTime);
     }
 
     if (this.contbo && this.calendar.mode == 'day' && this.cont != 0) {
@@ -287,5 +345,7 @@ export class AgendamentoPage implements OnInit {
   reloadSource() {
 
   }
+
+
 
 }
