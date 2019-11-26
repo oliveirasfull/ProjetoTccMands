@@ -1,107 +1,113 @@
 <ion-header>
-        <ion-toolbar color="primary">
-            <ion-title>
-                <ion-grid>
-                    <ion-row>
-                        <ion-col align-self-start>
-                            <ion-icon name="cog"></ion-icon>
-                        </ion-col>
-                        <ion-col align-self-center>
-                            Profissional
-                        </ion-col>
-                        <ion-col align-self-end *ngIf="userLocal">
-                            <ion-icon name="notifications-outline" (click)="irParaNotificacao()"></ion-icon>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
+    <ion-toolbar color="primary">
+        <ion-title>
+            <ion-grid>
+                <ion-row>
+                    <ion-col align-self-start>
+                        <ion-icon name="cog"></ion-icon>
+                    </ion-col>
+                    <ion-col align-self-center>
+                        Profissional
+                    </ion-col>
+                    <ion-col align-self-end *ngIf="userLocal">
+                        <ion-icon name="notifications-outline" (click)="irParaNotificacao()"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
 
-            </ion-title>
-        </ion-toolbar>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-card  style="background-image: linear-gradient(rgb(38, 17, 231), rgb(18, 14, 231)">
-        
-   
+    <ion-card style="background-image: linear-gradient(rgb(38, 17, 231), rgb(18, 14, 231)">
 
-    <ion-card style="background-image: linear-gradient(rgb(215, 214, 230), rgb(224, 224, 235)" >
-        <ion-card-content fullscreen>
-            <ion-grid>
-                <ion-row align-items-start>
-                    <ion-col>
-                        <ion-avatar>
-                            <img src="../../../../assets/perfil.jpg" alt="">
-                        </ion-avatar>
-                    </ion-col>
-                    <!--   <ion-col
+
+
+        <ion-card style="background-image: linear-gradient(rgb(215, 214, 230), rgb(224, 224, 235)">
+            <ion-card-content fullscreen>
+                <ion-grid>
+                    <ion-row align-items-start>
+                        <ion-col>
+                            <ion-avatar>
+                                <img src="../../../../assets/perfil.jpg" alt="">
+                            </ion-avatar>
+                        </ion-col>
+                        <!--   <ion-col
                             <img src="exibeAvaliacao()">
 
                         </ion-col> -->
-     
-                    <ion-col>
-                        <h2 class="descricao">{{data.nomePro}}</h2>
-                    </ion-col>
 
-                    <ion-row>
-                       <!-- <ion-col size="6">
+                        <ion-col>
+                            <h2 class="descricao">{{data.nomePro}}</h2>
+                        </ion-col>
+
+                        <ion-row>
+                            <!-- <ion-col size="6">
                             <ion-button (click)="avaliacao()">
                                 <ion-icon name="star"></ion-icon>
                             </ion-button>
                         </ion-col> -->
 
-                        <ion-col size="6">
+                            <ion-col size="6">
 
-                            <ion-button (click)="irParaAgendamento()">
-                                Agendar
-                            </ion-button>
-                        </ion-col>
+                                <ion-button (click)="irParaAgendamento()">
+                                    Agendar
+                                </ion-button>
+                            </ion-col>
 
+                        </ion-row>
                     </ion-row>
-                </ion-row>
-            </ion-grid>
+                </ion-grid>
 
-            <ion-card> <!--Descrição do usuario, buscado na base de dados-->
-                <ion-card-header >                   
-                    <h2 class="descricao">  {{data.descricaoServico}} </h2>
-                </ion-card-header>
-            </ion-card>
+                <ion-card>
+                    <!--Descrição do usuario, buscado na base de dados-->
 
-            <ion-toolbar color="primary">
-                <ion-title style="text-align: center; ">Serviços oferecidos</ion-title>
-            </ion-toolbar>
+                    <form size="-10">
+                        Descrição
+                    </form>
+
+                    <ion-card-header>
+                        <h2 class="descricao"> {{data.descricaoServico}} </h2>
+                    </ion-card-header>
+                </ion-card>
+
+                <ion-toolbar color="primary">
+                    <ion-title style="text-align: center; ">Serviços oferecidos</ion-title>
+                </ion-toolbar>
 
 
-            <ion-chip *ngIf="data.atendimentoDomicilio">
-                <ion-label>Atendimento Domicilio</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+                <ion-chip *ngIf="data.atendimentoDomicilio">
+                    <ion-label>Atendimento Domicilio</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
 
-            <ion-chip *ngIf="data.manicure">
-                <ion-label>manicure</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+                <ion-chip *ngIf="data.manicure">
+                    <ion-label>manicure</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
 
-            <ion-chip *ngIf="data.pedicure">
-                <ion-label>Pedicure</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+                <ion-chip *ngIf="data.pedicure">
+                    <ion-label>Pedicure</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
 
-            <ion-chip *ngIf="data.cabelo">
-                <ion-label>Cabelo</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+                <ion-chip *ngIf="data.cabelo">
+                    <ion-label>Cabelo</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
 
-            <ion-chip *ngIf="data.maquiagem">
-                <ion-label>Maquiagem</ion-label>
-                <ion-icon name="checkmark"></ion-icon>
-            </ion-chip>
+                <ion-chip *ngIf="data.maquiagem">
+                    <ion-label>Maquiagem</ion-label>
+                    <ion-icon name="checkmark"></ion-icon>
+                </ion-chip>
 
-        </ion-card-content>
+            </ion-card-content>
+
+        </ion-card>
 
     </ion-card>
 
-</ion-card>
 
-   
 </ion-content>

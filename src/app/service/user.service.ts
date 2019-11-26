@@ -107,7 +107,7 @@ export class UserService {
       precoCabelo : pro.precoCabelo,
       horarioManhaPro : pro.horarioManhaPro,
       horarioTardePro : pro.horarioTardePro,
-      horarioNoitePro : pro.horarioTardePro,
+      horarioNoitePro : pro.horarioNoitePro,
       diaDaSemanaPro : pro.diaDaSemanaPro
     });
   }

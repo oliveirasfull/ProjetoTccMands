@@ -168,9 +168,7 @@ export class CriarProfissionalPage implements OnInit {
     }).catch(e => { console.log(e) });
     
   }
-  hora(){
-    console.log(this.pro.diaDaSemanaPro)
-  }
+ 
   
   
 
