@@ -1,3 +1,17 @@
 .ion-header{
     align-self: center;
 }
+
+.coritem{
+   color: rgb(18, 57, 230);
+    
+}
+
+.ion-color-tertiary {
+    --ion-color-base: #181ee4 !important;
+    --ion-color-base-rgb: var(--ion-color-tertiary-rgb, 112, 68, 255) !important;
+    --ion-color-contrast: var(--ion-color-tertiary-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-tertiary-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-tertiary-shade, #633ce0) !important;
+    --ion-color-tint: var(--ion-color-tertiary-tint, #7e57ff) !important;
+}
