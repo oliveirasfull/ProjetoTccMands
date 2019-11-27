@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/service/user.service';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
@@ -51,7 +51,9 @@ export class AgendamentoPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
-    private userService: UserService, @Inject(LOCALE_ID) private locale: string) {
+    private userService: UserService, @Inject(LOCALE_ID) private locale: string,
+    private alertController: AlertController) {
+      
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.dados = JSON.parse(params.special);
@@ -307,26 +309,24 @@ export class AgendamentoPage implements OnInit {
   }
 
   onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0));
-
     this.cont++;
 
     if (this.cont != 1 && this.calendar.mode == 'month') {
-      console.log(this.cont);
       this.calendar.mode = 'day';
       this.cont = 0;
       this.contbo = true
       this.preencherCalendar(ev.selectedTime);
     }
 
-    if (this.contbo && this.calendar.mode == 'day' && this.cont != 0) {
-
+    if (this.contbo == true && this.calendar.mode == 'day' && this.cont != 0) {
+      if(!(ev.events !== undefined && ev.events.length !== 0)){
+        this.confirmarAgendamento(ev.selectedTime);
+      }
     }
 
   }
 
   onCurrentDateChanged(event: Date) {
-    console.log("teste = " + event);
 
     if (this.calendar.mode == 'day') {
 
@@ -338,6 +338,49 @@ export class AgendamentoPage implements OnInit {
   reloadSource() {
 
   }
+
+
+  async confirmarAgendamento(event: Date){
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Confirme o  <strong>Agendamento</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log("Cancelado")
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            let agendamentoCopy: Agendamento = {
+              dataHora: event,
+              descricao: "Aqui vai descrição", // Colocar variavel
+              idProfissional: this.dados.pro.id,
+              idUsuario: this.dados.user.id,
+              nomeUsuario: this.dados.user.nome,
+              atendimentoDomicilio: false, // Colocar variavel
+              manicure: false, // Colocar variavel
+              pedicure: false, // Colocar variavel
+              confirmacao: false,
+              pendente: true
+            };
+            this.agendamentoService.addAgendamento(agendamentoCopy).then(() =>{
+              this.showToast('Realizado Agendamento');
+            }).catch(e =>{
+              console.log(e);
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+ 
 
 
 
