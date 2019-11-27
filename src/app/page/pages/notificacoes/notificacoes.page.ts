@@ -23,16 +23,16 @@ export class NotificacoesPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.data = JSON.parse(params.special);
-        console.log(this.data);
-      } 
-    });
 
-    this.agendamentoService.getAgendamento().subscribe(agen =>{
-      agen.forEach(element => {
-        if(element.idProfissional == this.data.id && element.pendente == true){
-          this.agendamento.push(element);
-        }
-      });
+        this.agendamentoService.getAgendamento().subscribe(agen =>{
+          agen.forEach(element => {
+            if(element.idProfissional == this.data.id && element.pendente == true){
+              this.agendamento.push(element);
+              console.log(this.agendamento);
+            }
+          });
+        });
+      } 
     });
   }
 
