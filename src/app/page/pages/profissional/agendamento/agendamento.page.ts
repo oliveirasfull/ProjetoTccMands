@@ -304,19 +304,6 @@ export class AgendamentoPage implements OnInit {
 
   onViewTitleChanged(title) {
     this.viewTitle = title;
-    /*let texto = this.viewTitle.split(' ');
-    let day = texto[1].split(',');
-
-    if (this.calendar.mode == 'day') {
-      if (texto[0] == "dezembro"){
-        let teste = new Date(Date.UTC(parseInt(texto[2]), 11, parseInt(day[0])));
-        this.preencherCalendar(teste);
-      }else{
-        let teste = new Date(title);
-        this.preencherCalendar(teste);
-      }
-      
-    }*/
   }
 
   onTimeSelected = (ev: { selectedTime: Date, events: any[] }) => {
@@ -338,8 +325,14 @@ export class AgendamentoPage implements OnInit {
 
   }
 
-  onCurrentDateChanged() {
+  onCurrentDateChanged(event: Date) {
+    console.log("teste = " + event);
 
+    if (this.calendar.mode == 'day') {
+
+      this.preencherCalendar(event);
+
+    }
   }
 
   reloadSource() {

@@ -51,7 +51,7 @@
 
     <p>{{ viewTitle }}</p>
     <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="6"
-        endHour="22" startingDayWeek="1" [locale]="calendar.locale">
+        endHour="22" startingDayWeek="1" [locale]="calendar.locale" (onCurrentDateChanged)="onCurrentDateChanged($event)">
     </calendar>
 
 
