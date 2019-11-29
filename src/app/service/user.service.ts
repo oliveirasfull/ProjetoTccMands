@@ -25,12 +25,12 @@ export interface TypePro {
   cabelo: boolean,
   maquiagem: boolean,
   idade: number,
-  precoMaquiagem : number,
-  precoCabelo :number,
-  horarioManhaPro : number[],
-  horarioTardePro : number[],
-  horarioNoitePro : number[],
-  diaDaSemanaPro : number[],
+  precoMaquiagem: number,
+  precoCabelo: number,
+  horarioManhaPro: number[],
+  horarioTardePro: number[],
+  horarioNoitePro: number[],
+  diaDaSemanaPro: number[],
 
 }
 
@@ -76,7 +76,7 @@ export class UserService {
     return this.userCollection.add(user);
   }
 
-  uploadImage(fileToUpload: any, user: any): Promise<void>{
+  uploadImage(fileToUpload: any, user: any): Promise<void> {
     let storageRef = this.fb.storage().ref();
     let basePath = '/user/'
     let fullPath = basePath + '/' + user.nome + '.jpg';
@@ -100,16 +100,49 @@ export class UserService {
       classificacao: pro.classificacao,
       idade: pro.idade,
       cabelo: pro.cabelo,
-      maquiagem: pro.maquiagem, 
+      maquiagem: pro.maquiagem,
       precoManicure: pro.precoManicure,
       precoPedicure: pro.precoPedicure,
-      precoMaquiagem : pro.precoMaquiagem,
-      precoCabelo : pro.precoCabelo,
-      horarioManhaPro : pro.horarioManhaPro,
-      horarioTardePro : pro.horarioTardePro,
-      horarioNoitePro : pro.horarioNoitePro,
-      diaDaSemanaPro : pro.diaDaSemanaPro
+      precoMaquiagem: pro.precoMaquiagem,
+      precoCabelo: pro.precoCabelo,
+      horarioManhaPro: pro.horarioManhaPro,
+      horarioTardePro: pro.horarioTardePro,
+      horarioNoitePro: pro.horarioNoitePro,
+      diaDaSemanaPro: pro.diaDaSemanaPro
     });
+  }
+
+  UpdateUserService(user: any): Promise<void> {
+    if (user.profissionalAtivo) {
+      return this.userCollection.doc(user.id).update({
+        nome: user.nome,
+        email: user.email,
+        profissionalAtivo: user.profissionalAtivo,
+        nomePro: user.nomePro,
+        atendimentoDomicilio: user.atendimentoDomicilio,
+        descricaoServico: user.descricaoServico,
+        manicure: user.manicure,
+        pedicure: user.pedicure,
+        classificacao: user.classificacao,
+        idade: user.idade,
+        cabelo: user.cabelo,
+        maquiagem: user.maquiagem,
+        precoManicure: user.precoManicure,
+        precoPedicure: user.precoPedicure,
+        precoMaquiagem: user.precoMaquiagem,
+        precoCabelo: user.precoCabelo,
+        horarioManhaPro: user.horarioManhaPro,
+        horarioTardePro: user.horarioTardePro,
+        horarioNoitePro: user.horarioNoitePro,
+        diaDaSemanaPro: user.diaDaSemanaPro
+      });
+    }else{
+      return this.userCollection.doc(user.id).update({
+        nome: user.nome,
+        email: user.email,
+        profissionalAtivo: user.profissionalAtivo
+      });
+    }
   }
 
 }
