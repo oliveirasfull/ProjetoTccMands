@@ -15,6 +15,8 @@ export interface Agendamento{
   pedicure: boolean;
   confirmacao: boolean;
   pendente: boolean;
+  cabelo: boolean;
+  maquiagem: boolean;
 }
 
 @Injectable({

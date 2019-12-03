@@ -19,6 +19,9 @@ export class AgendamentoPage implements OnInit {
   atendimentoDomicilio: boolean = false;
   pedicure: boolean = false;
   manicure: boolean = false;
+  cabelo: boolean = false;
+  maquiagemgit: boolean = false;
+
   vetorAgendamento: any[] = [];
   cont = 0;
   contbo = false;
@@ -229,18 +232,20 @@ export class AgendamentoPage implements OnInit {
     this.eventSource.push(eventCopy);
   }
 
-  onSubmit() {
+  onSubmit(event: Date) {
     let tipoAgendamento: Agendamento = {
-      dataHora: this.date,
+      dataHora: event,
       descricao: this.descricao,
-      idProfissional: this.dados.idProdissional,
-      idUsuario: this.dados.idUser,
+      idProfissional: this.dados.pro.id,
+      idUsuario: this.dados.user.id,
       atendimentoDomicilio: this.atendimentoDomicilio,
       pedicure: this.pedicure,
       manicure: this.manicure,
       confirmacao: false,
       pendente: true,
-      nomeUsuario: this.dados.nomeUser
+      nomeUsuario: this.dados.user.nome,
+      cabelo: this.cabelo,
+      maquiagem: this.maquiagemgit
     };
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
@@ -254,6 +259,7 @@ export class AgendamentoPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
+  
   formatacaoDeData() {
     console.log("valor da data", this.event.startTime)
 
@@ -355,23 +361,7 @@ export class AgendamentoPage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            let agendamentoCopy: Agendamento = {
-              dataHora: event,
-              descricao: "Aqui vai descrição", // Colocar variavel
-              idProfissional: this.dados.pro.id,
-              idUsuario: this.dados.user.id,
-              nomeUsuario: this.dados.user.nome,
-              atendimentoDomicilio: false, // Colocar variavel
-              manicure: false, // Colocar variavel
-              pedicure: false, // Colocar variavel
-              confirmacao: false,
-              pendente: true
-            };
-            this.agendamentoService.addAgendamento(agendamentoCopy).then(() =>{
-              this.showToast('Realizado Agendamento');
-            }).catch(e =>{
-              console.log(e);
-            });
+            this.onSubmit(event);
           }
         }
       ]

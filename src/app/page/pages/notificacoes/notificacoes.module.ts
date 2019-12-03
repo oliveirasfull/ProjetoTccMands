@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { NotificacoesPage } from './notificacoes.page';
+import { TabsPage } from '../tabs/tabs.page';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NotificacoesPage]
+  declarations: [NotificacoesPage],
+  providers: [ TabsPage ]
 })
 export class NotificacoesPageModule {}

@@ -5,8 +5,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let agen of agendamento">
-
+    <ion-card *ngFor="let agen of agendamento ">
         <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
         <ion-label>Descrição: {{agen.descricao}} </ion-label>
         <ion-label>Hora/Hora: {{ agen.dataHora}} </ion-label>

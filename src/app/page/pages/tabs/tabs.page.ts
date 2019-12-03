@@ -12,7 +12,7 @@ export class TabsPage implements OnInit {
 
   public profissional : boolean // responsavel por definir ser o usuario e profisional ou nao nas regras de template
   public user : any;
-  public agendamento: any;
+  public agendamento: any = [];
 
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService, 
