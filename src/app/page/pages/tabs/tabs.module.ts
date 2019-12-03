@@ -44,6 +44,29 @@ const routes: Routes = [
           }
          ]
         },
+        {
+          path:'notificacoes',
+            
+          children:[
+            {
+             path:'',
+             loadChildren:()=>
+               import ("../notificacoes/notificacoes.module").then(m=> m.NotificacoesPageModule)
+            }
+           ]
+          },
+          {
+            path:'agendamento',
+              
+            children:[
+              {
+               path:'',
+               loadChildren:()=>
+                 import ("../profissional/agendamento/agendamento.module").then(m=> m.AgendamentoPageModule)
+              }
+             ]
+            },
+        
     {
       path:'',
       redirectTo:'usuario',
