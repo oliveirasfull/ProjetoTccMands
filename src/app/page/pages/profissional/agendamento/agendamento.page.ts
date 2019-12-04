@@ -251,7 +251,7 @@ export class AgendamentoPage implements OnInit {
       precoManicure: 0,
       precoMaquiagem: 0,
       precoPedicure: 0,
-      nomePro: this.dados.pro.nome,
+      nomePro: this.dados.pro.nomePro,
       numeroResidenciaUsuario: this.dados.user.numeroResidencia,
       ruaUsuario: this.dados.user.rua,
       telefoneUsuario: this.dados.user.telefone,
