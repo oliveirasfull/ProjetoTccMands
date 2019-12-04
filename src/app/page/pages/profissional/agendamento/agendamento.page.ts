@@ -5,6 +5,7 @@ import { ToastController, AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/service/user.service';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-agendamento',
@@ -250,7 +251,15 @@ export class AgendamentoPage implements OnInit {
       precoManicure: 0,
       precoMaquiagem: 0,
       precoPedicure: 0,
-      nomePro: this.dados.pro.nome
+      nomePro: this.dados.pro.nome,
+      numeroResidenciaUsuario: this.dados.user.numeroResidencia,
+      ruaUsuario: this.dados.user.rua,
+      telefoneUsuario: this.dados.user.telefone,
+      bairroUsuario: this.dados.user.bairro,
+      ruaPro: this.dados.pro.rua,
+      bairroPro: this.dados.pro.bairro,
+      telefonePro: this.dados.pro.telefone,
+      numeroResidenciaPro: this.dados.pro.numeroResidencia
     };
 
     if (tipoAgendamento.pedicure) {
@@ -271,7 +280,7 @@ export class AgendamentoPage implements OnInit {
     }).catch(e => { console.log(e) });
 
     this.router.navigate(['./usuario/feed']);
-    
+
 
   }
 
@@ -376,16 +385,16 @@ export class AgendamentoPage implements OnInit {
     let textoMaquiagem = '';
     let textoManicure = '';
 
-    if(this.pedicure){
+    if (this.pedicure) {
       textoPedicure = "\n Pedicure = R$" + this.dados.pro.precoPedicure;
     }
-    if(this.manicure){
+    if (this.manicure) {
       textoManicure = '\n Manicure = R$' + this.dados.pro.precoManicure;
     }
-    if(this.maquiagemgit){
+    if (this.maquiagemgit) {
       textoMaquiagem = '\n Maquiagem = R$' + this.dados.pro.precoMaquiagem;
     }
-    if(this.cabelo){
+    if (this.cabelo) {
       textoCabelo = '\n Cabelo = R$' + this.dados.pro.precoCabelo;
     }
 
@@ -394,7 +403,7 @@ export class AgendamentoPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Confirmar',
       message: ' <strong>Agendamento </strong> <br>'
-     + '<strong>Periodo </strong> <br>'
+        + '<strong>Periodo </strong> <br>'
         + event.getUTCFullYear()
         + '/' + (event.getUTCMonth()+1 )
         + '/' + event.getUTCDate()
@@ -402,8 +411,8 @@ export class AgendamentoPage implements OnInit {
         + ':' + event.getUTCMinutes()
         + '0 <br>'
         + '<strong>Descrição</strong><br> '
-        + this.descricao 
-        +' <br> <strong> Serviço </strong> <br>'
+        + this.descricao
+        + ' <br> <strong> Serviço </strong> <br>'
         + textoServico + '<br>',
       buttons: [
         {

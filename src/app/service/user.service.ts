@@ -10,7 +10,12 @@ export interface TypeUser {
   id?: string,
   nome: string,
   email: string,
-  profissionalAtivo: boolean
+  profissionalAtivo: boolean,
+  rua: string,
+  bairro: string,
+  telefone: string,
+  numeroResidencia: number,
+  sobrenome: string
 }
 
 export interface TypePro {

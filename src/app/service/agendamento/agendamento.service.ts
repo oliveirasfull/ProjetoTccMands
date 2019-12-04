@@ -10,6 +10,10 @@ export interface Agendamento{
   idProfissional: string;
   idUsuario: string;
   nomeUsuario: string;
+  ruaUsuario:string;
+  bairroUsuario:string;
+  telefoneUsuario:string;
+  numeroResidenciaUsuario:string;
   atendimentoDomicilio: boolean;
   manicure: boolean;
   precoManicure: number;
@@ -22,6 +26,10 @@ export interface Agendamento{
   maquiagem: boolean;
   precoMaquiagem: number;
   nomePro: string;
+  ruaPro:string;
+  bairroPro:string;
+  telefonePro:string;
+  numeroResidenciaPro:string;
 }
 
 @Injectable({

@@ -25,13 +25,13 @@ export class AuthService {
     return this.authState$.pipe(map(user => user !== null));
   }
   
-  authenticate({isSignIn, provider, user}: AuthOptions): Promise <auth.UserCredential> {
+  authenticate({isSignIn, provider, user}: AuthOptions, teste:any): Promise <auth.UserCredential> {
     let operation : Promise <auth.UserCredential>;
 
     if (provider !=+ AuthProvider.Email){
       operation = this.signInWithPopup(provider);
     }else{
-      operation = isSignIn ? this.signInWinthEmail(user): this.signUpWinthEmail(user);
+      operation = isSignIn ? this.signInWinthEmail(user): this.signUpWinthEmail(user, teste);
     }
     return operation;
   }
@@ -44,11 +44,11 @@ export class AuthService {
 
     return this.afAuth.auth.signInWithEmailAndPassword(email,password);
   }
-  private signUpWinthEmail({email,password,name}:User): Promise<auth.UserCredential>{
+  private signUpWinthEmail({email,password,name}:User, teste:any): Promise<auth.UserCredential>{
     
-    let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false}; // coloca campos aki 
+    let typeUser: TypeUser = {nome: name, email: email, profissionalAtivo: false, rua: teste.rua, bairro: teste.bairro, numeroResidencia: teste.numeroResidencia, telefone:teste.telefone, sobrenome: teste.sobrenome}; // coloca campos aki 
     
-    this.userService.addUser(typeUser).catch(e =>{console.log(e)});
+    this.userService.addUser(typeUser).catch(e =>{console.log(e)}).then(() =>{console.log("Conseguio")});
 
     return this.afAuth.auth.createUserWithEmailAndPassword(email,password).then(credentials => credentials
       .user.updateProfile({displayName:name, photoURL:null})
