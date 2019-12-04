@@ -30,6 +30,7 @@ export interface Agendamento{
   bairroPro:string;
   telefonePro:string;
   numeroResidenciaPro:string;
+  nomeFantasia: string;
 }
 
 @Injectable({

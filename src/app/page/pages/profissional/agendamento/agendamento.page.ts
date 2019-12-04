@@ -251,7 +251,7 @@ export class AgendamentoPage implements OnInit {
       precoManicure: 0,
       precoMaquiagem: 0,
       precoPedicure: 0,
-      nomePro: this.dados.pro.nomePro,
+      nomePro: this.dados.pro.nome,
       numeroResidenciaUsuario: this.dados.user.numeroResidencia,
       ruaUsuario: this.dados.user.rua,
       telefoneUsuario: this.dados.user.telefone,
@@ -259,7 +259,8 @@ export class AgendamentoPage implements OnInit {
       ruaPro: this.dados.pro.rua,
       bairroPro: this.dados.pro.bairro,
       telefonePro: this.dados.pro.telefone,
-      numeroResidenciaPro: this.dados.pro.numeroResidencia
+      numeroResidenciaPro: this.dados.pro.numeroResidencia,
+      nomeFantasia: this.dados.pro.nomePro
     };
 
     if (tipoAgendamento.pedicure) {
@@ -405,11 +406,11 @@ export class AgendamentoPage implements OnInit {
       message: ' <strong>Agendamento </strong> <br>'
         + '<strong>Periodo </strong> <br>'
         + event.getUTCFullYear()
-        + '/' + (event.getUTCMonth()+1 )
+        + '/' + event.getUTCMonth()
         + '/' + event.getUTCDate()
         + ' - ' + (event.getUTCHours() - 5)
         + ':' + event.getUTCMinutes()
-        + '0 <br>'
+        + '. <br>'
         + '<strong>Descrição</strong><br> '
         + this.descricao
         + ' <br> <strong> Serviço </strong> <br>'
