@@ -2,14 +2,6 @@
     <ion-toolbar color="primary" aling="center">
         <ion-title>Agendar-Serviços</ion-title>
     </ion-toolbar>
-    <!--
-    <ion-button (click)="today()">
-        Dia Atual
-    </ion-button>
-    <ion-button (click)="changeMode('month')">
-        Mudar Para Mês
-    </ion-button>
--->
 </ion-header>
 
 
@@ -36,12 +28,30 @@
     </ion-item>
     <ion-item>
         <ion-label>Maquiagem</ion-label>
-        <ion-checkbox color="dark" checked="true" [(ngModel)]="maquiagem"></ion-checkbox>
+        <ion-checkbox color="dark" checked="true" [(ngModel)]="maquiagemgit"></ion-checkbox>
     </ion-item>
     <ion-item>
         <ion-label>Atendimento Domicilio</ion-label>
         <ion-checkbox color="dark" checked="true" [(ngModel)]="atendimentoDomicilio"></ion-checkbox>
     </ion-item>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="6">
+                <ion-button (click)="today()">
+                    Dia
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button (click)="changeMode('month')">
+                    Mês
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
 
 
 
