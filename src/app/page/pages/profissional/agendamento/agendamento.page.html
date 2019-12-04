@@ -31,6 +31,7 @@
     </ion-item>
     <ion-item *ngIf="dados.pro.maquiagem">
         <ion-label>Maquiagem</ion-label>
+        <ion-label>R${{ dados.pro.precoMaquiagem }},00</ion-label>
         <ion-checkbox color="dark" checked="true" [(ngModel)]="maquiagemgit"></ion-checkbox>
     </ion-item>
     <ion-item *ngIf="dados.pro.atendimentoDomicilio">

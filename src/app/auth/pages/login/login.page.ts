@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
     this.configs.isSignIn = !this.configs.isSignIn;
     const{ isSignIn} = this.configs;
     this.configs.action = isSignIn ? 'login' : "Inscrever-se";
-    this.configs.actionChange = isSignIn ? 'Criar Conta' : ' Alterar Criação';
+    this.configs.actionChange = isSignIn ? 'Criar Conta' : ' Voltar';
     !isSignIn
       ? this.authForm.addControl('name',this.nameControl)
       :this.authForm.removeControl('name');
