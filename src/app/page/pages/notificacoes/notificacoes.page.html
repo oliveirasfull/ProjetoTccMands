@@ -11,6 +11,9 @@
             <ion-label>Descrição: {{agen.descricao}} </ion-label>
             <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} </ion-label>
             <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+            <ion-label>Numero da casa: {{ agen.numeroResidenciaUsuario}} </ion-label>
+            <ion-label>Bairro: {{ agen.bairroUsuario}} </ion-label>
+            <ion-label>Rua: {{ agen.ruaUsuario}} </ion-label>
             <!-- <ion-label>{{ usuario.id }}</ion-label> -->
             <ion-button (click)="confirmarAgendamento(agen)">
                 Confirma?
@@ -28,6 +31,9 @@
             <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} </ion-label>
             <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
             <ion-label>Pedente: {{ agen.pendente }} </ion-label>
+            <ion-label>Numero da casa: {{ agen.numeroResidenciaPro}} </ion-label>
+            <ion-label>Bairro: {{ agen.bairroPro}} </ion-label>
+            <ion-label>Rua: {{ agen.ruaPro}} </ion-label>
         </ion-card>
     </div>
 
