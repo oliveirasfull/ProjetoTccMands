@@ -392,16 +392,19 @@ export class AgendamentoPage implements OnInit {
     textoServico = textoCabelo + textoManicure + textoMaquiagem + textoPedicure;
 
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Confirme o  <strong>Agendamento</strong> = '
+      header: 'Confirmar',
+      message: ' <strong>Agendamento </strong> <br>'
+     + '<strong>Periodo </strong> <br>'
         + event.getUTCFullYear()
         + '/' + event.getUTCMonth()
         + '/' + event.getUTCDate()
         + ' - ' + (event.getUTCHours() - 5)
         + ':' + event.getUTCMinutes()
-        + '!!!'
+        + '. <br>'
+        + '<strong>Descrição</strong><br> '
         + this.descricao 
-        + textoServico,
+        +' <br> <strong> Serviço </strong> <br>'
+        + textoServico + '<br>',
       buttons: [
         {
           text: 'Cancel',
