@@ -1,10 +1,10 @@
-  <ion-content padding >
-      
-   <!-- <h1 text-center>
+<ion-content padding>
+
+    <!-- <h1 text-center>
         <h1 color="primary"> Mands </h1>
     </h1> -->
     <img src="../../../../assets/banner-oficial.png" />
-    
+
     <form class="" [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
         <ng-container *ngIf="!configs.isSignIn">
             <ion-item>
@@ -16,11 +16,43 @@
 
             </ion-item>
 
+            <ion-item>
+                <ion-icon name="person" color="primary" slot="start"></ion-icon>
+                <ion-input type="text" placeholder="Sobrenome"></ion-input>
+            </ion-item>
+            <ion-item color="primary">
+                <ion-label style="text-align: center">
+                    Seus dados pessoais
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="call" color="primary" slot="start"></ion-icon>
+                <ion-input type="text" placeholder="Telefone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="home" color="primary" slot="start"></ion-icon>
+                <ion-input type="text" placeholder="Bairro"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="home" color="primary" slot="start"></ion-icon>
+                <ion-input type="text" placeholder="Rua"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="home" color="primary" slot="start"></ion-icon>
+                <ion-input type="number" placeholder="Nº da residencia"></ion-input>
+            </ion-item>
+            <ion-item color="primary">
+                <ion-label style="text-align: center">
+
+                </ion-label>
+            </ion-item>
+
+
         </ng-container>
         <ion-list>
             <ion-item>
                 <ion-icon name="mail" color="primary" slot="start"> </ion-icon>
-                <ion-input type="email" placeholder="Email ou Usuario" formControlName="email" inputmode="email" autofocus="true">
+                <ion-input type="email" placeholder="Email" formControlName="email" inputmode="email" autofocus="true">
                 </ion-input>
                 <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('Required')">Required</ion-note>
                 <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('email')">Invaled email</ion-note>
@@ -35,15 +67,16 @@
 
 
             </ion-item>
-        </ion-list>
-        <ion-button  expand="block" type="submit" [disabled]="authForm.invalid">{{configs.action }}</ion-button>
-    </form>
-   
 
-    <ion-button  expand="block" fill="clear" (click)="changeAuthAction()">{{configs.actionChange}}</ion-button>
-    <ion-button  expand="block" (click)="onSubmit(authProviders.Facebook)" >
+        </ion-list>
+        <ion-button expand="block" type="submit" [disabled]="authForm.invalid">{{configs.action }}</ion-button>
+    </form>
+
+
+    <ion-button expand="block" fill="clear" (click)="changeAuthAction()">{{configs.actionChange}}</ion-button>
+    <ion-button expand="block" (click)="onSubmit(authProviders.Facebook)">
         <ion-icon name="logo-facebook" slot="start"></ion-icon>
         Login com facebook
     </ion-button>
- 
+
 </ion-content>
