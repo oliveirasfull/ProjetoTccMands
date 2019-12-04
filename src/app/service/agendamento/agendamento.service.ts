@@ -12,11 +12,15 @@ export interface Agendamento{
   nomeUsuario: string;
   atendimentoDomicilio: boolean;
   manicure: boolean;
+  precoManicure: number;
   pedicure: boolean;
+  precoPedicure: number;
   confirmacao: boolean;
   pendente: boolean;
   cabelo: boolean;
+  precoCabelo: number;
   maquiagem: boolean;
+  precoMaquiagem: number;
 }
 
 @Injectable({

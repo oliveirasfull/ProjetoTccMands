@@ -33,6 +33,14 @@ export class NotificacoesPage implements OnInit {
     });
   }
 
+  ionViewDidLoad() {
+    console.log("I'm alive!");
+  }
+
+  ionViewWillLeave() {
+    console.log("Looks like I'm about to leave :(");
+  }
+
 
 
   async confirmarAgendamento(agen: Agendamento) {
