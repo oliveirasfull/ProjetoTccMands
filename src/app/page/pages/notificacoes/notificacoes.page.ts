@@ -14,33 +14,29 @@ export class NotificacoesPage implements OnInit {
 
   agendamento: Agendamento[] = [];
   data: any;
+  teste: Date;
 
 
   constructor(private route: ActivatedRoute, private router: Router,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
     @Inject(LOCALE_ID) private locale: string, private toastCtrl: ToastController,
-    private tabs: TabsPage) {}
+    private tabs: TabsPage) { }
 
   ngOnInit() {
-
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.data = JSON.parse(params.special);
         console.log(this.data);
-        this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
+        if (this.data.profissionalAtivo) {
+          this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
+        } else {
+          this.agendamento = this.tabs.getAgendamentoByKeyUser(this.data.id);
+        }
+
         console.log(this.agendamento);
       }
     });
   }
-
-  ionViewDidLoad() {
-    console.log("I'm alive!");
-  }
-
-  ionViewWillLeave() {
-    console.log("Looks like I'm about to leave :(");
-  }
-
 
 
   async confirmarAgendamento(agen: Agendamento) {
@@ -82,6 +78,8 @@ export class NotificacoesPage implements OnInit {
     }).then(() => {
       this.showToast('confirmado');
     });
+
+    this.router.navigate(['./usuario/feed']);
   }
 
   showToast(msg) {

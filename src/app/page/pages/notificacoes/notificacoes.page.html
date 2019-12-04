@@ -5,19 +5,32 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let agen of agendamento ">
-        <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
-        <ion-label>Descrição: {{agen.descricao}} </ion-label>
-        <ion-label>Hora/Hora: {{ agen.dataHora}} </ion-label>
-        <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
-        <!-- <ion-label>{{ usuario.id }}</ion-label> -->
-        <ion-button (click)="confirmarAgendamento(agen)">
-            Confirma?
-        </ion-button>
+    <div *ngIf="data.profissionalAtivo">
+        <ion-card *ngFor="let agen of agendamento ">
+            <ion-label>Nome: {{ agen.nomeUsuario}} </ion-label> <br>
+            <ion-label>Descrição: {{agen.descricao}} </ion-label>
+            <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} </ion-label>
+            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+            <!-- <ion-label>{{ usuario.id }}</ion-label> -->
+            <ion-button (click)="confirmarAgendamento(agen)">
+                Confirma?
+            </ion-button>
 
-        <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
+            <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
 
-    </ion-card>
+        </ion-card>
+    </div>
+
+    <div *ngIf="data.profissionalAtivo == false">
+        <ion-card *ngFor="let agen of agendamento ">
+            <ion-label>Nome: {{ agen.nomePro}} </ion-label> <br>
+            <ion-label>Descrição: {{agen.descricao}} </ion-label>
+            <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} </ion-label>
+            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}} </ion-label>
+            <ion-label>Pedente: {{ agen.pendente }} </ion-label>
+        </ion-card>
+    </div>
+
 
     <ion-text color="primary">
 

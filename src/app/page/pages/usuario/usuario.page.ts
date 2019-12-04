@@ -82,7 +82,7 @@ export class UsuarioPage implements OnInit {
   irParaNotificacao(){
     let navigateExtras: NavigationExtras = {
       queryParams: {
-        special: JSON.stringify(this.data)
+        special: JSON.stringify(this.vetor)
       }
     };
     this.router.navigate(['./usuario/notificacoes'], navigateExtras);

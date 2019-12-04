@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
 import { ToastController, AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/service/user.service';
@@ -55,8 +55,8 @@ export class AgendamentoPage implements OnInit {
   constructor(private route: ActivatedRoute,
     private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
     private userService: UserService, @Inject(LOCALE_ID) private locale: string,
-    private alertController: AlertController) {
-      
+    private alertController: AlertController, private router: Router) {
+
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.dados = JSON.parse(params.special);
@@ -249,25 +249,30 @@ export class AgendamentoPage implements OnInit {
       precoCabelo: 0,
       precoManicure: 0,
       precoMaquiagem: 0,
-      precoPedicure: 0
+      precoPedicure: 0,
+      nomePro: this.dados.pro.nome
     };
 
-    if(tipoAgendamento.pedicure){
+    if (tipoAgendamento.pedicure) {
       tipoAgendamento.precoPedicure = this.dados.pro.precoPedicure;
     }
-    if(tipoAgendamento.manicure){
+    if (tipoAgendamento.manicure) {
       tipoAgendamento.precoManicure = this.dados.pro.precoManicure;
     }
-    if(tipoAgendamento.cabelo){
+    if (tipoAgendamento.cabelo) {
       tipoAgendamento.precoCabelo = this.dados.pro.precoCabelo;
     }
-    if(tipoAgendamento.maquiagem){
+    if (tipoAgendamento.maquiagem) {
       tipoAgendamento.precoMaquiagem = this.dados.pro.precoMaquiagem;
     }
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
       this.showToast('Agendamento realizado');
     }).catch(e => { console.log(e) });
+
+    this.router.navigate(['./usuario/feed']);
+    
+
   }
 
   showToast(msg) {
@@ -276,7 +281,7 @@ export class AgendamentoPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
-  
+
   formatacaoDeData() {
     console.log("valor da data", this.event.startTime)
 
@@ -342,7 +347,7 @@ export class AgendamentoPage implements OnInit {
     }
 
     if (this.contbo == true && this.calendar.mode == 'day' && this.cont != 0) {
-      if(!(ev.events !== undefined && ev.events.length !== 0)){
+      if (!(ev.events !== undefined && ev.events.length !== 0)) {
         this.confirmarAgendamento(ev.selectedTime);
       }
     }
@@ -363,10 +368,40 @@ export class AgendamentoPage implements OnInit {
   }
 
 
-  async confirmarAgendamento(event: Date){
+  async confirmarAgendamento(event: Date) {
+
+    let textoServico = '';
+    let textoPedicure = '';
+    let textoCabelo = '';
+    let textoMaquiagem = '';
+    let textoManicure = '';
+
+    if(this.pedicure){
+      textoPedicure = "\n Pedicure = R$" + this.dados.pro.precoPedicure;
+    }
+    if(this.manicure){
+      textoManicure = '\n Manicure = R$' + this.dados.pro.precoManicure;
+    }
+    if(this.maquiagemgit){
+      textoMaquiagem = '\n Maquiagem = R$' + this.dados.pro.precoMaquiagem;
+    }
+    if(this.cabelo){
+      textoCabelo = '\n Cabelo = R$' + this.dados.pro.precoCabelo;
+    }
+
+    textoServico = textoCabelo + textoManicure + textoMaquiagem + textoPedicure;
+
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: 'Confirme o  <strong>Agendamento</strong>!!!',
+      message: 'Confirme o  <strong>Agendamento</strong> = '
+        + event.getUTCFullYear()
+        + '/' + event.getUTCMonth()
+        + '/' + event.getUTCDate()
+        + ' - ' + (event.getUTCHours() - 5)
+        + ':' + event.getUTCMinutes()
+        + '!!!'
+        + this.descricao 
+        + textoServico,
       buttons: [
         {
           text: 'Cancel',
@@ -387,7 +422,7 @@ export class AgendamentoPage implements OnInit {
     await alert.present();
   }
 
- 
+
 
 
 

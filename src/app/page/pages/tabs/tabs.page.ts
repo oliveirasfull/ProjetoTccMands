@@ -45,7 +45,7 @@ export class TabsPage implements OnInit {
     let agendamentoUser : Agendamento[] = [];
 
     this.agendamento.forEach(element => {
-      if(element.idUsuario == id && element.pendente == false){
+      if(element.idUsuario == id){
         agendamentoUser.push(element);
       }
     });
@@ -60,6 +60,7 @@ export class TabsPage implements OnInit {
     this.agendamento.forEach(element => {
       if(element.idProfissional == id && element.pendente == true){
         agendamentoUser.push(element);
+        console.log(element.dataHora);
       }
     });
 

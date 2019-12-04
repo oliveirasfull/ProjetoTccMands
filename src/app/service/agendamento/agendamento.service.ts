@@ -21,6 +21,7 @@ export interface Agendamento{
   precoCabelo: number;
   maquiagem: boolean;
   precoMaquiagem: number;
+  nomePro: string;
 }
 
 @Injectable({
