@@ -245,8 +245,25 @@ export class AgendamentoPage implements OnInit {
       pendente: true,
       nomeUsuario: this.dados.user.nome,
       cabelo: this.cabelo,
-      maquiagem: this.maquiagemgit
+      maquiagem: this.maquiagemgit,
+      precoCabelo: 0,
+      precoManicure: 0,
+      precoMaquiagem: 0,
+      precoPedicure: 0
     };
+
+    if(tipoAgendamento.pedicure){
+      tipoAgendamento.precoPedicure = this.dados.pro.precoPedicure;
+    }
+    if(tipoAgendamento.manicure){
+      tipoAgendamento.precoManicure = this.dados.pro.precoManicure;
+    }
+    if(tipoAgendamento.cabelo){
+      tipoAgendamento.precoCabelo = this.dados.pro.precoCabelo;
+    }
+    if(tipoAgendamento.maquiagem){
+      tipoAgendamento.precoMaquiagem = this.dados.pro.precoMaquiagem;
+    }
 
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
       this.showToast('Agendamento realizado');
