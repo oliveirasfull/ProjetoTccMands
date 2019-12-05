@@ -26,18 +26,6 @@
 
         <ion-card-header>
 
-            <!--  <ion-card-subtitle>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ion-avatar>
-                            <img [src]="photo" />
-                        </ion-avatar>
-                    </div>
-                    <div class="col-sm-6">
-                        <app-usuario-perfil></app-usuario-perfil>
-                    </div>
-                </div>
-            </ion-card-subtitle>  -->
 
             <ion-grid fixed>
                 <ion-row>
@@ -50,6 +38,7 @@
                     </ion-col>
                     <ion-col size="6">
                         <ion-card-title class="descricao" >{{vetor.nome}}</ion-card-title>
+                        <ion-card-title class="descricao" >{{vetor.sobrenome}}</ion-card-title>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -66,6 +55,9 @@
                     <img src="../../../../assets/banner-oficial.png">
             </ion-card-content>
 
+    
+            <ion-card-title class="descricao" >Telefone:{{vetor.telefone}}</ion-card-title>
+          
             <!--    <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> -->
         </ion-card-header>
 
