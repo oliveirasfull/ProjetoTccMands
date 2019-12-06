@@ -64,27 +64,6 @@ export class AgendamentoPage implements OnInit {
         this.preencherVetorDiaSemana();
         console.log(this.vetorDiaDaSemana);
         console.log(this.dados);
-
-        this.agendamentoService.getAgendamento().subscribe(agen => {
-          agen.forEach(element => {
-            if (element.idProfissional == this.dados.idProfissional) {
-
-              let eventCopy = {
-                title: element.descricao,
-                desc: element.descricao,
-                startTime: new Date(element.dataHora),
-                endTime: new Date(Date.UTC(element.dataHora.getFullYear(), element.dataHora.getMonth(),
-                  element.dataHora.getDate(), element.dataHora.getHours() + 1)),
-                AllDay: false
-              }
-
-              this.eventSource.push(eventCopy);
-            }
-
-          });
-
-        });
-
       }
     });
 
@@ -148,6 +127,12 @@ export class AgendamentoPage implements OnInit {
         }
 
       }
+    }else{
+      if(this.dados.pro.horarioManhaPro.length == 0 || this.dados.pro.horarioManhaPro == undefined){
+        if(diaOcupado == false){
+          this.inserirHorarioManhaOcupado(startTime);
+        }        
+      }
     }
 
     //----------------------------TARDE----------------------
@@ -173,6 +158,12 @@ export class AgendamentoPage implements OnInit {
           this.inserirEventoOcupado(x, startTime);
         }
 
+      }
+    }else{
+      if(this.dados.pro.horarioTardePro.length == 0 || this.dados.pro.horarioManhaPro == undefined){
+        if(diaOcupado == false){
+          this.inserirHorarioTardeOcupado(startTime);
+        }        
       }
     }
 
@@ -201,6 +192,12 @@ export class AgendamentoPage implements OnInit {
         }
 
       }
+    }else{
+      if(this.dados.pro.horarioNoitePro.length == 0 || this.dados.pro.horarioManhaPro == undefined ){
+        if(diaOcupado == false){
+          this.inserirHorarioNoiteOcupado(startTime);
+        }        
+      }
     }
 
   }
@@ -227,6 +224,42 @@ export class AgendamentoPage implements OnInit {
       desc: 'Dia OCUPADO',
       startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 0 - 5)),
       endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 23 + 5)),
+      allDay: false
+    };
+
+    this.eventSource.push(eventCopy);
+  }
+
+  inserirHorarioManhaOcupado(time: Date){
+    let eventCopy = {
+      title: 'Horario INDISPONIVEL',
+      desc: 'Horario OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 6 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 12 + 5)),
+      allDay: false
+    };
+
+    this.eventSource.push(eventCopy);
+  }
+
+  inserirHorarioTardeOcupado(time: Date){
+    let eventCopy = {
+      title: 'Horario INDISPONIVEL',
+      desc: 'Horario OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 13 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 18 + 5)),
+      allDay: false
+    };
+
+    this.eventSource.push(eventCopy);
+  }
+
+  inserirHorarioNoiteOcupado(time: Date){
+    let eventCopy = {
+      title: 'Horario INDISPONIVEL',
+      desc: 'Horario OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 19 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 22 + 5)),
       allDay: false
     };
 
