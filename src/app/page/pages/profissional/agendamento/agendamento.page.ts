@@ -439,7 +439,7 @@ export class AgendamentoPage implements OnInit {
       message: ' <strong>Agendamento </strong> <br>'
         + '<strong>Periodo </strong> <br>'
         + event.getUTCFullYear()
-        + '/' + event.getUTCMonth()
+        + '/' + (event.getUTCMonth()+1     )
         + '/' + event.getUTCDate()
         + ' - ' + (event.getUTCHours() - 5)
         + ':' + event.getUTCMinutes()
