@@ -7,6 +7,7 @@ import { NavController } from '@ionic/angular';
 import { OverlayService } from './../../../core/services/overlay.service';
 import { AuthProvider } from './../../../core/services/auth.types';
 import { AuthService } from './../../../core/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -36,8 +37,13 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private overlayService: OverlayService,
     private navCtrl: NavController,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private afAuth: AngularFireAuth
+  ) {
+    if(this.afAuth.auth.currentUser){
+      this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') || '/usuario/feed');
+    }
+  }
 
   ngOnInit() {
     this.createForm();

@@ -45,21 +45,30 @@ export class NotificacoesPage implements OnInit {
       message: 'Confirme o  <strong>Agendamento</strong>!!!',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Sair',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'btn btn-danger',
           handler: (blah) => {
-            agen.pendente = false;
-            this.concelarAgendamento(agen);
+            console.log(blah)
           }
         }, {
-          text: 'Okay',
+          text: 'Confirmar',
+          cssClass: 'btn btn-success',
           handler: () => {
             agen.confirmacao = true;
             agen.pendente = false;
             this.aprovarAgendamento(agen);
           }
+        },
+        {
+          text: 'Cancelar',
+          cssClass: 'btn btn-warning',
+          handler: (blah) => {
+            agen.pendente = false;
+            this.concelarAgendamento(agen);
+          }
         }
+        
       ]
     });
 
@@ -69,7 +78,11 @@ export class NotificacoesPage implements OnInit {
   concelarAgendamento(agen: Agendamento) {
     this.agendamentoService.confirmarAgendamento(agen).catch(e => {
       console.log(e);
+    }).then(() => {
+      this.showToast('Cancelado');
     });
+
+    this.router.navigate(['./usuario/feed']);
   }
 
   aprovarAgendamento(agen: Agendamento) {
