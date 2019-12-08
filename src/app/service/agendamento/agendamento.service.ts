@@ -31,6 +31,7 @@ export interface Agendamento{
   telefonePro:string;
   numeroResidenciaPro:string;
   nomeFantasia: string;
+  descricaoCancelamento: string;
 }
 
 @Injectable({
@@ -80,7 +81,8 @@ export class AgendamentoService {
   confirmarAgendamento(agendamento: Agendamento): Promise<void>{
     return this.agendamentoCollection.doc(agendamento.id).update({
       confirmacao : agendamento.confirmacao,
-      pendente : agendamento.pendente
+      pendente : agendamento.pendente,
+      descricaoCancelamento: agendamento.descricaoCancelamento
     });
   }
 }

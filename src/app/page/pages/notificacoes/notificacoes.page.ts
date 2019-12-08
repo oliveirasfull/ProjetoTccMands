@@ -65,6 +65,7 @@ export class NotificacoesPage implements OnInit {
           cssClass: 'btn btn-warning',
           handler: (blah) => {
             agen.pendente = false;
+            agen.descricaoCancelamento = 'Foi Cancelado Por Algum Motivo';
             this.concelarAgendamento(agen);
           }
         }

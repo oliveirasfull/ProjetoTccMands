@@ -88,7 +88,7 @@ export class AgendamentoPage implements OnInit {
   preencherCalendar(startTime: Date) {
 
     this.eventSource = [];
-    let eventoComPessoa: any[] = [];
+    let eventoComPessoa: Agendamento[] = [];
     let diaOcupado = true;
 
     eventoComPessoa = this.tabs.getAgendamentoByKeyPro(this.dados.pro.id);
@@ -106,7 +106,9 @@ export class AgendamentoPage implements OnInit {
 
     if(eventoComPessoa){
       eventoComPessoa.forEach(element => {
-        this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()), startTime);
+        if((element.pendente == false && element.confirmacao == false)){
+          this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()), startTime);
+        }
       });
     }
 
@@ -317,7 +319,8 @@ export class AgendamentoPage implements OnInit {
       bairroPro: this.dados.pro.bairro,
       telefonePro: this.dados.pro.telefone,
       numeroResidenciaPro: this.dados.pro.numeroResidencia,
-      nomeFantasia: this.dados.pro.nomePro
+      nomeFantasia: this.dados.pro.nomePro,
+      descricaoCancelamento: ''
     };
 
     if (tipoAgendamento.pedicure) {
