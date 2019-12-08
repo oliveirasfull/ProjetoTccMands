@@ -38,9 +38,9 @@
             </ion-card-header>
 
             <ion-card-header *ngIf="agen.pendente == false && agen.confirmacao == false">
-                    <ion-card-subtitle>Cancelado</ion-card-subtitle>
-                    <ion-card-title>Este agendamento está Cancelado</ion-card-title>
-                </ion-card-header>
+                <ion-card-subtitle>Cancelado</ion-card-subtitle>
+                <ion-card-title>Este agendamento está Cancelado</ion-card-title>
+            </ion-card-header>
 
             <ion-label>Nome: {{ agen.nomeFantasia}}<br> </ion-label>
             <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
@@ -51,7 +51,7 @@
             <ion-label>Rua: {{ agen.ruaPro}}<br> </ion-label>
 
             <ion-card-content *ngIf="agen.pendente == false && agen.confirmacao == false">
-                    Não foi possível confirmar sua solicitação de agendamento, entraremos em contato por meio do seu telefone!
+                Não foi possível confirmar sua solicitação de agendamento, entraremos em contato por meio do seu telefone!
             </ion-card-content>
         </ion-card>
     </div>
