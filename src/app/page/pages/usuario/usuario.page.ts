@@ -21,6 +21,8 @@ export class UsuarioPage implements OnInit {
   data: any;
   photo : string = '';
   erro: any;
+  agendamento: Agendamento[];
+  contAgen: number;
   
   
   constructor(private userService: UserService, private toastCtrl: ToastController, 
@@ -33,6 +35,8 @@ export class UsuarioPage implements OnInit {
 
   ngOnInit() {    
     this.vetor = this.tabs.getUser();
+    this.agendamento = this.tabs.getAgendamentoByKeyUser(this.vetor.id);
+    this.contAgen = this.agendamento.length;
   }
 
   irParaCriaProfissional(){

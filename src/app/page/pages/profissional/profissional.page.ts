@@ -16,6 +16,7 @@ export class ProfissionalPage implements OnInit {
   data: any;
   agendamento: Agendamento[] = [];
   userLocal: boolean = false;
+  contAgen: number;
 
   constructor(private route: ActivatedRoute, private router: Router, private tabs: TabsPage,
     private agendamentoService: AgendamentoService, private alertController: AlertController,
@@ -32,6 +33,7 @@ export class ProfissionalPage implements OnInit {
           this.data = this.tabs.getUser();
           console.log(this.data);
           this.agendamento = this.tabs.getAgendamentoByKeyPro(this.data.id);
+          this.contAgen = this.agendamento.length;
           console.log(this.agendamento);
           this.userLocal = true;
         }
