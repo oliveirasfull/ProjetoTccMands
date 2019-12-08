@@ -6,6 +6,7 @@ import { UserService } from 'src/app/service/user.service';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
 import { stringify } from 'querystring';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-agendamento',
@@ -56,7 +57,8 @@ export class AgendamentoPage implements OnInit {
   constructor(private route: ActivatedRoute,
     private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
     private userService: UserService, @Inject(LOCALE_ID) private locale: string,
-    private alertController: AlertController, private router: Router) {
+    private alertController: AlertController, private router: Router,
+    private localNotifications: LocalNotifications) {
 
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
@@ -468,7 +470,14 @@ export class AgendamentoPage implements OnInit {
     await alert.present();
   }
 
-
+  scheduleNotification(){
+    this.localNotifications.schedule({
+      id: this.dados.pro.id, 
+      title: 'Agendamento Pedente',
+      text: 'Profissional você tem uma novo agendamento pedente',
+      trigger: {at: new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth()))}
+    });
+  }
 
 
 

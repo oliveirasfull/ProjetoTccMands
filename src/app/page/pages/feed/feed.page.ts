@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TypeUser, UserService } from 'src/app/service/user.service';
-import { NavController } from '@ionic/angular';
+import { UserService } from 'src/app/service/user.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AlertController } from '@ionic/angular';
-import { TabsPage } from '../tabs/tabs.page';
-import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-feed',
@@ -18,9 +17,15 @@ export class FeedPage implements OnInit {
   public pro : string = "Pro"
   user : Observable<any>
 
-  constructor( private userService: UserService, private navCtrl: NavController, private router: Router, 
-    private afAuth: AngularFireAuth, private alertController: AlertController, private tabs: TabsPage,
-    private agendamentoService: AgendamentoService) {}
+  constructor( private userService: UserService, private router: Router, 
+    private afAuth: AngularFireAuth, private localNotifications: LocalNotifications,
+    private plt: Platform) {
+      this.plt.ready().then(() => {
+        this.localNotifications.on('trigger').subscribe(res =>{
+          
+        });
+      });
+    }
 
   
   ngOnInit() {

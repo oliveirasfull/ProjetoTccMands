@@ -12,6 +12,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Push } from '@ionic-native/push/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   providers:[
     Push,
     Camera,
-    Geolocation
+    Geolocation,
+    LocalNotifications
     
   ],
 
