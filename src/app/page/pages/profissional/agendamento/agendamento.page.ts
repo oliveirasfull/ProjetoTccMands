@@ -2,11 +2,10 @@ import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
 import { ToastController, AlertController } from '@ionic/angular';
-import { UserService } from 'src/app/service/user.service';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
-import { stringify } from 'querystring';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { TabsPage } from '../../tabs/tabs.page';
 
 @Component({
   selector: 'app-agendamento',
@@ -54,11 +53,9 @@ export class AgendamentoPage implements OnInit {
 
   @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
-  constructor(private route: ActivatedRoute,
-    private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
-    private userService: UserService, @Inject(LOCALE_ID) private locale: string,
-    private alertController: AlertController, private router: Router,
-    private localNotifications: LocalNotifications) {
+  constructor(private route: ActivatedRoute, private agendamentoService: AgendamentoService, private toastCtrl: ToastController,
+    @Inject(LOCALE_ID) private locale: string, private alertController: AlertController, private router: Router,
+    private localNotifications: LocalNotifications, private tabs: TabsPage) {
 
     this.route.queryParams.subscribe(params => {
       if (params && params.special) {
@@ -91,8 +88,10 @@ export class AgendamentoPage implements OnInit {
   preencherCalendar(startTime: Date) {
 
     this.eventSource = [];
-
+    let eventoComPessoa: any[] = [];
     let diaOcupado = true;
+
+    eventoComPessoa = this.tabs.getAgendamentoByKeyPro(this.dados.pro.id);
 
     for (let x = 0; x < this.vetorDiaDaSemana.length; x++) {
       console.log('Mes = ' + startTime.getMonth())
@@ -103,6 +102,12 @@ export class AgendamentoPage implements OnInit {
 
     if (diaOcupado) {
       this.inserirDiaOcupado(startTime);
+    }
+
+    if(eventoComPessoa){
+      eventoComPessoa.forEach(element => {
+        this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()), startTime);
+      });
     }
 
     // ----------------------MANHA--------------------------
@@ -202,6 +207,23 @@ export class AgendamentoPage implements OnInit {
       }
     }
 
+  }
+
+  inserirEventoOcupadoPorPessoa(horario: Date, time: Date) {
+    let eventCopy: any = '';
+
+
+    eventCopy = {
+      title: 'INDISPONIVEL',
+      desc: 'OCUPADO',
+      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario.getHours() + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario.getHours() + 6)),
+      allDay: false
+    };
+
+    console.log(eventCopy);
+
+    this.eventSource.push(eventCopy);
   }
 
   inserirEventoOcupado(horario: number, time: Date) {
@@ -314,6 +336,8 @@ export class AgendamentoPage implements OnInit {
     this.agendamentoService.addAgendamento(tipoAgendamento).then(() => {
       this.showToast('Agendamento realizado');
     }).catch(e => { console.log(e) });
+
+    this.scheduleNotification();
 
     this.router.navigate(['./usuario/feed']);
 
@@ -475,7 +499,7 @@ export class AgendamentoPage implements OnInit {
       id: this.dados.pro.id, 
       title: 'Agendamento Pedente',
       text: 'Profissional você tem uma novo agendamento pedente',
-      trigger: {at: new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth()))}
+      trigger: {at: new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), new Date().getUTCHours() + 1))}
     });
   }
 

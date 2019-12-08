@@ -2,11 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, TypeUser, TypePro } from 'src/app/service/user.service';
 import { ToastController, AlertController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { TabsPage } from '../tabs/tabs.page'
+import { TabsPage } from '../tabs/tabs.page';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { AgendamentoService, Agendamento } from 'src/app/service/agendamento/agendamento.service';
+import { Agendamento } from 'src/app/service/agendamento/agendamento.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
@@ -26,9 +24,8 @@ export class UsuarioPage implements OnInit {
   
   
   constructor(private userService: UserService, private toastCtrl: ToastController, 
-    private afAuth: AngularFireAuth, private tabs: TabsPage, private route: ActivatedRoute, 
-    private router: Router, private agendamentoService: AgendamentoService, 
-    private alertController: AlertController, private camera: Camera, private geolocation: Geolocation ) { 
+    private tabs: TabsPage, private route: ActivatedRoute, 
+    private router: Router, private camera: Camera, private geolocation: Geolocation ) { 
 
   } 
   public titulo :string = 'Mands';
