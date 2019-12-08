@@ -443,7 +443,7 @@ export class AgendamentoPage implements OnInit {
         + '/' + event.getUTCDate()
         + ' - ' + (event.getUTCHours() - 5)
         + ':' + event.getUTCMinutes()
-        + '. <br>'
+        + '0. <br>'
         + '<strong>Descrição</strong><br> '
         + this.descricao
         + ' <br> <strong> Serviço </strong> <br>'

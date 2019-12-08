@@ -26,14 +26,28 @@
 
     <div *ngIf="data.profissionalAtivo == false">
         <ion-card *ngFor="let agen of agendamento ">
-            <ion-label>Nome: {{ agen.nomeFantasia}}<br> </ion-label>
-            <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
-            <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
-            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
-            <ion-label>Pedente: {{ agen.pendente }}<br> </ion-label>
-            <ion-label>Numero da casa: {{ agen.numeroResidenciaPro}}<br> </ion-label>
-            <ion-label>Bairro: {{ agen.bairroPro}}<br> </ion-label>
-            <ion-label>Rua: {{ agen.ruaPro}}<br> </ion-label>
+            <div class="verdadeiro" *ngIf="agen.pendente==true  else falso">
+                <ion-label>Nome: {{ agen.nomeFantasia}}<br> </ion-label>
+                <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
+                <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
+                <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
+                <ion-label>Pedente: {{ agen.pendente }}<br> </ion-label>
+                <ion-label>Numero da casa: {{ agen.numeroResidenciaPro}}<br> </ion-label>
+                <ion-label>Bairro: {{ agen.bairroPro}}<br> </ion-label>
+                <ion-label>Rua: {{ agen.ruaPro}}<br> </ion-label>
+            </div>
+            <ng-template #falso>
+                <div class="falso">
+                    <ion-label>Nome: {{ agen.nomeFantasia}}<br> </ion-label>
+                    <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
+                    <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
+                    <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
+                    <ion-label>Pedente: {{ agen.pendente }}<br> </ion-label>
+                    <ion-label>Numero da casa: {{ agen.numeroResidenciaPro}}<br> </ion-label>
+                    <ion-label>Bairro: {{ agen.bairroPro}}<br> </ion-label>
+                    <ion-label>Rua: {{ agen.ruaPro}}<br> </ion-label>
+                </div>
+            </ng-template>
         </ion-card>
     </div>
 
