@@ -3,13 +3,13 @@
         <ion-title>
             <ion-grid>
                 <ion-row>
-                    <ion-col align-self-start>
+                <!--    <ion-col align-self-start>
                         <ion-icon name="cog"></ion-icon>
-                    </ion-col>
+                    </ion-col> -->
                     <ion-col align-self-center class="descricao">
                         {{titulo}}
                     </ion-col>
-                    <ion-col align-self-end>
+                 <!--  <ion-col align-self-end>
                         <ion-icon name="notifications-outline" (click)="irParaNotificacao()"></ion-icon>
                         <span class="badge">{{ contAgen }}</span>
                     </ion-col>
@@ -44,22 +44,31 @@
                 </ion-row>
             </ion-grid>
 
-            <ion-button (click)="tirarFoto()">
+          <!--  <ion-button (click)="tirarFoto()">
                 foto
             </ion-button>
 
             <ion-button (click)="gps()">
                 gps
-            </ion-button>
+            </ion-button>  -->
 
             <ion-card-content>
                     <img src="../../../../assets/banner-oficial.png">
             </ion-card-content>
 
     
-            <ion-card-title class="descricao" >Telefone:{{vetor.telefone}}</ion-card-title>
+     
+            <ion-toolbar color="primary">
+                    <ion-title style="text-align: center; ">Bairro:{{vetor.bairro}}</ion-title>
+                    <ion-title style="text-align: center; ">Rua:{{vetor.rua}}</ion-title>
+                    <ion-title style="text-align: center; ">Telefone:{{vetor.telefone}}</ion-title>
+            </ion-toolbar>
+
+            <ion-toolbar color="primary">
+                <ion-title style="text-align: center; " (click)="irParaNotificacao()">Lista de Agendamentos</ion-title>
+            </ion-toolbar>
           
-            <!--    <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> -->
+            <!--  <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> -->
         </ion-card-header>
 
     </ion-card>
