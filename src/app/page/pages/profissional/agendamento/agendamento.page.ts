@@ -235,7 +235,7 @@ export class AgendamentoPage implements OnInit {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
       startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 6 + 5)),
-      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 12 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 13 + 5)),
       allDay: false
     };
 
@@ -247,7 +247,7 @@ export class AgendamentoPage implements OnInit {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
       startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 13 + 5)),
-      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 18 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 19 + 5)),
       allDay: false
     };
 
@@ -259,7 +259,7 @@ export class AgendamentoPage implements OnInit {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
       startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 19 + 5)),
-      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 22 + 5)),
+      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), 23 + 5)),
       allDay: false
     };
 
