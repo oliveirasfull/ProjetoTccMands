@@ -1,13 +1,13 @@
 <ion-header>
     <ion-toolbar color="primary" style="text-align: center">
-        <ion-title>Feed</ion-title>
+        <ion-title>Mands</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-searchbar placeholder="Busque"></ion-searchbar>
+<!--  <ion-searchbar placeholder="Busque"></ion-searchbar>-->
 
 <ion-content>
-    <ion-card *ngFor="let user of (user | async)"style="background-image: linear-gradient(rgb(221, 201, 219), rgb(76, 135, 243)">
+    <ion-card *ngFor="let user of (user | async)" style="background-image: linear-gradient(rgb(221, 201, 219), rgb(76, 135, 243)">
         <ion-card *ngIf="user.profissionalAtivo" (click)="paginaProfissional(user)" style="background-image: linear-gradient(rgb(224, 223, 230), rgb(224, 223, 223)">
             <ion-grid fixed>
                 <ion-row>
