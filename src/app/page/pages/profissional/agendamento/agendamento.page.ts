@@ -91,11 +91,9 @@ export class AgendamentoPage implements OnInit {
     let eventoComPessoa: any[] = [];
     let diaOcupado = true;
 
-    eventoComPessoa = this.tabs.getAgendamentoByKeyPro(this.dados.pro.id);
-    console.log(eventoComPessoa);
+    eventoComPessoa = this.tabs.getAgendamentoByKeyProAgendamento(this.dados.pro.id);
 
     for (let x = 0; x < this.vetorDiaDaSemana.length; x++) {
-      console.log('Mes = ' + startTime.getMonth())
       if (startTime.getDay() == this.vetorDiaDaSemana[x]) {
         diaOcupado = false;
       }
@@ -105,11 +103,11 @@ export class AgendamentoPage implements OnInit {
       this.inserirDiaOcupado(startTime);
     }
 
-    if(eventoComPessoa){
-      console.log("entrou");
+    if (eventoComPessoa) {
       eventoComPessoa.forEach(element => {
-        if((element.pendente == false && element.confirmacao == false)){}else{
-          this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()), startTime);
+        if ((element.pendente == false && element.confirmacao == false)) { } else {
+          console.log(element);
+          this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()));
         }
       });
     }
@@ -138,11 +136,11 @@ export class AgendamentoPage implements OnInit {
         }
 
       }
-    }else{
-      if(this.dados.pro.horarioManhaPro.length == 0 || this.dados.pro.horarioManhaPro == undefined){
-        if(diaOcupado == false){
+    } else {
+      if (this.dados.pro.horarioManhaPro.length == 0 || this.dados.pro.horarioManhaPro == undefined) {
+        if (diaOcupado == false) {
           this.inserirHorarioManhaOcupado(startTime);
-        }        
+        }
       }
     }
 
@@ -170,11 +168,11 @@ export class AgendamentoPage implements OnInit {
         }
 
       }
-    }else{
-      if(this.dados.pro.horarioTardePro.length == 0 || this.dados.pro.horarioManhaPro == undefined){
-        if(diaOcupado == false){
+    } else {
+      if (this.dados.pro.horarioTardePro.length == 0 || this.dados.pro.horarioManhaPro == undefined) {
+        if (diaOcupado == false) {
           this.inserirHorarioTardeOcupado(startTime);
-        }        
+        }
       }
     }
 
@@ -203,25 +201,25 @@ export class AgendamentoPage implements OnInit {
         }
 
       }
-    }else{
-      if(this.dados.pro.horarioNoitePro.length == 0 || this.dados.pro.horarioManhaPro == undefined ){
-        if(diaOcupado == false){
+    } else {
+      if (this.dados.pro.horarioNoitePro.length == 0 || this.dados.pro.horarioManhaPro == undefined) {
+        if (diaOcupado == false) {
           this.inserirHorarioNoiteOcupado(startTime);
-        }        
+        }
       }
     }
 
   }
 
-  inserirEventoOcupadoPorPessoa(horario: Date, time: Date) {
+  inserirEventoOcupadoPorPessoa(horario: Date) {
     let eventCopy: any = '';
 
 
     eventCopy = {
       title: 'INDISPONIVEL',
       desc: 'OCUPADO',
-      startTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario.getHours() + 5)),
-      endTime: new Date(Date.UTC(time.getFullYear(), time.getMonth(), time.getDate(), horario.getHours() + 6)),
+      startTime: new Date(Date.UTC(horario.getFullYear(), horario.getMonth(), horario.getDate(), horario.getHours() + 5)),
+      endTime: new Date(Date.UTC(horario.getFullYear(), horario.getMonth(), horario.getDate(), horario.getHours() + 6)),
       allDay: false
     };
 
@@ -258,7 +256,7 @@ export class AgendamentoPage implements OnInit {
     this.eventSource.push(eventCopy);
   }
 
-  inserirHorarioManhaOcupado(time: Date){
+  inserirHorarioManhaOcupado(time: Date) {
     let eventCopy = {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
@@ -270,7 +268,7 @@ export class AgendamentoPage implements OnInit {
     this.eventSource.push(eventCopy);
   }
 
-  inserirHorarioTardeOcupado(time: Date){
+  inserirHorarioTardeOcupado(time: Date) {
     let eventCopy = {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
@@ -282,7 +280,7 @@ export class AgendamentoPage implements OnInit {
     this.eventSource.push(eventCopy);
   }
 
-  inserirHorarioNoiteOcupado(time: Date){
+  inserirHorarioNoiteOcupado(time: Date) {
     let eventCopy = {
       title: 'Horario INDISPONIVEL',
       desc: 'Horario OCUPADO',
@@ -470,7 +468,7 @@ export class AgendamentoPage implements OnInit {
       message: ' <strong>Agendamento </strong> <br>'
         + '<strong>Periodo </strong> <br>'
         + event.getUTCFullYear()
-        + '/' + (event.getUTCMonth()+1     )
+        + '/' + (event.getUTCMonth() + 1)
         + '/' + event.getUTCDate()
         + ' - ' + (event.getUTCHours() - 5)
         + ':' + event.getUTCMinutes()
@@ -499,12 +497,12 @@ export class AgendamentoPage implements OnInit {
     await alert.present();
   }
 
-  scheduleNotification(){
+  scheduleNotification() {
     this.localNotifications.schedule({
-      id: this.dados.pro.id, 
+      id: this.dados.pro.id,
       title: 'Agendamento Pedente',
       text: 'Profissional você tem uma novo agendamento pedente',
-      trigger: {at: new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), new Date().getUTCHours() + 1))}
+      trigger: { at: new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), new Date().getUTCHours() + 1)) }
     });
   }
 

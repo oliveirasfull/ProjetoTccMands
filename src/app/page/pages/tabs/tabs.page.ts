@@ -67,4 +67,18 @@ export class TabsPage implements OnInit {
     return agendamentoUser;
   }
 
+  getAgendamentoByKeyProAgendamento(id: string): Agendamento[]{
+    
+    let agendamentoUser : Agendamento[] = [];
+
+    this.agendamento.forEach(element => {
+      if(element.idProfissional == id){
+        agendamentoUser.push(element);
+        console.log(element.dataHora);
+      }
+    });
+
+    return agendamentoUser;
+  }
+
 }
