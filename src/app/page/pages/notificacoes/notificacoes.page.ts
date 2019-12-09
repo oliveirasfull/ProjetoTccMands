@@ -15,6 +15,7 @@ export class NotificacoesPage implements OnInit {
   agendamento: Agendamento[] = [];
   data: any;
   teste: Date;
+  descricaoCancel: string = '';
 
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -66,6 +67,41 @@ export class NotificacoesPage implements OnInit {
           handler: (blah) => {
             agen.pendente = false;
             agen.descricaoCancelamento = 'Foi Cancelado Por Algum Motivo';
+            this.concelarAgendamento(agen);
+          }
+        }
+        
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async cancelarAgen(agen: Agendamento) {
+    const alert = await this.alertController.create({
+      header: 'Tem Certeza que quer Cancelar este Agendamento?',
+      message: 'Digite o Motivo do Cancelamento',
+      inputs: [
+        {
+          name: 'descricaoCancel',
+          type: 'text',
+          placeholder: 'Digite aqui o motivo'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Sair',
+          role: 'cancel',
+          cssClass: 'btn-primary',
+          handler: (blah) => {
+            console.log(blah)
+          }
+        }, {
+          text: 'Cancelar',
+          cssClass: 'btn-danger',
+          handler: (blah) => {
+            agen.pendente = false;
+            agen.descricaoCancelamento = this.descricaoCancel;
             this.concelarAgendamento(agen);
           }
         }
