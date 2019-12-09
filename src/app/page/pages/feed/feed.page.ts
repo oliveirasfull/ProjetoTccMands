@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { Platform } from '@ionic/angular';
+
 
 
 @Component({
@@ -16,16 +15,10 @@ export class FeedPage implements OnInit {
 
   public pro : string = "Pro"
   user : Observable<any>
+  
 
   constructor( private userService: UserService, private router: Router, 
-    private afAuth: AngularFireAuth, private localNotifications: LocalNotifications,
-    private plt: Platform) {
-      this.plt.ready().then(() => {
-        this.localNotifications.on('trigger').subscribe(res =>{
-          
-        });
-      });
-    }
+    private afAuth: AngularFireAuth) {}
 
   
   ngOnInit() {
