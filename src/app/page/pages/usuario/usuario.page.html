@@ -58,15 +58,8 @@
 
 
 
-                <ion-toolbar color="primary">
-                    <ion-title style="text-align: center; ">Bairro:{{vetor.bairro}}</ion-title>
-                    <ion-title style="text-align: center; ">Rua:{{vetor.rua}}</ion-title>
-                    <ion-title style="text-align: center; ">Telefone:{{vetor.telefone}}</ion-title>
-                </ion-toolbar>
 
-                <ion-toolbar color="primary">
-                    <ion-title style="text-align: center; " (click)="irParaNotificacao()">Lista de Agendamentos</ion-title>
-                </ion-toolbar>
+
 
                 <!--  <ion-card-title>Nome: {{vetor.nome}}</ion-card-title> -->
             </ion-card-header>
@@ -76,6 +69,11 @@
 
 
     </ion-card>
+    <ion-card-subtitle style="text-align: rigth; ">Bairro: {{vetor.bairro}} </ion-card-subtitle>
+    <ion-card-subtitle style="text-align: rigth; ">Rua: {{vetor.rua}} </ion-card-subtitle>
+    <ion-card-subtitle style="text-align: rigth; ">Telefone: {{vetor.telefone}} </ion-card-subtitle>
+    <ion-card-subtitle style="text-align: rigth; ">Email: {{vetor.email}} </ion-card-subtitle>
+
 
 
 
