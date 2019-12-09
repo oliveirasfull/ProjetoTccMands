@@ -86,7 +86,7 @@ export class NotificacoesPage implements OnInit {
             console.log(blah)
           }
         }, {
-          text: 'Cancelar',
+          text: 'OK',
           cssClass: 'btn-danger',
           handler: blah => {
             agen.pendente = false;

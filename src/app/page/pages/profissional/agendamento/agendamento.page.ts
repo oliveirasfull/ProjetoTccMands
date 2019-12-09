@@ -481,12 +481,13 @@ export class AgendamentoPage implements OnInit {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'btn-danger',
           handler: (blah) => {
             console.log("Cancelado")
           }
         }, {
           text: 'Okay',
+          cssClass: 'btn-primary',
           handler: () => {
             this.onSubmit(event);
           }
