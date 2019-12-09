@@ -92,6 +92,7 @@ export class AgendamentoPage implements OnInit {
     let diaOcupado = true;
 
     eventoComPessoa = this.tabs.getAgendamentoByKeyPro(this.dados.pro.id);
+    console.log(eventoComPessoa);
 
     for (let x = 0; x < this.vetorDiaDaSemana.length; x++) {
       console.log('Mes = ' + startTime.getMonth())
@@ -105,8 +106,9 @@ export class AgendamentoPage implements OnInit {
     }
 
     if(eventoComPessoa){
+      console.log("entrou");
       eventoComPessoa.forEach(element => {
-        if((element.pendente == false && element.confirmacao == false)){
+        if((element.pendente == false && element.confirmacao == false)){}else{
           this.inserirEventoOcupadoPorPessoa(new Date(element.dataHora.toDate()), startTime);
         }
       });

@@ -100,6 +100,7 @@ export class NotificacoesPage implements OnInit {
           text: 'Cancelar',
           cssClass: 'btn-danger',
           handler: (blah) => {
+            console.log(this.descricaoCancel);
             agen.pendente = false;
             agen.descricaoCancelamento = this.descricaoCancel;
             this.concelarAgendamento(agen);
