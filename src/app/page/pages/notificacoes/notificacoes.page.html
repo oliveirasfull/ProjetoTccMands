@@ -56,7 +56,7 @@
             <ion-label> <strong>Rua: </strong> {{ agen.ruaPro}}<br> </ion-label>
 
             <ion-card-content *ngIf="agen.pendente == false && agen.confirmacao == false">
-                Texto = {{ agen.descricaoCancelamento }}
+               <strong>Motivo do Cancelamento</strong><br> {{ agen.descricaoCancelamento }}
             </ion-card-content>
         </ion-card>
     </div>

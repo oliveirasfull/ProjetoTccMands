@@ -15,7 +15,6 @@ export class NotificacoesPage implements OnInit {
   agendamento: Agendamento[] = [];
   data: any;
   teste: Date;
-  descricaoCancel: string = '';
 
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -60,17 +59,7 @@ export class NotificacoesPage implements OnInit {
             agen.pendente = false;
             this.aprovarAgendamento(agen);
           }
-        },
-        {
-          text: 'Cancelar',
-          cssClass: 'btn btn-warning',
-          handler: (blah) => {
-            agen.pendente = false;
-            agen.descricaoCancelamento = 'Foi Cancelado Por Algum Motivo';
-            this.concelarAgendamento(agen);
-          }
-        }
-        
+        }        
       ]
     });
 
@@ -99,10 +88,9 @@ export class NotificacoesPage implements OnInit {
         }, {
           text: 'Cancelar',
           cssClass: 'btn-danger',
-          handler: (blah) => {
-            console.log(this.descricaoCancel);
+          handler: blah => {
             agen.pendente = false;
-            agen.descricaoCancelamento = this.descricaoCancel;
+            agen.descricaoCancelamento = blah.descricaoCancel;
             this.concelarAgendamento(agen);
           }
         }
