@@ -7,16 +7,17 @@
 <ion-content>
     <div *ngIf="data.profissionalAtivo">
         <ion-card *ngFor="let agen of agendamento ">
-            <ion-label>Nome: {{ agen.nomeUsuario}} <br></ion-label> <br>
-            <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
-            <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br> </ion-label>
-            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
-            <ion-label>Numero da casa: {{ agen.numeroResidenciaUsuario}}<br> </ion-label>
-            <ion-label>Bairro: {{ agen.bairroUsuario}}<br> </ion-label>
-            <ion-label>Rua: {{ agen.ruaUsuario}}<br> </ion-label>
+            <ion-label> <strong>Nome: </strong> {{ agen.nomeUsuario}} <br></ion-label> <br>
+            <ion-label> <strong>Descrição:</strong> {{agen.descricao}} <br> </ion-label>
+            <ion-label> <strong>Dia/Hora:  </strong> {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br> </ion-label>
+            <ion-label *ngIf="agen.atendimentoDomicilio == true"> <strong> Local :</strong> Atendimento em domicio<br> </ion-label>
+            <ion-label *ngIf="agen.atendimentoDomicilio == false"> <strong> Local :</strong> atendimento no local<br> </ion-label>
+            <ion-label> <strong> Numero da casa: </strong> {{ agen.numeroResidenciaUsuario}}<br> </ion-label>
+            <ion-label> <strong>Bairro: </strong> {{ agen.bairroUsuario}}<br> </ion-label>
+            <ion-label> <strong>Rua: </strong> {{ agen.ruaUsuario}}<br> </ion-label>
             <!-- <ion-label>{{ usuario.id }}</ion-label> -->
             <ion-button (click)="confirmarAgendamento(agen)">
-                Confirma?
+                Confirma
             </ion-button>
 
             <!-- <ion-label>Data: {{ agen.date }}</ion-label> <br> -->
@@ -43,15 +44,16 @@
             </ion-card-header>
 
             <ion-label> <strong>Nome:  </strong> {{ agen.nomeFantasia}} <br> </ion-label>
-            <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
-            <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
-            <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
-            <ion-label>Numero da casa: {{ agen.numeroResidenciaPro}}<br> </ion-label>
-            <ion-label>Bairro: {{ agen.bairroPro}}<br> </ion-label>
-            <ion-label>Rua: {{ agen.ruaPro}}<br> </ion-label>
+            <ion-label><strong>Descriçao do serviço:  </strong> {{agen.descricao}} <br> </ion-label>
+            <ion-label> <strong>Data/Hora: </strong> {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
+            <ion-label *ngIf="agen.atendimentoDomicilio == true"> <strong> Local :</strong> Atendimento em domicio<br> </ion-label>
+            <ion-label *ngIf="agen.atendimentoDomicilio == false"> <strong> Local :</strong> atendimento no local<br> </ion-label>
+            <ion-label> <strong>Numero da casa: </strong> {{ agen.numeroResidenciaPro}}<br> </ion-label>
+            <ion-label> <strong> Bairro: </strong> {{ agen.bairroPro}}<br> </ion-label>
+            <ion-label> <strong>Rua: </strong> {{ agen.ruaPro}}<br> </ion-label>
 
             <ion-card-content *ngIf="agen.pendente == false && agen.confirmacao == false">
-                Não foi possível confirmar sua solicitação de agendamento, entraremos em contato por meio do seu telefone!
+                Não foi possível confirmar sua solicitação de agendamento, entraremos em contato!
             </ion-card-content>
         </ion-card>
     </div>
