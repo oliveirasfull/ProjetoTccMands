@@ -88,7 +88,7 @@ export class AgendamentoPage implements OnInit {
   preencherCalendar(startTime: Date) {
 
     this.eventSource = [];
-    let eventoComPessoa: Agendamento[] = [];
+    let eventoComPessoa: any[] = [];
     let diaOcupado = true;
 
     eventoComPessoa = this.tabs.getAgendamentoByKeyPro(this.dados.pro.id);
