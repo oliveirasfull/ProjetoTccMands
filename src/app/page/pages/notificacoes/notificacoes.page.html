@@ -28,21 +28,21 @@
         <ion-card *ngFor="let agen of agendamento ">
 
             <ion-card-header *ngIf="agen.pendente">
-                <ion-card-subtitle>Em Aguardo</ion-card-subtitle>
-                <ion-card-title>Este Agendamento Está pendente</ion-card-title>
+                <ion-card-subtitle style="color:blue">Em Aguardo</ion-card-subtitle>
+                <ion-card-title style="color:blue">Este Agendamento Está pendente</ion-card-title>
             </ion-card-header>
 
             <ion-card-header *ngIf="agen.pendente == false && agen.confirmacao">
-                <ion-card-subtitle>Confirmado</ion-card-subtitle>
-                <ion-card-title>Este agendamento está confirmado</ion-card-title>
+                <ion-card-subtitle style="color:green">Confirmado</ion-card-subtitle>
+                <ion-card-title style="color:green ">Este agendamento está confirmado</ion-card-title>
             </ion-card-header>
 
             <ion-card-header *ngIf="agen.pendente == false && agen.confirmacao == false">
-                <ion-card-subtitle>Cancelado</ion-card-subtitle>
-                <ion-card-title>Este agendamento está Cancelado</ion-card-title>
+                <ion-card-subtitle style=" color:red">Cancelado</ion-card-subtitle>
+                <ion-card-title style="color: red;">Este agendamento está Cancelado</ion-card-title>
             </ion-card-header>
 
-            <ion-label>Nome: {{ agen.nomeFantasia}}<br> </ion-label>
+            <ion-label> <strong>Nome:  </strong> {{ agen.nomeFantasia}} <br> </ion-label>
             <ion-label>Descrição: {{agen.descricao}} <br> </ion-label>
             <ion-label>Hora/Hora: {{ agen.dataHora.toDate() | date:'dd/MM/yyyy - HH:mm' }} <br></ion-label>
             <ion-label>Domicilio: {{ agen.atendimentoDomicilio}}<br> </ion-label>
