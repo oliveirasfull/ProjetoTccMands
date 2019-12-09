@@ -32,7 +32,7 @@ export class UsuarioPage implements OnInit {
 
   ngOnInit() {    
     this.vetor = this.tabs.getUser();
-    this.agendamento = this.tabs.getAgendamentoByKeyUser(this.vetor.id);
+    this.agendamento = this.tabs.getAgendamentoByKeyUserConfirmado(this.vetor.id);
     this.contAgen = this.agendamento.length;
   }
 

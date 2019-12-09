@@ -81,4 +81,17 @@ export class TabsPage implements OnInit {
     return agendamentoUser;
   }
 
+  getAgendamentoByKeyUserConfirmado(id: string): Agendamento[]{
+    
+    let agendamentoUser : Agendamento[] = [];
+
+    this.agendamento.forEach(element => {
+      if(element.idUsuario == id && element.pendente == true){
+        agendamentoUser.push(element);
+      }
+    });
+
+    return agendamentoUser;
+  }
+
 }
