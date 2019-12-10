@@ -41,8 +41,8 @@ export class NotificacoesPage implements OnInit {
 
   async confirmarAgendamento(agen: Agendamento) {
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Confirme o  <strong>Agendamento</strong>!!!',
+      header: 'Confirmação',
+      message: 'Tem certeza que deseja confirmar o   <strong>Agendamento</strong>!!!',
       buttons: [
         {
           text: 'Sair',
@@ -81,13 +81,13 @@ export class NotificacoesPage implements OnInit {
         {
           text: 'Sair',
           role: 'cancel',
-          cssClass: 'btn-primary',
+          cssClass: 'btn-danger',
           handler: (blah) => {
             console.log(blah)
           }
         }, {
           text: 'OK',
-          cssClass: 'btn-danger',
+          cssClass: 'btn-primary ',
           handler: blah => {
             agen.pendente = false;
             agen.descricaoCancelamento = blah.descricaoCancel;

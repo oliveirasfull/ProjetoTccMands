@@ -68,7 +68,7 @@
         <ion-list>
             <ion-item>
                 <ion-label>Dias</ion-label>
-                <ion-select [(ngModel)]="pro.diaDaSemanaPro" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.diaDaSemanaPro" multiple="true" cancelText="cancelar" okText="Marcar">
                     <ion-select-option *ngFor="let dia of dias"> {{dia.dia}}</ion-select-option>
                 </ion-select>
             </ion-item>
@@ -77,19 +77,19 @@
 
             <ion-item>
                 <ion-label>Manha</ion-label>
-                <ion-select [(ngModel)]="pro.horarioManhaPro" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioManhaPro" multiple="true" cancelText="cancelar" okText="Marcar">
                     <ion-select-option *ngFor="let hora of manha">{{hora.hora}}:00 AM</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Tarde</ion-label>
-                <ion-select [(ngModel)]="pro.horarioTardePro" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioTardePro" multiple="true" cancelText="cancelar" okText="Marcar">
                     <ion-select-option *ngFor="let hora of tarde">{{hora.hora}}:00 PM</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Noite</ion-label>
-                <ion-select [(ngModel)]="pro.horarioNoitePro" multiple="true" cancelText="cancelar" okText="Okay!">
+                <ion-select [(ngModel)]="pro.horarioNoitePro" multiple="true" cancelText="cancelar" okText="Marcar">
                     <ion-select-option *ngFor="let hora of noite">{{hora.hora}}:00 PM</ion-select-option>
                 </ion-select>
             </ion-item>
